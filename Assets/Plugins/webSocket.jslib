@@ -76,5 +76,16 @@ mergeInto(LibraryManager.library,
         {
             console.error("WebSocket 연결이 닫혀 있습니다.");
         }
-    }
+    },
+
+    PrintNumber: function (number)
+    {
+        if (Module.socket && Module.socket.readyState === WebSocket.OPEN) 
+        {
+            Module.socket.send(UTF8ToString(number));
+        } else 
+        {
+            console.error("WebSocket 연결이 닫혀 있습니다.");
+        }
+    },
 });

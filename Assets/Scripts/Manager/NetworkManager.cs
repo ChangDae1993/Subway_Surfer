@@ -9,34 +9,44 @@ public class NetworkManager : MonoBehaviour
     public int score;
     [DllImport("__Internal")]
     private static extern void SendScore(int score);
+
+
+
+    public Text textval;
+    [DllImport("__Internal")]
+    private static extern void PrintNumber(string number);
+
+
     [DllImport("__Internal")]
     private static extern void WebSocketSetting();
     private void Start()
     {
-        ////이게 jslib의 세팅부분
-        //Debug.Log("준비 시작");
-        //WebSocketSetting();
 
     }
 
 
     private void Update()
     {
-        //Debug.Log("준비 시작");
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    Debug.Log("setting 제발");
-        //    //이게 jslib의 세팅부분
-        //    WebSocketSetting();
-        //}
 
-
+#if !UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
             score++;
             test.text += score.ToString();
             SendScore(score);
+
+            textval.text = "this is text.?!";
+            PrintNumber(textval.text);
+        }
+#endif
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            score++;
+            test.text += score.ToString();
+
+            textval.text = "this is text.?!";
         }
     }
 
