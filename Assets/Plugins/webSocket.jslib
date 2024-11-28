@@ -70,15 +70,32 @@ mergeInto(LibraryManager.library, {
     }
   },
 
-  ShowRanking: function () {
-    // 앨범 목록 조회 (서버에서 사용자 앨범 정보 받아오기)
-    fetch("/rankings")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("랭킹을 보여주세요");
-      })
-      .catch((error) => {
-        console.error("앨범 정보 조회 오류:", error);
+  ShowRanking: async function () {
+    try {
+      const response = await fetch("/rankings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
       });
+      const data = await response.json();
+
+      if (response.ok) {
+        const names = data.map((row) => row.user_id).join(","); // 배열을 문자열로 결합
+        const scores = data.map((row) => row.score).join(","); // 배열을 문자열로 결합
+
+        // 두 문자열을 하나로 결합해서 보내기
+        const combined = names + "|" + scores; // 이름과 점수를 '|'로 구분해서 결합
+
+        // Unity로 데이터 전송
+        globalUnityInstance.SendMessage(
+          "RankingArea", // Unity 오브젝트 이름
+          "SettingRank", // Unity 메서드 이름
+          combined // 결합된 하나의 문자열 전달
+        );
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error("랭킹 조회 중 오류 발생:", error);
+    }
   },
 });

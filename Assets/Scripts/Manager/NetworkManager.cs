@@ -2,12 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 //using UnityEngine.Networking;
 
 public class NetworkManager : MonoBehaviour
 {
     public Text test;
     public int score;
+    public Text RankingText;
 
     [DllImport("__Internal")]
     private static extern void WebSocketSetting();
@@ -23,6 +25,8 @@ public class NetworkManager : MonoBehaviour
 
     //[DllImport("__Internal")]
     //public static extern void RegisterScore();
+
+
 
     [DllImport("__Internal")]
     public static extern void ShowRanking();
@@ -41,7 +45,7 @@ public class NetworkManager : MonoBehaviour
             test.text += score.ToString();
             SendScore(score);
 
-            textval.text = "this is text.?!";
+            textval.text = "Hello WebSocket!";
             PrintNumber(textval.text);
         }
 
@@ -49,9 +53,8 @@ public class NetworkManager : MonoBehaviour
         {
             ShowRanking();
         }
-
-
     }
+
     public void ConnectStart()
     {
         WebSocketSetting();
