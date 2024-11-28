@@ -19,6 +19,7 @@ public class RankSetting : MonoBehaviour
         {
             names[i].text = nameArray[i];
             scores[i].text = scoreArray[i];
+            Debug.Log(names[i].text + " :: " + scores[i].text);
         }
     }
 }
