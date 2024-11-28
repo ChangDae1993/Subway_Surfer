@@ -2,23 +2,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices;
+//using UnityEngine.Networking;
 
 public class NetworkManager : MonoBehaviour
 {
     public Text test;
     public int score;
+
+    [DllImport("__Internal")]
+    private static extern void WebSocketSetting();
+
+
     [DllImport("__Internal")]
     private static extern void SendScore(int score);
-
-
 
     public Text textval;
     [DllImport("__Internal")]
     private static extern void PrintNumber(string number);
 
 
+    //[DllImport("__Internal")]
+    //public static extern void RegisterScore();
+
     [DllImport("__Internal")]
-    private static extern void WebSocketSetting();
+    public static extern void ShowRanking();
+
     private void Start()
     {
 
@@ -27,11 +35,8 @@ public class NetworkManager : MonoBehaviour
 
     private void Update()
     {
-
-#if !UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
             score++;
             test.text += score.ToString();
             SendScore(score);
@@ -39,17 +44,14 @@ public class NetworkManager : MonoBehaviour
             textval.text = "this is text.?!";
             PrintNumber(textval.text);
         }
-#endif
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
-
-            score++;
-            test.text += score.ToString();
-
-            textval.text = "this is text.?!";
+            ShowRanking();
         }
-    }
 
+
+    }
     public void ConnectStart()
     {
         WebSocketSetting();
