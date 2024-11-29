@@ -10,13 +10,24 @@ public class Player_Move : MonoBehaviour
     [SerializeField] private float gravity = 12.0f;
 
     public Camera_Script CamS;
+    public Score_script scoreS;
 
     //private float animationDur = 3.0f;
+
+    public bool isDead = false;
 
     private void Awake()
     {
         if (controller == null)
             controller = GetComponent<CharacterController>();
+
+        if (scoreS == null)
+            scoreS = GetComponent<Score_script>();
+        
+
+        if (CamS == null)
+            CamS = GetComponent<Camera_Script>();
+
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,8 +39,12 @@ public class Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
 
-        if(Time.time < CamS.animationDur)
+        if (Time.time < CamS.animationDur)
         {
             controller.Move(Vector3.forward * Time.deltaTime * speed);
             return;
@@ -58,5 +73,27 @@ public class Player_Move : MonoBehaviour
 
 
         controller.Move(moveVec * Time.deltaTime * speed);
+    }
+
+
+    public void SetSpeed(float modifier)
+    {
+        speed = speed + modifier;
+    }
+
+    //It is being called everytime our capsule hit something
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.point.z > transform.position.z + controller.radius)
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        isDead = true;
+        scoreS.OnDeath();
+        Debug.Log("Death");
     }
 }
