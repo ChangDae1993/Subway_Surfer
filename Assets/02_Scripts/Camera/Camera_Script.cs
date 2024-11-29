@@ -14,7 +14,7 @@ public class Camera_Script : MonoBehaviour
     public float CamMaxY;
 
 
-    private float transition = 0f;
+    [SerializeField] private float transition = 0f;
     //how long does animation show
     [HideInInspector] public float animationDur = 3.0f;
 
@@ -23,7 +23,10 @@ public class Camera_Script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(lookAt == null)
+        transition = 0f;
+        Debug.Log(transition);
+
+        if (lookAt == null)
         {
             lookAt = GameObject.FindGameObjectWithTag("Player").transform;
         }

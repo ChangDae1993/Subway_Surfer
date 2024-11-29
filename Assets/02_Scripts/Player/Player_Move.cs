@@ -12,6 +12,8 @@ public class Player_Move : MonoBehaviour
     public Camera_Script CamS;
     public Score_script scoreS;
 
+    public float startTime;
+
     //private float animationDur = 3.0f;
 
     public bool isDead = false;
@@ -33,7 +35,7 @@ public class Player_Move : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class Player_Move : MonoBehaviour
             return;
         }
 
-        if (Time.time < CamS.animationDur)
+        if (Time.time - startTime < CamS.animationDur)
         {
             controller.Move(Vector3.forward * Time.deltaTime * speed);
             return;

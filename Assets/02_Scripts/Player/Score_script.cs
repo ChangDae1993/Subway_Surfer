@@ -16,6 +16,7 @@ public class Score_script : MonoBehaviour
 
     public Player_Move playerM;
 
+    public DeathMenu deathMenu;
 
     private void Awake()
     {
@@ -67,6 +68,6 @@ public class Score_script : MonoBehaviour
 
     public void OnDeath()
     {
-
+        deathMenu.ToggleEndMenu(score);
     }
 }
