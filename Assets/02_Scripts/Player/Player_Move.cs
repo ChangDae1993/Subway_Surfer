@@ -18,6 +18,7 @@ public class Player_Move : MonoBehaviour
 
     public bool isDead = false;
 
+    public Rigidbody rb;
     private void Awake()
     {
         if (controller == null)
@@ -29,6 +30,9 @@ public class Player_Move : MonoBehaviour
 
         if (CamS == null)
             CamS = GetComponent<Camera_Script>();
+
+        if(rb == null)
+            rb = GetComponent<Rigidbody>();
 
     }
 
@@ -46,8 +50,13 @@ public class Player_Move : MonoBehaviour
             return;
         }
 
+
         if (Time.time - startTime < CamS.animationDur)
         {
+            //var dir = Vector3.forward;
+
+            //rb.MovePosition(rb.position + transform.TransformDirection(-dir) * (speed * Time.deltaTime));
+
             controller.Move(Vector3.forward * Time.deltaTime * speed);
             return;
         }
