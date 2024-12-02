@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8a7199bb383b8e042b1753f5ad90a0b7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208582
+  packageName: Retro Modular City Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/Retro_City_Pack/Materials/Materials/TrafficLight_Reverse.mat
+  uploadId: 596136

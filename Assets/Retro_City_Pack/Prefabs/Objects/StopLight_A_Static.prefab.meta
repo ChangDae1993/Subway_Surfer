@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b915dbdef3c70bf48b067a21b3e20c53
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208582
+  packageName: Retro Modular City Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/Retro_City_Pack/Prefabs/Objects/StopLight_A_Static.prefab
+  uploadId: 596136

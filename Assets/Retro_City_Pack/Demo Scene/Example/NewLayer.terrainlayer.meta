@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9a96d1da5615f644d9639af46e3a0fe2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208582
+  packageName: Retro Modular City Pack
+  packageVersion: 1.0.1
+  assetPath: Assets/Retro_City_Pack/Demo Scene/Example/NewLayer.terrainlayer
+  uploadId: 596136

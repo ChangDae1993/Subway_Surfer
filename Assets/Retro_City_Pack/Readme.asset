@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: d1e5086a0d7df8249a685707484552e0, type: 3}
+  title: Retro City Pack
+  sections:
+  - heading: Thank you
+    text: Thank you for purchasing this asset pack, I hope that it will provide you
+      what you are looking for. If there are any issues please contact me and I will
+      do my best to fix them. I will be trying to update this pack with more models
+      and features over time, so feel free to throw some suggestions my way as well!
+    linkText: 'Email: jason@footstomp.studio'
+    url: mailto:jason@footstomp.studio
+  - heading: Using This Pack
+    text: All road sections of this pack will fit together on a grid. You can press
+      the V key with the move tool selected to vertex snap each part together.
+    linkText: 
+    url: 
+  - heading: Street Lights
+    text: There are 2 materials for the street lights, using the same shader that
+      will sync the lights up opposite of each other to have a proper intersection.
+    linkText: 
+    url: 
+  - heading: Built-In Materials
+    text: If you need to use built-in materials you can import the Built-In materials
+      package in the materials folder.
+    linkText: 
+    url: 
+  - heading: Misc
+    text: Some buildings have emmissive windows that you can enable with the emission
+      button on the material.
+    linkText: 
+    url: 
+  - heading: Credit
+    text: 'Some textures contain parts of images obtains on free cc0 texture sites
+      like: pixabay.com, pexels.com and cgbookcase.com that were used to aid texture
+      creation.'
+    linkText: 
+    url: 
+  loadedLayout: 1
