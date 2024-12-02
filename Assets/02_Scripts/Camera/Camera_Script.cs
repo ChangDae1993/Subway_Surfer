@@ -24,7 +24,7 @@ public class Camera_Script : MonoBehaviour
     void Start()
     {
         transition = 0f;
-        Debug.Log(transition);
+        //Debug.Log(transition);
 
         if (lookAt == null)
         {
@@ -41,7 +41,7 @@ public class Camera_Script : MonoBehaviour
         //X
         moveVec.x = 0f;
         //Y
-        moveVec.y = Mathf.Clamp(moveVec.y, CamMinY, CamMaxY);
+        //moveVec.y = Mathf.Clamp(moveVec.y, CamMinY, CamMaxY);
 
         if(transition > 1.0f)
         {

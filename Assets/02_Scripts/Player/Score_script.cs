@@ -9,8 +9,8 @@ public class Score_script : MonoBehaviour
 
 
     public int Level = 1;
-    public int maxLevel = 10;
-    private int scoreToNextLevel = 10;
+    //public int maxLevel = 10;
+    [SerializeField] private float scoreToNextLevel = 10;
 
     public Text score_txt;
 
@@ -41,33 +41,39 @@ public class Score_script : MonoBehaviour
         }
 
 
-        if(score >= scoreToNextLevel)
+        if (score >= scoreToNextLevel)
         {
             LevelUp();
         }
 
-        score += Time.deltaTime * Level;
+        score += Time.deltaTime/* * Level*/;
         score_txt.text = ((int)score).ToString();
     }
 
     void LevelUp()
     {
 
-        if(Level == maxLevel)
-        {
-            return;
-        }
+        //if (Level == maxLevel)
+        //{
+        //    return;
+        //}
         Debug.Log("Level Up");
 
-        scoreToNextLevel *= 2;
+        scoreToNextLevel *= 1.1f;
         Level++;
 
-        playerM.SetSpeed(Level);
+        playerM.SetSpeed(0.1f);
+        //playerM.SetSpeed(Level);
 
     }
 
     public void OnDeath()
     {
+        //점수 저장하기
+        if(PlayerPrefs.GetFloat("Highscore") < score)
+        {
+            PlayerPrefs.SetFloat("Highscore", score);
+        }
         deathMenu.ToggleEndMenu(score);
     }
 }

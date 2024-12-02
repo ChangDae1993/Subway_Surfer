@@ -77,10 +77,16 @@ public class TileManager : MonoBehaviour
         }
         int randomIndex = lastPrefabIndex;
 
-        while(randomIndex == lastPrefabIndex)
+        while (randomIndex == lastPrefabIndex && randomIndex != 5 && randomIndex != 6)
         {
             randomIndex = Random.Range(0, Tiles.Length);
         }
+
+        if(randomIndex == 4)
+        {
+            Debug.Log("다리 만들기 시작");
+            Debug.Break();
+        }    
 
         lastPrefabIndex = randomIndex;
         return randomIndex;

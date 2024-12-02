@@ -86,8 +86,12 @@ public class Player_Move : MonoBehaviour
     //It is being called everytime our capsule hit something
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.point.z > transform.position.z + controller.radius)
+        if (!hit.gameObject.CompareTag("Obstacle"))
+            return;
+
+        if (Time.time - startTime > CamS.animationDur && hit.point.z > transform.position.z + controller.radius)
         {
+            Debug.Log(hit.gameObject.name);
             Death();
         }
     }
