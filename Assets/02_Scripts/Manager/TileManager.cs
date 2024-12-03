@@ -58,8 +58,6 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    Vector3 lastTilePosition = Vector3.zero;
-
     private float tileMaker = 0f;  // 타일 생성 타이머
 
     // Update is called once per frame
