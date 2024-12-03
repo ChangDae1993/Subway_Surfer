@@ -34,11 +34,10 @@ public class TileManager : MonoBehaviour
         {
             Debug.LogError("Player 태그가 있는 오브젝트를 찾을 수 없습니다.");
         }
-        //SpawnTile(0);
 
         for (int i = 0; i < PretileObjNum; i++)
         {
-            if (i < 5)
+            if (i < 3)
             {
                 SpawnTile(0);
             }
@@ -77,23 +76,22 @@ public class TileManager : MonoBehaviour
         //    }
 
 
-
+        Debug.Log((playerTr.transform.position.z - saveZone) + " : " + (spawnZ - PretileObjNum * tileLength));
         // 플레이어가 기준 위치를 넘어가면 새 타일 생성
-        if (playerTr.transform.position.x - saveZone > (spawnZ - PretileObjNum * tileLength))
+        if (playerTr.transform.position.z - saveZone > (spawnZ - PretileObjNum * tileLength))
         {
             SpawnTile();
-            //SpawnTile();
             DeletTile();
         }
 
 
         // 플레이어가 기준 위치를 넘어가면 새 타일 생성
         // 여기서는 그냥 테스트로 계속 생성
-        if (Input.GetKeyDown(KeyCode.Space)) // 테스트용: Space키로 타일 생성
-        {
-            SpawnTile();
-            DeletTile();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space)) // 테스트용: Space키로 타일 생성
+        //{
+        //    SpawnTile();
+        //    DeletTile();
+        //}
 
         //Debug.Log(activeTiles[activeTiles.Count - 1].gameObject.transform.position.z);
     }
@@ -113,6 +111,7 @@ public class TileManager : MonoBehaviour
             {
                 currentDirection = GetNextDirection(tileComponent.tileType, tile);
             }
+            spawnZ += tileLength;
         }
         else
         {
@@ -125,6 +124,7 @@ public class TileManager : MonoBehaviour
         tile.transform.rotation = Quaternion.LookRotation(currentDirection); // 방향에 따라 회전
         activeTiles.Add(tile);
 
+        spawnZ += tileLength;
         // 다음 타일의 기준점 업데이트
         currentPosition += currentDirection * tileLength;
     }

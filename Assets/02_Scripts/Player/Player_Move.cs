@@ -75,10 +75,37 @@ public class Player_Move : MonoBehaviour
             return;
         }
 
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("왼쪽 회전");
+        }
+
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("오른쪽 회전");
+        }
 
         rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
 
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.TryGetComponent(out SpawnTiles tile))
+    //    {
+    //        if(tile.tileType == SpawnTiles.TileType.flat)
+    //        {
+    //            Debug.Log("return");
+    //            Debug.Break();
+    //            return;
+    //        }
+    //        else
+    //        {
+    //            Debug.Log(tile.tileType);
+    //            Debug.Break();
+    //        }
+    //    }
+    //}
 
 
 
