@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player_Move : MonoBehaviour
@@ -43,6 +44,8 @@ public class Player_Move : MonoBehaviour
     }
 
 
+    public bool turnInput = false;
+    Coroutine turn;
 
     Vector3 dir = Vector3.forward;
 
@@ -67,65 +70,93 @@ public class Player_Move : MonoBehaviour
         if (Time.time - startTime < CamS.animationDur)
         {
             rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
-            //var dir = Vector3.forward;
-
-            //rb.MovePosition(rb.position + transform.TransformDirection(-dir) * (speed * Time.deltaTime));
-
-            //controller.Move(Vector3.forward * Time.deltaTime * speed);
             return;
-        }
-
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("왼쪽 회전");
-        }
-
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log("오른쪽 회전");
         }
 
         rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
 
+        if(!turnInput)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                if(turn != null)
+                {
+                    StopCoroutine(turn);
+                    turn = StartCoroutine(turnleftCo());
+                }
+                else
+                {
+                    turn = StartCoroutine(turnleftCo());
+                }
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                if (turn != null)
+                {
+                    StopCoroutine(turn);
+                    turn = StartCoroutine(turnrightCo());
+                }
+                else
+                {
+                    turn = StartCoroutine(turnrightCo());
+                }
+
+            }
+        }
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.TryGetComponent(out SpawnTiles tile))
-    //    {
-    //        if(tile.tileType == SpawnTiles.TileType.flat)
-    //        {
-    //            Debug.Log("return");
-    //            Debug.Break();
-    //            return;
-    //        }
-    //        else
-    //        {
-    //            Debug.Log(tile.tileType);
-    //            Debug.Break();
-    //        }
-    //    }
-    //}
+    private Vector3 currentDirection = Vector3.forward; // 초기 이동 방향 설정 (기본적으로 z 방향)
 
+    public IEnumerator turnleftCo()
+    {
+        Debug.Log("왼쪽 회전");
+        turnInput = true;
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = startRotation * Quaternion.Euler(0, -90, 0);
+
+        float elapsedTime = 0f;
+        float duration = 1f;  // 회전 시간 (초 단위)
+
+        while (elapsedTime < duration)
+        {
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration); // 부드러운 회전
+            elapsedTime += Time.deltaTime * (speed * 0.5f);
+            yield return null;
+        }
+        transform.rotation = endRotation;  // 정확한 90도 회전으로 마무리
+        currentDirection = transform.forward; // 회전 후 진행 방향을 forward로 설정
+        turnInput = false;
+    }
+
+    public IEnumerator turnrightCo()
+    {
+        Debug.Log("오른쪽 회전");
+        turnInput = true;
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = startRotation * Quaternion.Euler(0, 90, 0);  // 오른쪽 90도 회전
+
+        float elapsedTime = 0f;
+        float duration = 1f;  // 회전 시간 (초 단위)
+
+        while (elapsedTime < duration)
+        {
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration); // 부드러운 회전
+            elapsedTime += Time.deltaTime * (speed * 0.5f);
+            yield return null;  // 한 프레임 대기
+        }
+
+        transform.rotation = endRotation;  // 정확한 90도 회전으로 마무리
+        currentDirection = transform.forward; // 회전 후 진행 방향을 forward로 설정
+        turnInput = false;
+    }
 
 
     public void SetSpeed(float modifier)
     {
         speed = speed + modifier;
     }
-
-    //It is being called everytime our capsule hit something
-    //void OnControllerColliderHit(ControllerColliderHit hit)
-    //{
-    //    if (!hit.gameObject.CompareTag("Obstacle"))
-    //        return;
-
-    //    if (Time.time - startTime > CamS.animationDur && hit.point.z > transform.position.z + controller.radius)
-    //    {
-    //        Debug.Log(hit.gameObject.name);
-    //        Death();
-    //    }
-    //}
 
     void Death()
     {

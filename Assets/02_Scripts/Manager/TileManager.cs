@@ -48,21 +48,28 @@ public class TileManager : MonoBehaviour
         }
     }
 
-
-    public bool leftOn = false;
-    public int leftCnt = 0;
-
+    Vector3 lastTilePosition = Vector3.zero;
     // Update is called once per frame
     void Update()
     {
         //Debug.Log((playerTr.transform.position.z - saveZone) + " : " + (spawnZ - PretileObjNum * tileLength));
         // 플레이어가 기준 위치를 넘어가면 새 타일 생성
-        if (playerTr.transform.position.z - saveZone > (spawnZ - PretileObjNum * tileLength))
+        //if (playerTr.transform.position.z - saveZone > (spawnZ - PretileObjNum * tileLength))
+        //{
+        //    SpawnTile();
+        //    DeletTile();
+        //}
+
+        // 타일 생성 로직
+        // (예시로 플레이어가 이동할 때마다 타일을 생성하는 로직을 추가)
+        if (Vector3.Distance(playerTr.transform.position, lastTilePosition) > tileLength)
         {
             SpawnTile();
             DeletTile();
+            lastTilePosition = playerTr.transform.position;  // 타일 생성 후, 마지막 생성 위치 업데이트
         }
 
+        //Debug.Log((Vector3.Distance(playerTr.transform.position, lastTilePosition)) + " : " + (tileLength));
 
         // 플레이어가 기준 위치를 넘어가면 새 타일 생성
         // 여기서는 그냥 테스트로 계속 생성
