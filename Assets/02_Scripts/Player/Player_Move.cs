@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player_Move : MonoBehaviour
 {
-    public CharacterController controller;
+    //public CharacterController controller;
     public Vector3 moveVec;
 
     public float speed = 5f;
@@ -21,8 +21,8 @@ public class Player_Move : MonoBehaviour
     public Rigidbody rb;
     private void Awake()
     {
-        if (controller == null)
-            controller = GetComponent<CharacterController>();
+        //if (controller == null)
+        //    controller = GetComponent<CharacterController>();
 
         if (scoreS == null)
             scoreS = GetComponent<Score_script>();
@@ -42,6 +42,10 @@ public class Player_Move : MonoBehaviour
         startTime = Time.time;
     }
 
+
+
+    Vector3 dir = Vector3.forward;
+
     // Update is called once per frame
     void Update()
     {
@@ -50,41 +54,32 @@ public class Player_Move : MonoBehaviour
             return;
         }
 
+        //X = left and right
+        dir.x = Input.GetAxisRaw("Horizontal") * speed;
+
+        //Y = Up and Down
+        //dir.y = verticalVelocity;
+
+        //Z = Forward and Backward
+        dir.z = speed;
+
 
         if (Time.time - startTime < CamS.animationDur)
         {
+            rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
             //var dir = Vector3.forward;
 
             //rb.MovePosition(rb.position + transform.TransformDirection(-dir) * (speed * Time.deltaTime));
 
-            controller.Move(Vector3.forward * Time.deltaTime * speed);
+            //controller.Move(Vector3.forward * Time.deltaTime * speed);
             return;
         }
 
-        moveVec = Vector3.zero;
 
+        rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
 
-        if (controller.isGrounded)
-        {
-            verticalVelocity = -0.5f;
-        }
-        else
-        {
-            verticalVelocity -= gravity * Time.deltaTime;
-        }
-
-        //X = left and right
-        moveVec.x = Input.GetAxisRaw("Horizontal") * speed;
-        //Y = Up and Down
-
-        moveVec.y = verticalVelocity;
-
-        //Z = Forward and Backward
-        moveVec.z = speed;
-
-
-        controller.Move(moveVec * Time.deltaTime * speed);
     }
+
 
 
     public void SetSpeed(float modifier)
@@ -93,17 +88,17 @@ public class Player_Move : MonoBehaviour
     }
 
     //It is being called everytime our capsule hit something
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (!hit.gameObject.CompareTag("Obstacle"))
-            return;
+    //void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (!hit.gameObject.CompareTag("Obstacle"))
+    //        return;
 
-        if (Time.time - startTime > CamS.animationDur && hit.point.z > transform.position.z + controller.radius)
-        {
-            Debug.Log(hit.gameObject.name);
-            Death();
-        }
-    }
+    //    if (Time.time - startTime > CamS.animationDur && hit.point.z > transform.position.z + controller.radius)
+    //    {
+    //        Debug.Log(hit.gameObject.name);
+    //        Death();
+    //    }
+    //}
 
     void Death()
     {
