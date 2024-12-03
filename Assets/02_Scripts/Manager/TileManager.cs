@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class TileManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class TileManager : MonoBehaviour
     public List<GameObject> activeTiles = new List<GameObject>();
 
     private Transform playerTr;
+    public Score_script playerLevel;
+    public Player_Move playermove;
     [SerializeField] private float spawnZ = -20f;
 
 
@@ -15,12 +18,9 @@ public class TileManager : MonoBehaviour
     private Vector3 currentPosition = Vector3.zero;     // 타일 생성 기준점
     private float tileLength = 16f;                    // 타일의 길이
 
-    private int PretileObjNum = 7;
+    private int PretileObjNum = 10;
 
     private int lastPrefabIndex = 0;
-
-    private float saveZone = 15f;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,9 +35,19 @@ public class TileManager : MonoBehaviour
             Debug.LogError("Player 태그가 있는 오브젝트를 찾을 수 없습니다.");
         }
 
+        if(playerLevel == null)
+        {
+            playerLevel = playerTr.gameObject.GetComponent<Score_script>();
+        }
+
+        if(playermove == null)
+        {
+            playermove = player.gameObject.GetComponent<Player_Move>();
+        }
+
         for (int i = 0; i < PretileObjNum; i++)
         {
-            if (i < 3)
+            if (i < 5)
             {
                 SpawnTile(0);
             }
@@ -49,28 +59,28 @@ public class TileManager : MonoBehaviour
     }
 
     Vector3 lastTilePosition = Vector3.zero;
+
+    private float tileMaker = 0f;  // 타일 생성 타이머
+
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log((playerTr.transform.position.z - saveZone) + " : " + (spawnZ - PretileObjNum * tileLength));
-        // 플레이어가 기준 위치를 넘어가면 새 타일 생성
-        //if (playerTr.transform.position.z - saveZone > (spawnZ - PretileObjNum * tileLength))
-        //{
-        //    SpawnTile();
-        //    DeletTile();
-        //}
-
-        // 타일 생성 로직
-        // (예시로 플레이어가 이동할 때마다 타일을 생성하는 로직을 추가)
-        if (Vector3.Distance(playerTr.transform.position, lastTilePosition) > tileLength)
+        if (playermove.isDead)
         {
-            SpawnTile();
-            DeletTile();
-            lastTilePosition = playerTr.transform.position;  // 타일 생성 후, 마지막 생성 위치 업데이트
+            return;
         }
 
-        //Debug.Log((Vector3.Distance(playerTr.transform.position, lastTilePosition)) + " : " + (tileLength));
+        // 타일 생성 주기 업데이트
+        tileMaker += Time.deltaTime;
 
+        if (activeTiles.Count > 0)
+        {
+            // 플레이어 위치 기반 가장 오래된 타일 제거
+            if (Vector3.Distance(playerTr.position, activeTiles[0].transform.position) > tileLength)
+            {
+                RemoveOldTile();
+            }
+        }
         // 플레이어가 기준 위치를 넘어가면 새 타일 생성
         // 여기서는 그냥 테스트로 계속 생성
         //if (Input.GetKeyDown(KeyCode.Space)) // 테스트용: Space키로 타일 생성
@@ -78,6 +88,21 @@ public class TileManager : MonoBehaviour
         //    SpawnTile();
         //    DeletTile();
         //}
+    }
+
+    // 타일 파괴 로직
+    void RemoveOldTile()
+    {
+        if (activeTiles.Count > 0)
+        {
+            Destroy(activeTiles[0]);
+            activeTiles.RemoveAt(0);
+            SpawnTile();
+        }
+        else
+        {
+            Debug.LogWarning("activeTiles 리스트가 비어 있습니다!");
+        }
     }
 
 
@@ -130,20 +155,6 @@ public class TileManager : MonoBehaviour
             default:
                 Debug.LogWarning($"Unknown TileType: {tileType}");
                 return currentDirection;
-        }
-    }
-
-
-    void DeletTile()
-    {
-        if (activeTiles.Count > 0)
-        {
-            Destroy(activeTiles[0]);
-            activeTiles.RemoveAt(0);
-        }
-        else
-        {
-            Debug.LogWarning("activeTiles 리스트가 비어 있습니다!");
         }
     }
 

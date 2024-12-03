@@ -6,11 +6,12 @@ using System.Collections.Generic;
 public class Score_script : MonoBehaviour
 {
     private float score = 0f;
+    public float exp = 0f;
 
 
     public int Level = 1;
     //public int maxLevel = 10;
-    [SerializeField] private float scoreToNextLevel = 10;
+    [SerializeField] private float scoreToNextLevel = 10f;
 
     public Text score_txt;
 
@@ -29,6 +30,7 @@ public class Score_script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        exp = 0f;
         //score_txt.text = "agadgjvakljgas";
     }
 
@@ -41,30 +43,26 @@ public class Score_script : MonoBehaviour
         }
 
 
-        if (score >= scoreToNextLevel)
+        if (exp >= scoreToNextLevel)
         {
             LevelUp();
         }
 
         score += Time.deltaTime/* * Level*/;
+        exp += Time.deltaTime;
         score_txt.text = ((int)score).ToString();
     }
 
     void LevelUp()
     {
-
-        //if (Level == maxLevel)
-        //{
-        //    return;
-        //}
         Debug.Log("Level Up");
 
-        scoreToNextLevel *= 1.1f;
+        //exp = 0f;
+
+        scoreToNextLevel *= 2f;
         Level++;
 
         playerM.SetSpeed(0.1f);
-        //playerM.SetSpeed(Level);
-
     }
 
     public void OnDeath()

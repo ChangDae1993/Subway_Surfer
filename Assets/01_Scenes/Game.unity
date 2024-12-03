@@ -1174,9 +1174,8 @@ MonoBehaviour:
   - {fileID: 6477747312648913503, guid: eeceedf3a7cd8654fabd87b0646b08a9, type: 3}
   - {fileID: 6477747312648913503, guid: 063c5230f01037143abb20934f196d96, type: 3}
   activeTiles: []
+  playerLevel: {fileID: 0}
   spawnZ: -20
-  leftOn: 0
-  leftCnt: 0
 --- !u!1 &1629026698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1757,7 @@ MonoBehaviour:
   startTime: 0
   isDead: 0
   rb: {fileID: 1977471617}
+  turnInput: 0
 --- !u!114 &1977471616
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -111,7 +111,7 @@ public class Player_Move : MonoBehaviour
 
     public IEnumerator turnleftCo()
     {
-        Debug.Log("왼쪽 회전");
+        //Debug.Log("왼쪽 회전");
         turnInput = true;
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation = startRotation * Quaternion.Euler(0, -90, 0);
@@ -132,7 +132,7 @@ public class Player_Move : MonoBehaviour
 
     public IEnumerator turnrightCo()
     {
-        Debug.Log("오른쪽 회전");
+        //Debug.Log("오른쪽 회전");
         turnInput = true;
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation = startRotation * Quaternion.Euler(0, 90, 0);  // 오른쪽 90도 회전
