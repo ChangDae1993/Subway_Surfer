@@ -55,28 +55,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //{
-        //    if (leftOn)
-        //    {
-        //        if (playerTr.transform.position.x - saveZone > (spawnZ - PretileObjNum * tileLength))
-        //        {
-        //            SpawnTile();
-        //            //SpawnTile();
-        //            DeletTile();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (playerTr.transform.position.z - saveZone > (spawnZ - PretileObjNum * tileLength))
-        //        {
-        //            SpawnTile();
-        //            //SpawnTile();
-        //            DeletTile();
-        //        }
-        //    }
-
-
-        Debug.Log((playerTr.transform.position.z - saveZone) + " : " + (spawnZ - PretileObjNum * tileLength));
+        //Debug.Log((playerTr.transform.position.z - saveZone) + " : " + (spawnZ - PretileObjNum * tileLength));
         // 플레이어가 기준 위치를 넘어가면 새 타일 생성
         if (playerTr.transform.position.z - saveZone > (spawnZ - PretileObjNum * tileLength))
         {
@@ -92,8 +71,6 @@ public class TileManager : MonoBehaviour
         //    SpawnTile();
         //    DeletTile();
         //}
-
-        //Debug.Log(activeTiles[activeTiles.Count - 1].gameObject.transform.position.z);
     }
 
 
@@ -109,7 +86,7 @@ public class TileManager : MonoBehaviour
             // 타일 타입에 따라 방향 업데이트
             if (tile.TryGetComponent(out SpawnTiles tileComponent))
             {
-                currentDirection = GetNextDirection(tileComponent.tileType, tile);
+                currentDirection = GetNextDirection(tileComponent.tileType);
             }
             spawnZ += tileLength;
         }
@@ -129,12 +106,11 @@ public class TileManager : MonoBehaviour
         currentPosition += currentDirection * tileLength;
     }
 
-    private Vector3 GetNextDirection(SpawnTiles.TileType tileType, GameObject st)
+    private Vector3 GetNextDirection(SpawnTiles.TileType tileType)
     {
         switch (tileType)
         {
             case SpawnTiles.TileType.left:
-                //st.gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
                 return Quaternion.Euler(0, -90, 0) * currentDirection;
             case SpawnTiles.TileType.right:
                 return Quaternion.Euler(0, 90, 0) * currentDirection;
