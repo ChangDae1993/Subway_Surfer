@@ -48,7 +48,7 @@ public class Score_script : MonoBehaviour
             LevelUp();
         }
 
-        score += Time.deltaTime/* * Level*/;
+        score += Time.deltaTime * Level;
         exp += Time.deltaTime;
         score_txt.text = ((int)score).ToString();
     }
@@ -59,10 +59,10 @@ public class Score_script : MonoBehaviour
 
         //exp = 0f;
 
-        scoreToNextLevel *= 2f;
+        scoreToNextLevel *= 1.6f;
         Level++;
 
-        playerM.SetSpeed(0.1f);
+        playerM.SetSpeed(0.3f);
     }
 
     public void OnDeath()

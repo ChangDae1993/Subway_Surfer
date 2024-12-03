@@ -811,7 +811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1294185696
 Light:
   m_ObjectHideFlags: 0
@@ -1175,6 +1175,7 @@ MonoBehaviour:
   - {fileID: 6477747312648913503, guid: 063c5230f01037143abb20934f196d96, type: 3}
   activeTiles: []
   playerLevel: {fileID: 0}
+  playermove: {fileID: 0}
   spawnZ: -20
 --- !u!1 &1629026698
 GameObject:
@@ -1749,9 +1750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVec: {x: 0, y: 0, z: 0}
-  speed: 2
-  verticalVelocity: 0
-  gravity: 12
+  speed: 3
   CamS: {fileID: 1692553854}
   scoreS: {fileID: 0}
   startTime: 0
@@ -1770,6 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c36f17f44d467e46b9c4fe8f221591a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 0
   Level: 1
   scoreToNextLevel: 10
   score_txt: {fileID: 507881227}
@@ -1797,10 +1797,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1977471618
 CapsuleCollider:
@@ -1821,10 +1821,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.23
-  m_Height: 2.1050167
+  m_Radius: 0.3
+  m_Height: 1.8631302
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Center: {x: 0, y: 0.88156503, z: 0}
 --- !u!137 &58394637350908696
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

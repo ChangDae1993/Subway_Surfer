@@ -6,9 +6,7 @@ public class Player_Move : MonoBehaviour
     //public CharacterController controller;
     public Vector3 moveVec;
 
-    public float speed = 5f;
-    public float verticalVelocity = 0f;
-    [SerializeField] private float gravity = 12.0f;
+    public float speed;
 
     public Camera_Script CamS;
     public Score_script scoreS;
@@ -122,7 +120,7 @@ public class Player_Move : MonoBehaviour
         while (elapsedTime < duration)
         {
             transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration); // 부드러운 회전
-            elapsedTime += Time.deltaTime * (speed * 0.5f);
+            elapsedTime += Time.deltaTime * (speed);
             yield return null;
         }
         transform.rotation = endRotation;  // 정확한 90도 회전으로 마무리
@@ -143,7 +141,7 @@ public class Player_Move : MonoBehaviour
         while (elapsedTime < duration)
         {
             transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration); // 부드러운 회전
-            elapsedTime += Time.deltaTime * (speed * 0.5f);
+            elapsedTime += Time.deltaTime * (speed);
             yield return null;  // 한 프레임 대기
         }
 
