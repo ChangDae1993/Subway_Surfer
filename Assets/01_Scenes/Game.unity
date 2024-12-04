@@ -1060,6 +1060,7 @@ MonoBehaviour:
   - {fileID: 6477747312648913503, guid: 01e48d3a9b15b204c8edbf61e059be5c, type: 3}
   - {fileID: 6477747312648913503, guid: 5466a9541d5a6e04b9fbea0499a34d9d, type: 3}
   - {fileID: 6477747312648913503, guid: 87c35818274bb304b8f46d13a7beb593, type: 3}
+  - {fileID: 6477747312648913503, guid: 8107e2c7e83836244bb7b3a38c4ae0e3, type: 3}
   activeTiles: []
   playerLevel: {fileID: 0}
   playermove: {fileID: 0}
@@ -1115,7 +1116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.25490198}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

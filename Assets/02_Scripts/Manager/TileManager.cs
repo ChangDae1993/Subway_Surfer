@@ -117,19 +117,17 @@ public class TileManager : MonoBehaviour
         else
         {
             prefabIndex = RandomPrefabIndex();
-            tile = Instantiate(Tiles[prefabIndex]);
-
 
             if (tileSequence.Count > 0)
             {
                 // 큐 상태 확인
-                Debug.Log($"Before Dequeue: {string.Join(", ", tileSequence)}");
+                //Debug.Log($"Before Dequeue: {string.Join(", ", tileSequence)}");
 
                 // 큐에서 다음 타일 타입 가져오기
                 SpawnTiles.TileType nextTileType = tileSequence.Dequeue();
 
                 // Dequeue 후 상태 확인
-                Debug.Log($"After Dequeue: {string.Join(", ", tileSequence)}");
+                //Debug.Log($"After Dequeue: {string.Join(", ", tileSequence)}");
 
                 prefabIndex = GetPrefabIndexForTileType(nextTileType);
             }
@@ -138,14 +136,17 @@ public class TileManager : MonoBehaviour
                 prefabIndex = RandomPrefabIndex();
             }
 
+            tile = Instantiate(Tiles[prefabIndex]);
+
             // 타일 타입에 따라 방향 업데이트 및 세트 생성 시작
             if (tile.TryGetComponent(out SpawnTiles tileComponent))
             {
                 currentDirection = GetNextDirection(tileComponent.tileType);
 
+                // up타일을 만나면 세트 큐에 추가
                 if (tileComponent.tileType == SpawnTiles.TileType.up)
                 {
-                    EnqueueTileSequenceForSet(); // 특정 세트 추가
+                    EnqueueTileSequenceForSet(); // 큐에 새로운 세트 추가
                 }
             }
 
@@ -160,48 +161,16 @@ public class TileManager : MonoBehaviour
 
         // 다음 타일의 기준점 업데이트
         currentPosition += currentDirection * tileLength;
-
-
-        Debug.Log($"Generated Tile: {Tiles[prefabIndex].GetComponent<SpawnTiles>().tileType}");
-        Debug.Log($"Current Queue State: {string.Join(", ", tileSequence)}");
-
-        //if (prefabIndex == -1)
-        //{
-        //    tile = Instantiate(Tiles[RandomPrefabIndex()]) as GameObject;
-
-
-        //    // 타일 타입에 따라 방향 업데이트
-        //    if (tile.TryGetComponent(out SpawnTiles tileComponent))
-        //    {
-        //        currentDirection = GetNextDirection(tileComponent.tileType);
-        //    }
-        //    spawnZ += tileLength;
-        //}
-        //else
-        //{
-        //    tile = Instantiate(Tiles[prefabIndex]);
-        //}
-
-        //// 타일의 위치와 방향 설정
-        //tile.transform.SetParent(transform);
-        //tile.transform.position = currentPosition;
-        //tile.transform.rotation = Quaternion.LookRotation(currentDirection); // 방향에 따라 회전
-        //activeTiles.Add(tile);
-
-        //spawnZ += tileLength;
-        //// 다음 타일의 기준점 업데이트
-        //currentPosition += currentDirection * tileLength;
     }
 
     // 특정 타일 세트를 큐에 추가
     void EnqueueTileSequenceForSet()
     {
         tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 첫 번째 세트 타일
-        tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 두 번째 세트 타일
+        //tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 두 번째 세트 타일
         tileSequence.Enqueue(SpawnTiles.TileType.down); // 마지막 세트 타일
 
-
-        Debug.Log($"Enqueued Tile Sequence: {string.Join(", ", tileSequence)}");
+        //Debug.Log($"Enqueued Tile Sequence: {string.Join(", ", tileSequence)}");
     }
 
     // 타일 타입에 맞는 프리팹 인덱스 찾기
@@ -274,8 +243,14 @@ public class TileManager : MonoBehaviour
             }
         }
 
+
+        // 유효한 인덱스 중에서 이전에 나온 인덱스를 제외
+        validIndices.Remove(lastPrefabIndex);
+
         // 유효한 인덱스 중에서 랜덤 선택
         int randomIndex = validIndices[Random.Range(0, validIndices.Count)];
+
+        lastPrefabIndex = randomIndex;  // 현재 선택된 인덱스를 lastPrefabIndex로 저장
         return randomIndex;
     }
 }
