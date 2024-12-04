@@ -1050,12 +1050,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tiles:
   - {fileID: 6477747312648913503, guid: fd3cf06bd469e274bb175032a1d0ef20, type: 3}
+  - {fileID: 6477747312648913503, guid: eeceedf3a7cd8654fabd87b0646b08a9, type: 3}
+  - {fileID: 6477747312648913503, guid: 063c5230f01037143abb20934f196d96, type: 3}
   - {fileID: 6477747312648913503, guid: 92e53d5be00a8264d9b0f723e63aa1d0, type: 3}
   - {fileID: 6477747312648913503, guid: d7c17f2d57c92cc43904f84d2a74c7a9, type: 3}
   - {fileID: 6477747312648913503, guid: 0714380096ef0084fa638ec3b33416a3, type: 3}
   - {fileID: 6477747312648913503, guid: c9c84380d7978af4c96b63e9a6293a01, type: 3}
-  - {fileID: 6477747312648913503, guid: eeceedf3a7cd8654fabd87b0646b08a9, type: 3}
-  - {fileID: 6477747312648913503, guid: 063c5230f01037143abb20934f196d96, type: 3}
+  - {fileID: 6477747312648913503, guid: 40d71c13eb0292b429c00204d5e94b92, type: 3}
+  - {fileID: 6477747312648913503, guid: 01e48d3a9b15b204c8edbf61e059be5c, type: 3}
+  - {fileID: 6477747312648913503, guid: 5466a9541d5a6e04b9fbea0499a34d9d, type: 3}
+  - {fileID: 6477747312648913503, guid: 87c35818274bb304b8f46d13a7beb593, type: 3}
   activeTiles: []
   playerLevel: {fileID: 0}
   playermove: {fileID: 0}

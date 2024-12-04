@@ -10,8 +10,8 @@ public class SpawnTiles : MonoBehaviour
         left,
         right, 
         up, 
-        down,
         upY,
+        down,
         flat,
     }
 
@@ -37,7 +37,7 @@ public class SpawnTiles : MonoBehaviour
 
 
     Coroutine lightRBlink;
-    private float blinkTime = 2f;
+    private float blinkTime = 0.5f;
 
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
@@ -87,7 +87,7 @@ public class SpawnTiles : MonoBehaviour
     {
         while(true)
         {
-            for (int i = 0; i < Llights.Length; i++)
+            for (int i = Llights.Length - 1; i >= 0; i--)
             {
                 Llights[i].material = redOn;
                 yield return new WaitForSeconds(blinkTime);
@@ -103,7 +103,7 @@ public class SpawnTiles : MonoBehaviour
     {
         while(true)
         {
-            for (int i = 0; i < Rlights.Length; i++)
+            for (int i = Rlights.Length - 1; i >= 0; i--)
             {
                 Rlights[i].material = redOn;
                 yield return new WaitForSeconds(blinkTime);
