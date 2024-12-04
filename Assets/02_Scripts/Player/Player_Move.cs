@@ -74,7 +74,7 @@ public class Player_Move : MonoBehaviour
 
         rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
 
-        if(!turnInput)
+        if(!turnInput)  //rigidbody rotate Y는 고정해서 이 외에 물리 값 받지 않도록
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
@@ -124,6 +124,7 @@ public class Player_Move : MonoBehaviour
 
     private Vector3 currentDirection = Vector3.forward; // 초기 이동 방향 설정 (기본적으로 z 방향)
 
+    //왼쪽 회전
     public IEnumerator turnleftCo()
     {
         //Debug.Log("왼쪽 회전");
@@ -145,6 +146,8 @@ public class Player_Move : MonoBehaviour
         turnInput = false;
     }
 
+
+    //오른쪽 회전
     public IEnumerator turnrightCo()
     {
         //Debug.Log("오른쪽 회전");
@@ -179,12 +182,4 @@ public class Player_Move : MonoBehaviour
         scoreS.OnDeath();
         Debug.Log("Death");
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.CompareTag("Obstacle"))
-    //    {
-    //        Death();
-    //    }
-    //}
 }

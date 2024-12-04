@@ -43,6 +43,24 @@ public class SpawnTiles : MonoBehaviour
     [Header("Animation")]
     public bool isAnimPattern;
 
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        generateVec = new Vector3(0f, 0.3f, 0f);
+
+        if (LightLTr != null)
+        {
+            Llights = LightLTr.GetComponentsInChildren<MeshRenderer>();
+        }
+
+        if (LightRTr != null)
+        {
+            Rlights = LightRTr.GetComponentsInChildren<MeshRenderer>();
+        }
+    }
+
+
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
     {
@@ -54,7 +72,6 @@ public class SpawnTiles : MonoBehaviour
                 obstacle = Instantiate(obstacleList[Random.Range(0, obstacleList.Length)]) as GameObject;
                 obstacle.transform.SetParent(objSpawnPoint[i]);
                 obstacle.transform.localPosition = new Vector3(0f, 0.3f, 0f);
-                //Debug.Log(obstacle.transform.localPosition);
             }
         }
 
@@ -133,22 +150,6 @@ public class SpawnTiles : MonoBehaviour
             {
                 StopCoroutine(lightRBlink);
             }
-        }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        generateVec = new Vector3(0f, 0.3f, 0f);
-
-        if (LightLTr != null)
-        {
-            Llights = LightLTr.GetComponentsInChildren<MeshRenderer>();
-        }
-
-        if (LightRTr != null)
-        {
-            Rlights = LightRTr.GetComponentsInChildren<MeshRenderer>();
         }
     }
 

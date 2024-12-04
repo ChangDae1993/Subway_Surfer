@@ -200,11 +200,8 @@ public class TileManager : MonoBehaviour
             case SpawnTiles.TileType.up:
                 return currentDirection;
             case SpawnTiles.TileType.upY:
-                //return currentDirection;
-                //return Quaternion.Euler(0, 90, 0) * currentDirection;
                 return currentDirection;
             case SpawnTiles.TileType.down:
-                //return Vector3.down;
                 return currentDirection;
             case SpawnTiles.TileType.flat:
                 return currentDirection;
@@ -216,18 +213,6 @@ public class TileManager : MonoBehaviour
 
     int RandomPrefabIndex()
     {
-        //if (Tiles.Length <= 1)
-        //    return 0;
-
-        //int randomIndex = (lastPrefabIndex + Random.Range(1, Tiles.Length)) % Tiles.Length;
-        //while (randomIndex == lastPrefabIndex)
-        //{
-        //    randomIndex = Random.Range(0, Tiles.Length);
-        //}
-
-        //lastPrefabIndex = randomIndex;
-        //return randomIndex;
-
         if (Tiles.Length <= 1)
             return 0;
 

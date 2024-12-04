@@ -31,7 +31,6 @@ public class Score_script : MonoBehaviour
     void Start()
     {
         exp = 0f;
-        //score_txt.text = "agadgjvakljgas";
     }
 
     // Update is called once per frame
