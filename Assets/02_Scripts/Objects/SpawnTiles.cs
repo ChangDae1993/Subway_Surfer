@@ -15,6 +15,7 @@ public class SpawnTiles : MonoBehaviour
         flat,
     }
 
+    [Header("Tile Spawn Type")]
     public Transform[] objSpawnPoint;
 
     public GameObject[] obstacleList;
@@ -35,9 +36,12 @@ public class SpawnTiles : MonoBehaviour
     public GameObject LightRTr;
     public MeshRenderer[] Rlights;
 
-
     Coroutine lightRBlink;
     private float blinkTime = 0.5f;
+
+    [Space(10f)]
+    [Header("Animation")]
+    public bool isAnimPattern;
 
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
@@ -111,7 +115,6 @@ public class SpawnTiles : MonoBehaviour
             }
             yield return null;
         }
-
     }
 
 
