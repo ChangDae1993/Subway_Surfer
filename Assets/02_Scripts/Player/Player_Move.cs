@@ -18,6 +18,7 @@ public class Player_Move : MonoBehaviour
     public bool isDead = false;
 
     public Rigidbody rb;
+    public GameObject playerModel;
     private void Awake()
     {
         //if (controller == null)
@@ -103,7 +104,23 @@ public class Player_Move : MonoBehaviour
 
             }
         }
+
+
+        LayerMask mask = LayerMask.GetMask("Obstacle") | LayerMask.GetMask("Wall");
+        Vector3 look = transform.TransformDirection(Vector3.forward); // Local -> World
+        Debug.DrawRay(transform.position + Vector3.up, look * rayLength, Color.red);
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.forward, out hit, rayLength, mask))
+        {
+            // Ray에 충돌이 감지되면 충돌된 오브젝트의 이름을 출력
+            Debug.Log($"Raycast {hit.collider.gameObject.name}!");
+            Death();
+        }
     }
+    public float rayLength;
+
+
 
     private Vector3 currentDirection = Vector3.forward; // 초기 이동 방향 설정 (기본적으로 z 방향)
 
@@ -162,4 +179,12 @@ public class Player_Move : MonoBehaviour
         scoreS.OnDeath();
         Debug.Log("Death");
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Obstacle"))
+    //    {
+    //        Death();
+    //    }
+    //}
 }
