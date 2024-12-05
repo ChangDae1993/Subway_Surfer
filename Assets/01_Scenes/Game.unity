@@ -1051,6 +1051,7 @@ MonoBehaviour:
   Tiles:
   - {fileID: 6477747312648913503, guid: fd3cf06bd469e274bb175032a1d0ef20, type: 3}
   - {fileID: 6477747312648913503, guid: 92e53d5be00a8264d9b0f723e63aa1d0, type: 3}
+  - {fileID: 6477747312648913503, guid: d7c17f2d57c92cc43904f84d2a74c7a9, type: 3}
   - {fileID: 6477747312648913503, guid: fab3a53c373a04c46b3c4af03c91a7c5, type: 3}
   activeTiles: []
   playerLevel: {fileID: 0}
