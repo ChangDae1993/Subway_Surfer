@@ -2,6 +2,7 @@ using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnTiles : MonoBehaviour
 {
@@ -41,21 +42,22 @@ public class SpawnTiles : MonoBehaviour
     [Header("Animation")]
     public bool isAnimPattern;
 
-
+    [SerializeField] private Player_Move player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player_Move>();
         generateVec = new Vector3(0f, 0.3f, 0f);
 
         if (LightLTr != null)
         {
-            Debug.Log("LightL On");
+            //Debug.Log("LightL On");
             Llights = LightLTr.GetComponentsInChildren<Light>();
         }
 
         if (LightRTr != null)
         {
-            Debug.Log("LightR On");
+            //Debug.Log("LightR On");
             Rlights = LightRTr.GetComponentsInChildren<Light>();
         }
     }
@@ -165,9 +167,63 @@ public class SpawnTiles : MonoBehaviour
         }
     }
 
+
+    [Space(10f)]
+    [Header("Anim Play")]
+    public bool animShow;
+    [SerializeField] private float maxDis = 50f;         //암튼 계산을 시작할 최장 거리
+    //public float playerDis = 0f;        //플레이어와 이 타일 간의 거리
+    [SerializeField] private Vector3 showTargetVec;
+    public GameObject targetImage = null;    //타겟 image or somethig
+    public float imageScale = 0f;       //타겟 image or something의 크기
     // Update is called once per frame
     void Update()
     {
+        if (isAnimPattern)
+        {
+            showTargetVec = new Vector3(player.gameObject.transform.position.x, player.gameObject.transform.position.y, 15f);
 
+            float distanceSqr = (this.transform.position - player.gameObject.transform.position + showTargetVec).sqrMagnitude;    //플레이어와 타일간의 거리
+            if (distanceSqr > 48f * 48f)
+                return;
+
+            if(!animShow)
+            {
+                //PerformAnimationLogic(Mathf.Sqrt(distanceSqr));
+                StartCoroutine(animationShowCo());
+            }
+        }
+    }
+    //void PerformAnimationLogic(float distance)
+    //{
+    //    animShow = true;
+    //    Debug.Log("연출 시작");
+    //    Debug.Log(distance);
+    //    imageScale = 0f;
+
+    //    imageScale = (maxDis - distance) * 0.01f;
+
+    //    if (targetImage.transform.localScale.x <= 0.8f)
+    //    {
+    //        targetImage.transform.localScale = new Vector3(imageScale, imageScale, imageScale);
+    //    }
+    //    else
+    //    {
+    //        targetImage.gameObject.SetActive(false);
+    //    }
+    //}
+
+    IEnumerator animationShowCo()
+    {
+        animShow = true;
+        imageScale = 0f;
+        while (imageScale < 0.8f)
+        {
+            targetImage.transform.localScale = new Vector3(imageScale, imageScale, imageScale);
+            imageScale += 0.01f * player.speed;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        targetImage.gameObject.SetActive(false);
     }
 }

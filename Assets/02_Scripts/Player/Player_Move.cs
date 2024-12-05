@@ -90,7 +90,7 @@ public class Player_Move : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 if (turn != null)
                 {
@@ -102,6 +102,11 @@ public class Player_Move : MonoBehaviour
                     turn = StartCoroutine(turnrightCo());
                 }
 
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                Debug.Log("추가 아이디어 구현 필요");
             }
         }
 
