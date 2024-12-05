@@ -26,18 +26,16 @@ public class SpawnTiles : MonoBehaviour
 
     [Space(10f)]
     [Header("Light")]
-    public Material redOn;
-    public Material blueOn;
 
     public GameObject LightLTr;
-    public MeshRenderer[] Llights;
+    public Light[] Llights;
     Coroutine lightLBlink;
 
     public GameObject LightRTr;
-    public MeshRenderer[] Rlights;
-
+    public Light[] Rlights;
     Coroutine lightRBlink;
-    private float blinkTime = 0.5f;
+
+    private float blinkTime = 0.3f;
 
     [Space(10f)]
     [Header("Animation")]
@@ -51,12 +49,14 @@ public class SpawnTiles : MonoBehaviour
 
         if (LightLTr != null)
         {
-            Llights = LightLTr.GetComponentsInChildren<MeshRenderer>();
+            Debug.Log("LightL On");
+            Llights = LightLTr.GetComponentsInChildren<Light>();
         }
 
         if (LightRTr != null)
         {
-            Rlights = LightRTr.GetComponentsInChildren<MeshRenderer>();
+            Debug.Log("LightR On");
+            Rlights = LightRTr.GetComponentsInChildren<Light>();
         }
     }
 
@@ -64,6 +64,18 @@ public class SpawnTiles : MonoBehaviour
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
     {
+
+        for (int i = Llights.Length - 1; i >= 0; i--)
+        {
+            Llights[i].color = Color.blue;
+        }
+
+
+        for (int i = Rlights.Length - 1; i >= 0; i--)
+        {
+            Rlights[i].color = Color.blue;
+        }
+
         GameObject obstacle;
         if(objSpawnPoint.Length != 0 && obstacleList.Length != 0)
         {
@@ -110,9 +122,9 @@ public class SpawnTiles : MonoBehaviour
         {
             for (int i = Llights.Length - 1; i >= 0; i--)
             {
-                Llights[i].material = redOn;
+                Llights[i].color =Color.red;
                 yield return new WaitForSeconds(blinkTime);
-                Llights[i].material = blueOn;
+                Llights[i].color = Color.blue;
             }
             yield return null;
         }
@@ -126,9 +138,9 @@ public class SpawnTiles : MonoBehaviour
         {
             for (int i = Rlights.Length - 1; i >= 0; i--)
             {
-                Rlights[i].material = redOn;
+                Rlights[i].color = Color.red;
                 yield return new WaitForSeconds(blinkTime);
-                Rlights[i].material = blueOn;
+                Rlights[i].color = Color.blue;
             }
             yield return null;
         }
@@ -154,8 +166,8 @@ public class SpawnTiles : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    void Update()
+    {
+
+    }
 }

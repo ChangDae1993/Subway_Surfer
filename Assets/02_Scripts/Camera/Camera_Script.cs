@@ -18,7 +18,7 @@ public class Camera_Script : MonoBehaviour
     //how long does animation show
     [HideInInspector] public float animationDur = 3.0f;
 
-    private Vector3 animationOffSet = new Vector3(0f, 8f, 5f);
+    private Vector3 animationOffSet = new Vector3(0f, 6.5f, 5f);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
