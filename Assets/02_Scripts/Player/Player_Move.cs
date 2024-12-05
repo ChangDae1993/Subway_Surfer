@@ -187,4 +187,13 @@ public class Player_Move : MonoBehaviour
         scoreS.OnDeath();
         Debug.Log("Death");
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle_Ground"))
+        {
+            Death();
+            Debug.Log("Enter room");
+        }
+    }
 }

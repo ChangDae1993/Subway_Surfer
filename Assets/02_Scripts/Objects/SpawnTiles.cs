@@ -66,6 +66,10 @@ public class SpawnTiles : MonoBehaviour
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
     {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player_Move>();
+        }
 
         for (int i = Llights.Length - 1; i >= 0; i--)
         {
@@ -176,54 +180,40 @@ public class SpawnTiles : MonoBehaviour
     [SerializeField] private Vector3 showTargetVec;
     public GameObject targetImage = null;    //타겟 image or somethig
     public float imageScale = 0f;       //타겟 image or something의 크기
+    public ParticleSystem particle = null; 
     // Update is called once per frame
     void Update()
     {
         if (isAnimPattern)
         {
-            showTargetVec = new Vector3(player.gameObject.transform.position.x, player.gameObject.transform.position.y, 15f);
+            showTargetVec = player.gameObject.transform.position;
 
-            float distanceSqr = (this.transform.position - player.gameObject.transform.position + showTargetVec).sqrMagnitude;    //플레이어와 타일간의 거리
-            if (distanceSqr > 48f * 48f)
+            float distanceSqr = Vector3.Distance(this.transform.position, showTargetVec);    //플레이어와 타일간의 거리
+
+            if (distanceSqr > 30f)
                 return;
 
             if(!animShow)
             {
-                //PerformAnimationLogic(Mathf.Sqrt(distanceSqr));
                 StartCoroutine(animationShowCo());
             }
         }
     }
-    //void PerformAnimationLogic(float distance)
-    //{
-    //    animShow = true;
-    //    Debug.Log("연출 시작");
-    //    Debug.Log(distance);
-    //    imageScale = 0f;
-
-    //    imageScale = (maxDis - distance) * 0.01f;
-
-    //    if (targetImage.transform.localScale.x <= 0.8f)
-    //    {
-    //        targetImage.transform.localScale = new Vector3(imageScale, imageScale, imageScale);
-    //    }
-    //    else
-    //    {
-    //        targetImage.gameObject.SetActive(false);
-    //    }
-    //}
 
     IEnumerator animationShowCo()
     {
+        if (particle != null && !particle.gameObject.activeSelf)
+            particle.gameObject.SetActive(true);
+
         animShow = true;
         imageScale = 0f;
-        while (imageScale < 0.8f)
+        while (imageScale < 7.5f)
         {
-            targetImage.transform.localScale = new Vector3(imageScale, imageScale, imageScale);
-            imageScale += 0.01f * player.speed;
+            targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
+            imageScale += 0.1f * player.speed;
             yield return new WaitForSeconds(0.1f);
         }
 
-        targetImage.gameObject.SetActive(false);
+        targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
     }
 }
