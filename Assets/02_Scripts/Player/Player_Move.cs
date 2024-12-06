@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player_Move : MonoBehaviour
@@ -19,6 +20,9 @@ public class Player_Move : MonoBehaviour
 
     public Rigidbody rb;
     public GameObject playerModel;
+
+    public Animator animator;
+
     private void Awake()
     {
         //if (controller == null)
@@ -59,13 +63,16 @@ public class Player_Move : MonoBehaviour
         //X = left and right
         dir.x = Input.GetAxisRaw("Horizontal") * speed;
 
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            Roll();
+        }
         //Y = Up and Down
         //dir.y = verticalVelocity;
 
         if(rb.linearVelocity.y < -15f)
         {
             //Debug.Log(rb.linearVelocity.y);
-            Debug.Log("Falling");
             Death();
         }
 
@@ -132,6 +139,12 @@ public class Player_Move : MonoBehaviour
     }
     public float rayLength;
 
+    public void Roll()
+    {
+        animator.Play("roll");
+        animator.SetFloat("rollSpeed", speed);
+        Debug.Log("Roll");
+    }
 
 
     private Vector3 currentDirection = Vector3.forward; // 초기 이동 방향 설정 (기본적으로 z 방향)
@@ -192,15 +205,16 @@ public class Player_Move : MonoBehaviour
     {
         isDead = true;
         scoreS.OnDeath();
-        Debug.Log("Death");
+        //Debug.Log("Death");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle_Ground"))
+        if (collision.gameObject.CompareTag("Obstacle_Ground") || 
+            collision.gameObject.CompareTag("Obstacle_Crane"))
         {
             Death();
-            Debug.Log("Enter room");
+            //Debug.Log("Enter room");
         }
     }
 }

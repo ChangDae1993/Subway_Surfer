@@ -178,6 +178,7 @@ public class SpawnTiles : MonoBehaviour
     {
         waterSpoil,
         VehicleAppear,
+        obstacleDown,
     }
 
     [Header("Anim Play")]
@@ -197,24 +198,34 @@ public class SpawnTiles : MonoBehaviour
         {
             showTargetVec = player.gameObject.transform.position;
             float distanceSqr = Vector3.Distance(this.transform.position, showTargetVec);    //플레이어와 타일간의 거리
+
             if (distanceSqr > 30f)
                 return;
 
-            if (animationType == animType.waterSpoil)
+            switch(animationType)
             {
-                if (!animShow)
-                {
-                    StartCoroutine(animationShowCo());
-                }
-            }
-            else if (animationType == animType.VehicleAppear)
-            {
-                if (!animShow)
-                {
-                    vehicleShow();
-                }
-            }
+                case animType.waterSpoil:
+                    if (!animShow)
+                    {
+                        StartCoroutine(animationShowCo());
+                    }
+                    break;
+                case animType.VehicleAppear:
+                    if (!animShow)
+                    {
+                        vehicleShow();
+                    }
+                    break;
+                case animType.obstacleDown:
+                    if (!animShow)
+                    {
+                        ObstacleDown();
+                    }
+                    break;
+                default:
+                    break;
 
+            }
         }
     }
 
@@ -227,7 +238,14 @@ public class SpawnTiles : MonoBehaviour
             targetImage.gameObject.SetActive(true);
             if(targetImage.gameObject.TryGetComponent(out Animator anim))
             {
-                anim.Play("appear");
+                if(targetImage.gameObject.name.Equals("appear"))
+                {
+                    anim.SetBool("appear",true);
+                }
+                else if(targetImage.gameObject.name.Equals("appear_move"))
+                {
+                    anim.SetBool("appear_move", true);
+                }
             }
         }
     }
@@ -252,5 +270,26 @@ public class SpawnTiles : MonoBehaviour
             targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
         }
 
+    }
+
+
+    public void ObstacleDown()
+    {
+        animShow = true;
+
+        if (targetImage != null)
+        {
+            if (targetImage.gameObject.TryGetComponent(out Animator anim))
+            {
+                anim.SetBool("down", true);
+                anim.SetFloat("downSpeed", player.speed);
+            }
+        }
+
+            //if (downAnim != null)
+            //{
+            //    downAnim.Play("down");
+            //    downAnim.SetFloat("rollSpeed", player.speed);
+            //}
     }
 }

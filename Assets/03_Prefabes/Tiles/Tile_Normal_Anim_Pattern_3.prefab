@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5306393430125909743}
   - component: {fileID: 2298254483792801629}
   m_Layer: 3
-  m_Name: Road Roller
+  m_Name: appear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 337004155838533828}
   - component: {fileID: 3154659795203008825}
   m_Layer: 0
-  m_Name: Tile_Normal_Anim_Pattern_13
+  m_Name: Tile_Normal_Anim_Pattern_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
