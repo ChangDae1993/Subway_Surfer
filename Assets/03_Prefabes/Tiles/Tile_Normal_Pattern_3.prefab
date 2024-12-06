@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 2589362422178484305}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 3.3, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -608,6 +608,7 @@ MonoBehaviour:
   - {fileID: 5753959529743462294, guid: 4384cc343ebf8eb4da0330e81856411a, type: 3}
   - {fileID: 5753959529743462294, guid: 5aef38280eb177f4facb03f874c5ebdf, type: 3}
   - {fileID: 5753959529743462294, guid: 481003122b1bb6b47a966bc4ad5f6a4b, type: 3}
+  - {fileID: 5753959529743462294, guid: 748dd497841afdb4b99ef245c33dd2e6, type: 3}
   tileType: 5
   generateVec: {x: 0, y: 0, z: 0}
   LightLTr: {fileID: 3994605907051260417}
@@ -615,6 +616,13 @@ MonoBehaviour:
   LightRTr: {fileID: 7165023300990985731}
   Rlights: []
   isAnimPattern: 0
+  player: {fileID: 0}
+  animShow: 0
+  maxDis: 50
+  showTargetVec: {x: 0, y: 0, z: 0}
+  targetImage: {fileID: 0}
+  imageScale: 0
+  particle: {fileID: 0}
 --- !u!65 &3154659795203008825
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -663,7 +671,7 @@ Transform:
   m_GameObject: {fileID: 8556380531867423366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 6}
+  m_LocalPosition: {x: -3.3, y: 0, z: 6}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []

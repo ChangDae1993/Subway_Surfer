@@ -62,6 +62,13 @@ public class Player_Move : MonoBehaviour
         //Y = Up and Down
         //dir.y = verticalVelocity;
 
+        if(rb.linearVelocity.y < -15f)
+        {
+            //Debug.Log(rb.linearVelocity.y);
+            Debug.Log("Falling");
+            Death();
+        }
+
         //Z = Forward and Backward
         dir.z = speed;
 

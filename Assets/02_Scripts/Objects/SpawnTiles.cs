@@ -9,8 +9,8 @@ public class SpawnTiles : MonoBehaviour
     public enum TileType
     {
         left,
-        right, 
-        up, 
+        right,
+        up,
         upY,
         down,
         flat,
@@ -36,11 +36,13 @@ public class SpawnTiles : MonoBehaviour
     public Light[] Rlights;
     Coroutine lightRBlink;
 
-    private float blinkTime = 0.3f;
+    private float blinkTime = 0.2f;
 
     [Space(10f)]
     [Header("Animation")]
     public bool isAnimPattern;
+
+
 
     [SerializeField] private Player_Move player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,7 +68,7 @@ public class SpawnTiles : MonoBehaviour
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
     {
-        if(player == null)
+        if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player_Move>();
         }
@@ -83,9 +85,9 @@ public class SpawnTiles : MonoBehaviour
         }
 
         GameObject obstacle;
-        if(objSpawnPoint.Length != 0 && obstacleList.Length != 0)
+        if (objSpawnPoint.Length != 0 && obstacleList.Length != 0)
         {
-            for(int i = 0; i < objSpawnPoint.Length; i++)
+            for (int i = 0; i < objSpawnPoint.Length; i++)
             {
                 obstacle = Instantiate(obstacleList[Random.Range(0, obstacleList.Length)]) as GameObject;
                 obstacle.transform.SetParent(objSpawnPoint[i]);
@@ -93,7 +95,7 @@ public class SpawnTiles : MonoBehaviour
             }
         }
 
-        if(LightLTr != null)
+        if (LightLTr != null)
         {
             if (lightLBlink != null)
             {
@@ -124,11 +126,11 @@ public class SpawnTiles : MonoBehaviour
 
     IEnumerator lightLBlinkCo()
     {
-        while(true)
+        while (true)
         {
             for (int i = Llights.Length - 1; i >= 0; i--)
             {
-                Llights[i].color =Color.red;
+                Llights[i].color = Color.red;
                 yield return new WaitForSeconds(blinkTime);
                 Llights[i].color = Color.blue;
             }
@@ -140,7 +142,7 @@ public class SpawnTiles : MonoBehaviour
 
     IEnumerator lightRBlinkCo()
     {
-        while(true)
+        while (true)
         {
             for (int i = Rlights.Length - 1; i >= 0; i--)
             {
@@ -157,6 +159,8 @@ public class SpawnTiles : MonoBehaviour
     //Destroy 될 때, 혹은 ObjPool로 돌아갈 때
     private void OnDisable()
     {
+        player = null;
+
         if (objSpawnPoint != null)
         {
             if (lightLBlink != null)
@@ -170,32 +174,60 @@ public class SpawnTiles : MonoBehaviour
             }
         }
     }
+    public enum animType
+    {
+        waterSpoil,
+        VehicleAppear,
+    }
 
-
-    [Space(10f)]
     [Header("Anim Play")]
     public bool animShow;
+    public animType animationType;
     [SerializeField] private float maxDis = 50f;         //암튼 계산을 시작할 최장 거리
     //public float playerDis = 0f;        //플레이어와 이 타일 간의 거리
     [SerializeField] private Vector3 showTargetVec;
     public GameObject targetImage = null;    //타겟 image or somethig
     public float imageScale = 0f;       //타겟 image or something의 크기
-    public ParticleSystem particle = null; 
+    public ParticleSystem particle = null;
+
     // Update is called once per frame
     void Update()
     {
         if (isAnimPattern)
         {
             showTargetVec = player.gameObject.transform.position;
-
             float distanceSqr = Vector3.Distance(this.transform.position, showTargetVec);    //플레이어와 타일간의 거리
-
             if (distanceSqr > 30f)
                 return;
 
-            if(!animShow)
+            if (animationType == animType.waterSpoil)
             {
-                StartCoroutine(animationShowCo());
+                if (!animShow)
+                {
+                    StartCoroutine(animationShowCo());
+                }
+            }
+            else if (animationType == animType.VehicleAppear)
+            {
+                if (!animShow)
+                {
+                    vehicleShow();
+                }
+            }
+
+        }
+    }
+
+    public void vehicleShow()
+    {
+        animShow = true;
+
+        if(targetImage != null && !targetImage.gameObject.activeSelf)
+        {
+            targetImage.gameObject.SetActive(true);
+            if(targetImage.gameObject.TryGetComponent(out Animator anim))
+            {
+                anim.Play("appear");
             }
         }
     }
@@ -206,14 +238,19 @@ public class SpawnTiles : MonoBehaviour
             particle.gameObject.SetActive(true);
 
         animShow = true;
-        imageScale = 0f;
-        while (imageScale < 7.5f)
+
+        if(targetImage != null)
         {
+            imageScale = 0f;
+            while (imageScale < 7.5f)
+            {
+                targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
+                imageScale += 0.1f * player.speed;
+                yield return new WaitForSeconds(0.1f);
+            }
+
             targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
-            imageScale += 0.1f * player.speed;
-            yield return new WaitForSeconds(0.1f);
         }
 
-        targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
     }
 }
