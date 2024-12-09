@@ -52,6 +52,7 @@ public class MainMenu : MonoBehaviour
 
     Coroutine gameStart;
     public Animator introEnemyAnim;
+    public bool animationStart;
     public void ToGame()
     {
         //introEnemyAnim.SetBool("introStart", true);
@@ -69,10 +70,16 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator startGameCo()
     {
-        introEnemyAnim.SetBool("introStart", true);
-        introEnemyAnim.SetBool("introStart", false);
-        yield return new WaitForSeconds(5f);
         Debug.Log("wait");
+        if (!animationStart)
+        {
+            animationStart = true;
+            introEnemyAnim.SetBool("introStart", true);
+        }
+
+        //introEnemyAnim.SetBool("introStart", false);
+
+        yield return new WaitForSeconds(5f);
 
         SceneManager.LoadScene("Game");
         yield return null;
