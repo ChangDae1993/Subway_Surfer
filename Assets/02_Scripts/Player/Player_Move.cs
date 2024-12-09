@@ -70,7 +70,7 @@ public class Player_Move : MonoBehaviour
         //Y = Up and Down
         //dir.y = verticalVelocity;
 
-        if(rb.linearVelocity.y < -15f)
+        if(rb.linearVelocity.y < -20f)
         {
             //Debug.Log(rb.linearVelocity.y);
             Death();

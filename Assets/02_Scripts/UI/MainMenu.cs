@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Score")]
     public Text highScore;
-
-    Coroutine title;
-    public float colorChngVal;
 
     [Header("Title Text")]
     public Text titleText;
@@ -23,7 +21,6 @@ public class MainMenu : MonoBehaviour
         new Color(0, 1, 0),   // Green
         new Color(0, 1, 1)    // Cyan
     };
-
     private int currentIndex = 0;   // 현재 색상 인덱스
     private int nextIndex = 1;      // 다음 색상 인덱스
     private float t = 0f;           // 보간 진행도
@@ -33,16 +30,6 @@ public class MainMenu : MonoBehaviour
     {
         //PlayerPrefs.SetFloat("Highscore", 0f);
         highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
-
-        if(title != null)
-        {
-            StopCoroutine(title);
-            title = StartCoroutine(titleStart());
-        }
-        else
-        {
-            title = StartCoroutine(titleStart());
-        }
     }
 
     // Update is called once per frame
@@ -62,18 +49,6 @@ public class MainMenu : MonoBehaviour
             nextIndex = (nextIndex + 1) % colors.Length; // 순환 처리
         }
     }
-
-
-    IEnumerator titleStart()
-    {
-        //while (titleText.color.r <= 1f)
-        //{
-        //    titleText.color = new Color32(255, 255, 255, 255);
-        //    yield return null;
-        //}
-        yield return null;
-    }
-
 
     public void ToGame()
     {

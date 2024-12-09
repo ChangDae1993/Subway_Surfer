@@ -190,7 +190,7 @@ public class SpawnTiles : MonoBehaviour
     public GameObject targetImage = null;    //Å¸°Ù image or somethig
     public float imageScale = 0f;       //Å¸°Ù image or somethingÀÇ Å©±â
     public ParticleSystem particle = null;
-
+    public AudioSource audioSource = null;
     // Update is called once per frame
     void Update()
     {
@@ -202,23 +202,38 @@ public class SpawnTiles : MonoBehaviour
             if (distanceSqr > 30f)
                 return;
 
-            switch(animationType)
+            switch (animationType)
             {
                 case animType.waterSpoil:
                     if (!animShow)
                     {
+                        if (audioSource != null)
+                        {
+                            //Debug.Log("play");
+                            audioSource.Play();
+                        }
                         StartCoroutine(animationShowCo());
                     }
                     break;
                 case animType.VehicleAppear:
                     if (!animShow)
                     {
+                        if (audioSource != null)
+                        {
+                            //Debug.Log("play");
+                            audioSource.Play();
+                        }
                         vehicleShow();
                     }
                     break;
                 case animType.obstacleDown:
                     if (!animShow)
                     {
+                        if (audioSource != null)
+                        {
+                            //Debug.Log("play");
+                            audioSource.Play();
+                        }
                         ObstacleDown();
                     }
                     break;
