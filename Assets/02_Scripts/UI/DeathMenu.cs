@@ -6,6 +6,7 @@ public class DeathMenu : MonoBehaviour
 {
 
     public Text scoreText;
+    //public Text newhighScoreText;
 
     public Image backgroundImg;
 
@@ -15,6 +16,7 @@ public class DeathMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //newhighScoreText.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -34,6 +36,11 @@ public class DeathMenu : MonoBehaviour
     {
         isShowned = true;
         gameObject.SetActive(true);
+        //if((int)score >= (int)PlayerPrefs.GetFloat("Highscore"))
+        //{
+        //    newhighScoreText.gameObject.SetActive(true);
+        //    Debug.Log("new high Score");
+        //}
         scoreText.text = ((int)score).ToString();
     }
 

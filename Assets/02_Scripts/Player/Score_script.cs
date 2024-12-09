@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Score_script : MonoBehaviour
 {
-    private float score = 0f;
+    [HideInInspector] public float score = 0f;
     public float exp = 0f;
 
 
