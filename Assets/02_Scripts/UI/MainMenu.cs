@@ -50,9 +50,32 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    Coroutine gameStart;
+    public Animator introEnemyAnim;
     public void ToGame()
     {
+        //introEnemyAnim.SetBool("introStart", true);
+        //gameStart = StartCoroutine(startGameCo());
+        if (gameStart != null)
+        {
+            StopCoroutine(gameStart);
+            gameStart = StartCoroutine(startGameCo());
+        }
+        else
+        {
+            gameStart = StartCoroutine(startGameCo());
+        }
+    }
+
+    IEnumerator startGameCo()
+    {
+        introEnemyAnim.SetBool("introStart", true);
+        introEnemyAnim.SetBool("introStart", false);
+        yield return new WaitForSeconds(5f);
+        Debug.Log("wait");
+
         SceneManager.LoadScene("Game");
+        yield return null;
     }
 
     public void ToOption()
