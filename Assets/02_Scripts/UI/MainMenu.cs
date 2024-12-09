@@ -52,11 +52,14 @@ public class MainMenu : MonoBehaviour
 
     Coroutine gameStart;
     public Animator introEnemyAnim;
+    public Animator introBGAnim;
     public bool animationStart;
+    public Animator camDirection;
+    public intro_Camera_Script camSc;
+    public Image sceneChangePanel;
     public void ToGame()
     {
-        //introEnemyAnim.SetBool("introStart", true);
-        //gameStart = StartCoroutine(startGameCo());
+        Debug.Log("start");
         if (gameStart != null)
         {
             StopCoroutine(gameStart);
@@ -68,21 +71,37 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+
+    float panelAlpha = 0f;
     IEnumerator startGameCo()
     {
-        Debug.Log("wait");
         if (!animationStart)
         {
+            Debug.Log("wait");
             animationStart = true;
-            introEnemyAnim.SetBool("introStart", true);
+            introEnemyAnim.Play("react");
+            introBGAnim.SetBool("animOut", true);
+            camDirection.SetBool("dirStart", true);
         }
 
+        while(!camSc.sceneCHNGReady)
+        {
+            yield return null;
+        }
+        
+        panelAlpha += 0.001f;
+
+        while (sceneChangePanel.color.a < 255f)
+        {
+            sceneChangePanel.color = new Color(1f, 1f, 1f, panelAlpha);
+            yield return null;
+        }
         //introEnemyAnim.SetBool("introStart", false);
 
-        yield return new WaitForSeconds(5f);
+        //yield return new WaitForSeconds(30f);
 
         SceneManager.LoadScene("Game");
-        yield return null;
+        //yield return null;
     }
 
     public void ToOption()
