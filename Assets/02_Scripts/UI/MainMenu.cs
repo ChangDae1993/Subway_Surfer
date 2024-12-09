@@ -7,10 +7,26 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Text highScore;
-    public Text titleText;
 
     Coroutine title;
     public float colorChngVal;
+
+    [Header("Title Text")]
+    public Text titleText;
+    public float titleCHNGSpeed = 1f;
+
+    private Color[] colors = {
+        new Color(0, 0, 1),   // Blue
+        new Color(1, 0, 1),   // Magenta
+        new Color(1, 0, 0),   // Red
+        new Color(1, 1, 0),   // Yellow
+        new Color(0, 1, 0),   // Green
+        new Color(0, 1, 1)    // Cyan
+    };
+
+    private int currentIndex = 0;   // 현재 색상 인덱스
+    private int nextIndex = 1;      // 다음 색상 인덱스
+    private float t = 0f;           // 보간 진행도
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,10 +46,22 @@ public class MainMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
+    void Update()
+    {
+        if (titleText == null) return;
 
-    //}
+        // 색상 보간
+        t += Time.deltaTime * titleCHNGSpeed;
+        titleText.color = Color.Lerp(colors[currentIndex], colors[nextIndex], t);
+
+        // 보간이 끝나면 다음 색상으로 넘어감
+        if (t >= 1f)
+        {
+            t = 0f;
+            currentIndex = nextIndex;
+            nextIndex = (nextIndex + 1) % colors.Length; // 순환 처리
+        }
+    }
 
 
     IEnumerator titleStart()

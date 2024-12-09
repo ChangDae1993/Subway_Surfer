@@ -46,8 +46,8 @@ public class Score_script : MonoBehaviour
         {
             LevelUp();
         }
-
-        score += Time.deltaTime * Level;
+        //score = Vector3.Distance(Vector3.zero, this.transform.position * level);
+        //score += Time.deltaTime * Level;
         exp += Time.deltaTime;
         score_txt.text = ((int)score).ToString();
     }

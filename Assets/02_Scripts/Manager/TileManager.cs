@@ -80,6 +80,7 @@ public class TileManager : MonoBehaviour
             // 플레이어 위치 기반 가장 오래된 타일 제거
             if (Vector3.Distance(playerTr.position, activeTiles[0].transform.position) > tileLength)
             {
+                playerLevel.score += 1f;
                 RemoveOldTile();
             }
         }

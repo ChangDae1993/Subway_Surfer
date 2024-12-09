@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Name_Input : MonoBehaviour
 {
+    public Text infoTxt;
     public Text[] nameFields;  // 3개의 UI 텍스트 필드
     private int currentIndex = 0;  // 현재 입력 중인 칸
     private bool isBlinking = false; // 깜빡임 상태
@@ -19,6 +20,24 @@ public class Name_Input : MonoBehaviour
         MenuBtn.gameObject.SetActive(false);
         ResetFields();
         StartCoroutine(BlinkCursor());
+    }
+
+    private void OnEnable()
+    {
+        PlayBtn.gameObject.SetActive(false);
+        MenuBtn.gameObject.SetActive(false);
+        ResetFields();
+        StartCoroutine(BlinkCursor());
+        StartCoroutine(BlinkInfo());
+    }
+
+    IEnumerator BlinkInfo()
+    {
+        while (true)
+        {
+            infoTxt.text = (infoTxt.text == "Input Name Here") ? "" : "Input Name Here";
+            yield return new WaitForSeconds(0.5f); // 깜빡임 간격
+        }
     }
 
     void Update()
