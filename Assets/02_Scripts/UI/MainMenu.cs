@@ -28,6 +28,10 @@ public class MainMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(!introCanvas.gameObject.activeSelf)
+        {
+            introCanvas.gameObject.SetActive(true);
+        }
         //PlayerPrefs.SetFloat("Highscore", 0f);
         highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
     }
@@ -49,7 +53,9 @@ public class MainMenu : MonoBehaviour
             nextIndex = (nextIndex + 1) % colors.Length; // 순환 처리
         }
     }
-
+    [Space(20f)]
+    [Header("Game Start Direction")]
+    public Canvas introCanvas;
     Coroutine gameStart;
     public Animator introEnemyAnim;
     public Animator introBGAnim;
@@ -57,8 +63,14 @@ public class MainMenu : MonoBehaviour
     public Animator camDirection;
     public intro_Camera_Script camSc;
     public Image sceneChangePanel;
+    public Animator introPlayer;
     public void ToGame()
     {
+        if (introCanvas.gameObject.activeSelf)
+        {
+            introCanvas.gameObject.SetActive(false);
+        }
+
         Debug.Log("start");
         if (gameStart != null)
         {
@@ -73,6 +85,7 @@ public class MainMenu : MonoBehaviour
 
 
     float panelAlpha = 0f;
+
     IEnumerator startGameCo()
     {
         if (!animationStart)
@@ -82,26 +95,24 @@ public class MainMenu : MonoBehaviour
             introEnemyAnim.Play("react");
             introBGAnim.SetBool("animOut", true);
             camDirection.SetBool("dirStart", true);
+            introPlayer.SetBool("playerOn", true);
         }
 
         while(!camSc.sceneCHNGReady)
         {
             yield return null;
         }
-        
-        panelAlpha += 0.001f;
 
-        while (sceneChangePanel.color.a < 255f)
+
+        float fadeSpeed = 1.0f; // 알파 증가 속도
+        while (sceneChangePanel.color.a < 1f)
         {
-            sceneChangePanel.color = new Color(1f, 1f, 1f, panelAlpha);
+            Color currentColor = sceneChangePanel.color;
+            sceneChangePanel.color = new Color(currentColor.r, currentColor.g, currentColor.b, currentColor.a + Time.deltaTime * fadeSpeed);
             yield return null;
         }
-        //introEnemyAnim.SetBool("introStart", false);
-
-        //yield return new WaitForSeconds(30f);
 
         SceneManager.LoadScene("Game");
-        //yield return null;
     }
 
     public void ToOption()
