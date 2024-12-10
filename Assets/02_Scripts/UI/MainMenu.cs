@@ -85,7 +85,6 @@ public class MainMenu : MonoBehaviour
 
 
     float panelAlpha = 0f;
-
     IEnumerator startGameCo()
     {
         if (!animationStart)
@@ -115,8 +114,14 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    [Header("Option Menu")]
+    public Image OptionMenuPanel;
     public void ToOption()
     {
+        if(!OptionMenuPanel.gameObject.activeSelf)
+        {
+            OptionMenuPanel.gameObject.SetActive(true);
+        }
         Debug.Log("OptionOn");
     }
 

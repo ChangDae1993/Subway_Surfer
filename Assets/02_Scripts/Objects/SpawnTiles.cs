@@ -141,8 +141,6 @@ public class SpawnTiles : MonoBehaviour
         }
 
     }
-
-
     IEnumerator lightRBlinkCo()
     {
         while (true)
@@ -156,8 +154,6 @@ public class SpawnTiles : MonoBehaviour
             yield return null;
         }
     }
-
-
 
     //Destroy 될 때, 혹은 ObjPool로 돌아갈 때
     private void OnDisable()
@@ -177,6 +173,7 @@ public class SpawnTiles : MonoBehaviour
             }
         }
     }
+
     public enum animType
     {
         waterSpoil,
@@ -193,7 +190,7 @@ public class SpawnTiles : MonoBehaviour
     public GameObject targetImage = null;    //타겟 image or somethig
     public float imageScale = 0f;       //타겟 image or something의 크기
     public ParticleSystem particle = null;
-    public AudioSource audioSource = null;
+
     // Update is called once per frame
     void Update()
     {
@@ -210,39 +207,23 @@ public class SpawnTiles : MonoBehaviour
                 case animType.waterSpoil:
                     if (!animShow)
                     {
-                        if (audioSource != null)
-                        {
-                            //Debug.Log("play");
-                            audioSource.Play();
-                        }
                         StartCoroutine(animationShowCo());
                     }
                     break;
                 case animType.VehicleAppear:
                     if (!animShow)
                     {
-                        if (audioSource != null)
-                        {
-                            //Debug.Log("play");
-                            audioSource.Play();
-                        }
                         vehicleShow();
                     }
                     break;
                 case animType.obstacleDown:
                     if (!animShow)
                     {
-                        if (audioSource != null)
-                        {
-                            //Debug.Log("play");
-                            audioSource.Play();
-                        }
                         ObstacleDown();
                     }
                     break;
                 default:
                     break;
-
             }
         }
     }
@@ -303,11 +284,5 @@ public class SpawnTiles : MonoBehaviour
                 anim.SetFloat("downSpeed", player.speed);
             }
         }
-
-            //if (downAnim != null)
-            //{
-            //    downAnim.Play("down");
-            //    downAnim.SetFloat("rollSpeed", player.speed);
-            //}
     }
 }
