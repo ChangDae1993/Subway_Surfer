@@ -10,10 +10,12 @@ public class SpawnTiles : MonoBehaviour
     {
         left,
         right,
-        up,
-        upY,
-        down,
-        downY,
+        up_Up,
+        up_flat,
+        up_Down,
+        down_Down,
+        down_flat,
+        down_Up,
         flat,
     }
 

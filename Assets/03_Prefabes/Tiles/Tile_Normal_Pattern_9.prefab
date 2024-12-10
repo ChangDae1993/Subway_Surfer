@@ -927,13 +927,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objSpawnPoint: []
   obstacleList: []
-  tileType: 5
+  tileType: 8
   generateVec: {x: 0, y: 0, z: 0}
   LightLTr: {fileID: 297659692650660831}
   Llights: []
   LightRTr: {fileID: 3452224430009848725}
   Rlights: []
   isAnimPattern: 0
+  player: {fileID: 0}
+  animShow: 0
+  animationType: 0
+  maxDis: 50
+  showTargetVec: {x: 0, y: 0, z: 0}
+  targetImage: {fileID: 0}
+  imageScale: 0
+  particle: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!65 &3154659795203008825
 BoxCollider:
   m_ObjectHideFlags: 0

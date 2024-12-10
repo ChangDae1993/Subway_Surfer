@@ -117,9 +117,14 @@ public class TileManager : MonoBehaviour
         }
         else
         {
-            prefabIndex = RandomPrefabIndex();
-
-            if (tileSequence.Count > 0)
+            if (IsOverlappingWithPreviousTile())
+            {
+                Debug.Log("겹침");
+                // 겹침이 발생하면 downY 타입 강제 생성
+                prefabIndex = GetPrefabIndexForTileType(SpawnTiles.TileType.down_Down);
+                //Debug.Break();
+            }
+            else if (tileSequence.Count > 0)
             {
                 // 큐에서 다음 타일 타입 가져오기
                 SpawnTiles.TileType nextTileType = tileSequence.Dequeue();
@@ -139,9 +144,13 @@ public class TileManager : MonoBehaviour
                 currentDirection = GetNextDirection(tileComponent.tileType);
 
                 // up타일을 만나면 세트 큐에 추가
-                if (tileComponent.tileType == SpawnTiles.TileType.up)
+                if (tileComponent.tileType == SpawnTiles.TileType.up_Up)
                 {
-                    EnqueueTileSequenceForSet(); // 큐에 새로운 세트 추가
+                    UPEnqueueTileSequenceForSet(); // 큐에 새로운 세트 추가
+                }
+                else if(tileComponent.tileType == SpawnTiles.TileType.down_Down)
+                {
+                    DOWNEnqueueTileSequenceForSet();
                 }
             }
 
@@ -158,11 +167,18 @@ public class TileManager : MonoBehaviour
     }
 
     // 특정 타일 세트를 큐에 추가
-    void EnqueueTileSequenceForSet()
+    void UPEnqueueTileSequenceForSet()
     {
-        tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 첫 번째 세트 타일
+        tileSequence.Enqueue(SpawnTiles.TileType.up_flat);  // 첫 번째 세트 타일
         //tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 두 번째 세트 타일
-        tileSequence.Enqueue(SpawnTiles.TileType.down); // 마지막 세트 타일
+        tileSequence.Enqueue(SpawnTiles.TileType.up_Down); // 마지막 세트 타일
+    }
+
+    void DOWNEnqueueTileSequenceForSet()
+    {
+        tileSequence.Enqueue(SpawnTiles.TileType.down_flat);  // 첫 번째 세트 타일
+        //tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 두 번째 세트 타일
+        tileSequence.Enqueue(SpawnTiles.TileType.down_Up); // 마지막 세트 타일
     }
 
     // 타일 타입에 맞는 프리팹 인덱스 찾기
@@ -189,11 +205,17 @@ public class TileManager : MonoBehaviour
                 return Quaternion.Euler(0, -90, 0) * currentDirection;
             case SpawnTiles.TileType.right:
                 return Quaternion.Euler(0, 90, 0) * currentDirection;
-            case SpawnTiles.TileType.up:
+            case SpawnTiles.TileType.up_Up:
                 return currentDirection;
-            case SpawnTiles.TileType.upY:
+            case SpawnTiles.TileType.up_flat:
                 return currentDirection;
-            case SpawnTiles.TileType.down:
+            case SpawnTiles.TileType.up_Down:
+                return currentDirection;
+            case SpawnTiles.TileType.down_Down:
+                return currentDirection;
+            case SpawnTiles.TileType.down_flat:
+                return currentDirection;
+            case SpawnTiles.TileType.down_Up:
                 return currentDirection;
             case SpawnTiles.TileType.flat:
                 return currentDirection;
@@ -214,7 +236,12 @@ public class TileManager : MonoBehaviour
         for (int i = 0; i < Tiles.Length; i++)
         {
             SpawnTiles tileComponent = Tiles[i].GetComponent<SpawnTiles>();
-            if (tileComponent != null && tileComponent.tileType != SpawnTiles.TileType.upY && tileComponent.tileType != SpawnTiles.TileType.down)
+            if (tileComponent != null && 
+                tileComponent.tileType != SpawnTiles.TileType.up_flat && 
+                tileComponent.tileType != SpawnTiles.TileType.up_Down &&
+                tileComponent.tileType != SpawnTiles.TileType.down_Down &&
+                tileComponent.tileType != SpawnTiles.TileType.down_flat &&
+                tileComponent.tileType != SpawnTiles.TileType.down_Up)
             {
                 validIndices.Add(i);
             }
@@ -228,5 +255,29 @@ public class TileManager : MonoBehaviour
 
         lastPrefabIndex = randomIndex;  // 현재 선택된 인덱스를 lastPrefabIndex로 저장
         return randomIndex;
+    }
+
+
+    // 겹침 여부 확인 (모든 이전 타일들과 비교)
+    bool IsOverlappingWithPreviousTile()
+    {
+        if (activeTiles.Count > 0)
+        {
+            // 생성하려는 타일의 위치
+            Vector3 nextTilePosition = currentPosition;
+
+            // activeTiles의 모든 타일들과 비교
+            foreach (var tile in activeTiles)
+            {
+                Vector3 lastTilePosition = tile.transform.position;
+
+                // 타일 간 거리가 너무 가까운 경우 겹친다고 판단
+                if (Vector3.Distance(nextTilePosition, lastTilePosition) <= 0.5f)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

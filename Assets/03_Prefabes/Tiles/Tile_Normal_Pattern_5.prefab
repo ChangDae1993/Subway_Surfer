@@ -498,7 +498,7 @@ MonoBehaviour:
   - {fileID: 5753959529743462294, guid: 5aef38280eb177f4facb03f874c5ebdf, type: 3}
   - {fileID: 5753959529743462294, guid: 481003122b1bb6b47a966bc4ad5f6a4b, type: 3}
   - {fileID: 5753959529743462294, guid: 748dd497841afdb4b99ef245c33dd2e6, type: 3}
-  tileType: 5
+  tileType: 8
   generateVec: {x: 0, y: 0, z: 0}
   LightLTr: {fileID: 8792154775013532133}
   Llights: []
@@ -513,6 +513,7 @@ MonoBehaviour:
   targetImage: {fileID: 0}
   imageScale: 0
   particle: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!65 &3154659795203008825
 BoxCollider:
   m_ObjectHideFlags: 0
