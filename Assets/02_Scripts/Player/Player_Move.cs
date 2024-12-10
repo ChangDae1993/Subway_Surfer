@@ -1,7 +1,6 @@
 using System.Collections;
 //using UnityEditor.Animations;
 using UnityEngine;
-using static UnityEditor.LightingExplorerTableColumn;
 
 public class Player_Move : MonoBehaviour
 {
@@ -235,6 +234,7 @@ public class Player_Move : MonoBehaviour
     Coroutine die;
     IEnumerator deathCo(death type)
     {
+        isDead = true;
         switch (type)
         {
             case death.crash:
@@ -256,7 +256,6 @@ public class Player_Move : MonoBehaviour
             default:
                 break;
         }
-        isDead = true;
         scoreS.OnDeath();
         yield return null;
     }
