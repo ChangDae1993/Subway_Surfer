@@ -24,7 +24,7 @@ public class TileManager : MonoBehaviour
 
     private int lastPrefabIndex = 0; // 이전 프리팹 인덱스
 
-
+    public bool lightOn = false;    //타일들 불켜기
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,6 +61,8 @@ public class TileManager : MonoBehaviour
                 SpawnTile();
             }
         }
+
+        lightOn = false;
     }
 
 

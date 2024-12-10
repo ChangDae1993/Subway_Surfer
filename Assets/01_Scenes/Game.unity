@@ -1605,7 +1605,7 @@ GameObject:
   - component: {fileID: 1148274262}
   - component: {fileID: 1148274263}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LightControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1639,6 +1639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directinoalLight: {fileID: 1294185697}
+  tileManager: {fileID: 1517167318}
 --- !u!1 &1252895480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1748,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2018,29 +2019,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tiles:
   - {fileID: 6477747312648913503, guid: fd3cf06bd469e274bb175032a1d0ef20, type: 3}
-  - {fileID: 6477747312648913503, guid: 115dd965dac7bc84eafbb755dfd866f4, type: 3}
-  - {fileID: 6477747312648913503, guid: 79ca873ebdfd9874c812682d7688c8d5, type: 3}
-  - {fileID: 6477747312648913503, guid: fab3a53c373a04c46b3c4af03c91a7c5, type: 3}
-  - {fileID: 6477747312648913503, guid: ac1b67f2a807e4c429ab63fb1c30f2a0, type: 3}
-  - {fileID: 6477747312648913503, guid: 92e53d5be00a8264d9b0f723e63aa1d0, type: 3}
-  - {fileID: 6477747312648913503, guid: d7c17f2d57c92cc43904f84d2a74c7a9, type: 3}
-  - {fileID: 6477747312648913503, guid: 0714380096ef0084fa638ec3b33416a3, type: 3}
-  - {fileID: 6477747312648913503, guid: c9c84380d7978af4c96b63e9a6293a01, type: 3}
-  - {fileID: 6477747312648913503, guid: 40d71c13eb0292b429c00204d5e94b92, type: 3}
-  - {fileID: 6477747312648913503, guid: 01e48d3a9b15b204c8edbf61e059be5c, type: 3}
-  - {fileID: 6477747312648913503, guid: 5466a9541d5a6e04b9fbea0499a34d9d, type: 3}
-  - {fileID: 6477747312648913503, guid: 87c35818274bb304b8f46d13a7beb593, type: 3}
-  - {fileID: 6477747312648913503, guid: 8107e2c7e83836244bb7b3a38c4ae0e3, type: 3}
-  - {fileID: 6477747312648913503, guid: 563fc70008595784ca8f2c1cba90287d, type: 3}
-  - {fileID: 3033751035021147895, guid: eb771aa7bb5daf241ada08a0b5ce3637, type: 3}
-  - {fileID: 8781581269345187964, guid: 817a34f212da97248a3d22f127fd1606, type: 3}
-  - {fileID: 4702962470958010619, guid: 6b50fd5819b637944a9ee915934b017f, type: 3}
-  - {fileID: 6477747312648913503, guid: eeceedf3a7cd8654fabd87b0646b08a9, type: 3}
-  - {fileID: 6477747312648913503, guid: 063c5230f01037143abb20934f196d96, type: 3}
   activeTiles: []
   playerLevel: {fileID: 0}
   playermove: {fileID: 0}
   spawnZ: -20
+  lightOn: 0
 --- !u!1 &1629026698
 GameObject:
   m_ObjectHideFlags: 0
