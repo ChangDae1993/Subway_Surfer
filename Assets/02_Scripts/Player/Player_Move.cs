@@ -1,6 +1,7 @@
 using System.Collections;
 //using UnityEditor.Animations;
 using UnityEngine;
+using static UnityEditor.LightingExplorerTableColumn;
 
 public class Player_Move : MonoBehaviour
 {
@@ -72,8 +73,10 @@ public class Player_Move : MonoBehaviour
 
         if(rb.linearVelocity.y < -20f)
         {
-            //Debug.Log(rb.linearVelocity.y);
-            Death();
+            //떨어져서 죽음
+            Debug.Log("fall death");
+            DeathType = death.fall;
+            Death(DeathType);
         }
 
         //Z = Forward and Backward
@@ -132,9 +135,12 @@ public class Player_Move : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, Vector3.forward, out hit, rayLength, mask))
         {
+            //기타 오브젝트에 닿아서 죽었을 때
             // Ray에 충돌이 감지되면 충돌된 오브젝트의 이름을 출력
             Debug.Log($"Raycast {hit.collider.gameObject.name}!");
-            Death();
+            Debug.Log("impact death");
+            DeathType = death.crash;
+            Death(DeathType);
         }
     }
     public float rayLength;
@@ -201,20 +207,77 @@ public class Player_Move : MonoBehaviour
         speed = speed + modifier;
     }
 
-    void Death()
+
+
+#region die
+    public enum death
     {
+        crash,
+        crash_crane,
+        water,
+        fall
+    }
+    public death DeathType;
+
+    void Death(death type)
+    {
+        if(die != null)
+        {
+            StopCoroutine(die);
+            die = StartCoroutine(deathCo(type));
+        }
+        else
+        {
+            die = StartCoroutine(deathCo(type));
+        }
+    }
+
+    Coroutine die;
+    IEnumerator deathCo(death type)
+    {
+        switch (type)
+        {
+            case death.crash:
+                animator.Play("crash");
+                yield return new WaitForSeconds(0.5f);
+                break;
+            case death.crash_crane:
+                animator.Play("crash_crane");
+                yield return new WaitForSeconds(0.5f);
+                break;
+            case death.water:
+                animator.Play("slip");
+                yield return new WaitForSeconds(0.5f);
+                break;
+            case death.fall:
+                animator.Play("fall");
+                //yield return new WaitForSeconds(0.5f);
+                break;
+            default:
+                break;
+        }
         isDead = true;
         scoreS.OnDeath();
-        //Debug.Log("Death");
+        yield return null;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle_Ground") || 
-            collision.gameObject.CompareTag("Obstacle_Crane"))
+        if (collision.gameObject.CompareTag("Obstacle_Ground"))
         {
-            Death();
-            //Debug.Log("Enter room");
+            //물에 닿아서 죽었을 때
+            DeathType = death.water;
+            Death(DeathType);
+            Debug.Log("Enter water");
+        }
+        else if (collision.gameObject.CompareTag("Obstacle_Crane"))
+        {
+            Debug.Log("impact Crane");
+            DeathType = death.crash_crane;
+            //크레인에 닿아서 죽었을 때
+            Death(DeathType);
         }
     }
+
+#endregion
 }
