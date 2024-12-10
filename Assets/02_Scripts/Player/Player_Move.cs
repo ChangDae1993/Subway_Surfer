@@ -1,26 +1,26 @@
 using System.Collections;
 //using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Move : MonoBehaviour
 {
-    //public CharacterController controller;
+    [Header("Move")]
     public Vector3 moveVec;
-
     public float speed;
-
-    public Camera_Script CamS;
-    public Score_script scoreS;
-
     public float startTime;
 
-    //private float animationDur = 3.0f;
+    [Header("Camera")]
+    public Camera_Script CamS;
+    [Header("Score")]
+    public Score_script scoreS;
 
+
+
+    [Header("Player")]
     public bool isDead = false;
-
     public Rigidbody rb;
     public GameObject playerModel;
-
     public Animator animator;
 
     private void Awake()
@@ -52,12 +52,30 @@ public class Player_Move : MonoBehaviour
 
     Vector3 dir = Vector3.forward;
 
+
+    [Header("Pause Menu")]
+    [HideInInspector] public bool PauseMenuOn = false;
+    public Image pauseMenuPanel;
     // Update is called once per frame
     void Update()
     {
         if (isDead)
         {
             return;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!PauseMenuOn)
+            {
+                PauseMenuOn = true;
+                pauseMenuPanel.gameObject.SetActive(PauseMenuOn);
+            }
+            else
+            {
+                PauseMenuOn = false;
+                pauseMenuPanel.gameObject.SetActive(PauseMenuOn);
+            }
         }
 
         //X = left and right
@@ -142,8 +160,10 @@ public class Player_Move : MonoBehaviour
             Death(DeathType);
         }
     }
+
     public float rayLength;
 
+#region run and turn
     public void Roll()
     {
         animator.Play("roll");
@@ -205,10 +225,11 @@ public class Player_Move : MonoBehaviour
     {
         speed = speed + modifier;
     }
+    #endregion
 
 
+    #region die
 
-#region die
     public enum death
     {
         crash,
@@ -216,6 +237,7 @@ public class Player_Move : MonoBehaviour
         water,
         fall
     }
+    [Header("Die")]
     public death DeathType;
 
     void Death(death type)
