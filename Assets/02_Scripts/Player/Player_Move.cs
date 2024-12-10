@@ -168,7 +168,7 @@ public class Player_Move : MonoBehaviour
     {
         animator.Play("roll");
         animator.SetFloat("rollSpeed", speed);
-        Debug.Log("Roll");
+        //Debug.Log("Roll");
     }
 
 
@@ -293,7 +293,7 @@ public class Player_Move : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Obstacle_Crane"))
         {
-            Debug.Log("impact Crane");
+            //Debug.Log("impact Crane");
             DeathType = death.crash_crane;
             //크레인에 닿아서 죽었을 때
             Death(DeathType);

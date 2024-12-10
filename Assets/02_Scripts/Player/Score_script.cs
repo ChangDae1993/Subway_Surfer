@@ -54,7 +54,7 @@ public class Score_script : MonoBehaviour
 
     void LevelUp()
     {
-        Debug.Log("Level Up");
+        //Debug.Log("Level Up");
 
         //exp = 0f;
 

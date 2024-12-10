@@ -811,7 +811,6 @@ GameObject:
   - component: {fileID: 1229044889351400066}
   - component: {fileID: 8703171544806696324}
   - component: {fileID: 8763943071202736833}
-  - component: {fileID: 8163786768784311032}
   m_Layer: 0
   m_Name: TrafficCone_A
   m_TagString: Untagged
@@ -887,28 +886,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8163786768784311032
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416432891499785191}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2115143961578039104, guid: e49731110e07d084bbdae8db32e6ce97, type: 3}
 --- !u!1 &1525976137515194110
 GameObject:
   m_ObjectHideFlags: 0

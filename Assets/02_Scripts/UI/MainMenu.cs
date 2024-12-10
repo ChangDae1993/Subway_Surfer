@@ -71,7 +71,7 @@ public class MainMenu : MonoBehaviour
             introCanvas.gameObject.SetActive(false);
         }
 
-        Debug.Log("start");
+        //Debug.Log("start");
         if (gameStart != null)
         {
             StopCoroutine(gameStart);
@@ -89,7 +89,7 @@ public class MainMenu : MonoBehaviour
     {
         if (!animationStart)
         {
-            Debug.Log("wait");
+            //Debug.Log("wait");
             animationStart = true;
             introEnemyAnim.Play("react");
             introBGAnim.SetBool("animOut", true);
