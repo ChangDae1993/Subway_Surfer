@@ -13,6 +13,7 @@ public class SpawnTiles : MonoBehaviour
         up,
         upY,
         down,
+        downY,
         flat,
     }
 
