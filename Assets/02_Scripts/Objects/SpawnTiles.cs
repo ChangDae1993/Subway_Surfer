@@ -316,8 +316,8 @@ public class SpawnTiles : MonoBehaviour
             while (imageScale < 7.5f)
             {
                 targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
-                imageScale += 0.1f * player.speed;
-                yield return new WaitForSeconds(0.1f);
+                imageScale += 0.05f * player.speed;
+                yield return new WaitForSeconds(0.05f);
             }
 
             targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);

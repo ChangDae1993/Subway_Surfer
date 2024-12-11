@@ -2019,16 +2019,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tiles:
   - {fileID: 6477747312648913503, guid: fd3cf06bd469e274bb175032a1d0ef20, type: 3}
-  - {fileID: 6477747312648913503, guid: eeceedf3a7cd8654fabd87b0646b08a9, type: 3}
-  - {fileID: 3033751035021147895, guid: eb771aa7bb5daf241ada08a0b5ce3637, type: 3}
-  - {fileID: 8781581269345187964, guid: 817a34f212da97248a3d22f127fd1606, type: 3}
-  - {fileID: 4702962470958010619, guid: 6b50fd5819b637944a9ee915934b017f, type: 3}
+  - {fileID: 6477747312648913503, guid: db35526df7d91d64bb552c45b1eb1db5, type: 3}
   activeTiles: []
   playerLevel: {fileID: 0}
   playermove: {fileID: 0}
   spawnZ: -20
   lightOn: 0
   downStart: 0
+  downPass: 0
 --- !u!1 &1629026698
 GameObject:
   m_ObjectHideFlags: 0
