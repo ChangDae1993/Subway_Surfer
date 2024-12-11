@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SpawnTiles : MonoBehaviour
 {
+    [SerializeField] private TileManager tileManager;
     public enum TileType
     {
         left,
@@ -41,6 +42,8 @@ public class SpawnTiles : MonoBehaviour
 
     private float blinkTime = 0.2f;
 
+    public TileLampControl LampControl = null;
+
     [Space(10f)]
     [Header("Animation")]
     public bool isAnimPattern;
@@ -65,12 +68,22 @@ public class SpawnTiles : MonoBehaviour
             //Debug.Log("LightR On");
             Rlights = LightRTr.GetComponentsInChildren<Light>();
         }
+
+        if (tileManager == null)
+        {
+            tileManager = gameObject.GetComponentInParent<TileManager>();
+        }
     }
 
 
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
     {
+        //if(tileManager == null)
+        //{
+        //    tileManager = gameObject.GetComponentInParent<TileManager>();
+        //}
+
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player_Move>();
@@ -109,7 +122,6 @@ public class SpawnTiles : MonoBehaviour
             {
                 lightLBlink = StartCoroutine(lightLBlinkCo());
             }
-
         }
 
 
@@ -194,6 +206,16 @@ public class SpawnTiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (tileManager != null && tileManager.lightOn)
+        {
+            if(LampControl != null)
+            {
+                LampControl.LampLightOnOff(tileManager.lightOn);
+            }
+            //Debug.Log("LightOn");
+        }
+
+
         if (isAnimPattern)
         {
             showTargetVec = player.gameObject.transform.position;
@@ -226,6 +248,11 @@ public class SpawnTiles : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void LightOn()
+    {
+
     }
 
     public void vehicleShow()
