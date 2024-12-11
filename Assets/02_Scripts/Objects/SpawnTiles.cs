@@ -168,7 +168,25 @@ public class SpawnTiles : MonoBehaviour
     }
 
     //Destroy 될 때, 혹은 ObjPool로 돌아갈 때
-    private void OnDisable()
+    //private void OnDisable()
+    //{
+    //    player = null;
+
+    //    if (objSpawnPoint != null)
+    //    {
+    //        if (lightLBlink != null)
+    //        {
+    //            StopCoroutine(lightLBlink);
+    //        }
+
+    //        if (lightRBlink != null)
+    //        {
+    //            StopCoroutine(lightRBlink);
+    //        }
+    //    }
+    //}
+
+    private void OnDestroy()
     {
         player = null;
 
@@ -248,11 +266,6 @@ public class SpawnTiles : MonoBehaviour
                     break;
             }
         }
-    }
-
-    public void LightOn()
-    {
-
     }
 
     public void vehicleShow()

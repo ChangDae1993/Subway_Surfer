@@ -9,10 +9,10 @@ public class OptionPanelMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
         
-    }
+    //}
 
     public void SetBGMVolume(float volume)
     {

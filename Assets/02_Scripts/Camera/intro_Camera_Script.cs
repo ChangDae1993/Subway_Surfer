@@ -12,10 +12,10 @@ public class intro_Camera_Script : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
         
-    }
+    //}
 
     public void ReadyCam()
     {
