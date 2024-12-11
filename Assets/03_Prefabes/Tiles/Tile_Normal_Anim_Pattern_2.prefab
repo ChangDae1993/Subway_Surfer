@@ -699,9 +699,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2145158187445420076}
   - component: {fileID: 5171980951813274963}
-  - component: {fileID: 2951364120593881762}
   m_Layer: 3
-  m_Name: appear_move
+  m_Name: move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -716,7 +715,7 @@ Transform:
   m_GameObject: {fileID: 2145158187445420077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.19, y: 1.78, z: 3.06}
+  m_LocalPosition: {x: -12.61, y: 1.69, z: 2.96}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -727,8 +726,7 @@ Transform:
   - {fileID: 1218927183082175520}
   - {fileID: 1218927183082175534}
   - {fileID: 1218927183082175604}
-  - {fileID: 2254662471292826577}
-  m_Father: {fileID: 8159481333766131270}
+  m_Father: {fileID: 936752154480359424}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5171980951813274963
 BoxCollider:
@@ -751,14 +749,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12626569, y: 0.065132074, z: 0.072716266}
   m_Center: {x: 0.028071128, y: -0.0058091604, z: 0.0025523806}
---- !u!95 &2951364120593881762
+--- !u!1 &3683285978745294625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936752154480359424}
+  - component: {fileID: 5542082143640421283}
+  m_Layer: 0
+  m_Name: appear_move
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &936752154480359424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683285978745294625}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2254662471292826577}
+  - {fileID: 2145158187445420076}
+  m_Father: {fileID: 8159481333766131270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5542082143640421283
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145158187445420077}
+  m_GameObject: {fileID: 3683285978745294625}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b216b893e55dd6f43a022d2d3813413e, type: 2}
@@ -996,11 +1028,11 @@ Transform:
   m_GameObject: {fileID: 4774505003515584261}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.14315997, y: -0.038269997, z: 0.0023}
-  m_LocalScale: {x: 0.018000001, y: 0.018000001, z: 0.018000001}
+  m_LocalPosition: {x: 0, y: 0, z: 2.97}
+  m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.90000004}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 2145158187445420076}
+  m_Father: {fileID: 936752154480359424}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &182684780459536300
 MeshFilter:
@@ -1115,7 +1147,7 @@ Transform:
   - {fileID: 5253728180898695901}
   - {fileID: 3406033702599006099}
   - {fileID: 1790370250436996128}
-  - {fileID: 2145158187445420076}
+  - {fileID: 936752154480359424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &49902443557619748
@@ -1172,6 +1204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3bcc5bf5781264b88ae4d05a2cd9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileManager: {fileID: 0}
   objSpawnPoint: []
   obstacleList: []
   tileType: 8
@@ -1180,13 +1213,14 @@ MonoBehaviour:
   Llights: []
   LightRTr: {fileID: 3452224430009848725}
   Rlights: []
+  LampControl: {fileID: 0}
   isAnimPattern: 1
   player: {fileID: 0}
   animShow: 0
   animationType: 1
   maxDis: 100
   showTargetVec: {x: 0, y: 0, z: 0}
-  targetImage: {fileID: 2145158187445420077}
+  targetImage: {fileID: 3683285978745294625}
   imageScale: 0
   particle: {fileID: 7221487984161585821}
 --- !u!65 &3154659795203008825

@@ -239,24 +239,34 @@ public class SpawnTiles : MonoBehaviour
             showTargetVec = player.gameObject.transform.position;
             float distanceSqr = Vector3.Distance(this.transform.position, showTargetVec);    //플레이어와 타일간의 거리
 
-            if (distanceSqr > 30f)
-                return;
-
             switch (animationType)
             {
                 case animType.waterSpoil:
+
+                    if (distanceSqr > 30f)
+                        return;
+
+
                     if (!animShow)
                     {
                         StartCoroutine(animationShowCo());
                     }
                     break;
                 case animType.VehicleAppear:
+
+                    if (distanceSqr > 25f)
+                        return;
+
                     if (!animShow)
                     {
                         vehicleShow();
                     }
                     break;
                 case animType.obstacleDown:
+
+                    if (distanceSqr > 35f)
+                        return;
+
                     if (!animShow)
                     {
                         ObstacleDown();
@@ -272,9 +282,13 @@ public class SpawnTiles : MonoBehaviour
     {
         animShow = true;
 
-        if(targetImage != null && !targetImage.gameObject.activeSelf)
+        if(targetImage != null)
         {
-            targetImage.gameObject.SetActive(true);
+            if (!targetImage.gameObject.activeSelf)
+            {
+                targetImage.gameObject.SetActive(true);
+            }
+
             if(targetImage.gameObject.TryGetComponent(out Animator anim))
             {
                 if(targetImage.gameObject.name.Equals("appear"))

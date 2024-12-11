@@ -121,24 +121,39 @@ public class TileManager : MonoBehaviour
         {
             if (IsOverlappingWithPreviousTile())
             {
-                Debug.Log("겹침");
+                //Debug.Log("겹침");
                 // 겹침이 발생하면 downY 타입 강제 생성
                 prefabIndex = GetPrefabIndexForTileType(SpawnTiles.TileType.down_Down);
+                tile = Instantiate(Tiles[prefabIndex]);
                 //Debug.Break();
             }
-            else if (tileSequence.Count > 0)
+            else if (tileSequence.Count > 0 && !IsOverlappingWithPreviousTile())
             {
                 // 큐에서 다음 타일 타입 가져오기
                 SpawnTiles.TileType nextTileType = tileSequence.Dequeue();
 
                 prefabIndex = GetPrefabIndexForTileType(nextTileType);
+                tile = Instantiate(Tiles[prefabIndex]);
+
+
             }
             else
             {
-                prefabIndex = RandomPrefabIndex();
+                downStart = false;
+                if (downPass)
+                {
+                    tile = Instantiate(Tiles[0]);
+                    downPass = false;
+                }
+                else
+                {
+                    prefabIndex = RandomPrefabIndex();
+                    tile = Instantiate(Tiles[prefabIndex]);
+                }
+
             }
 
-            tile = Instantiate(Tiles[prefabIndex]);
+            //tile = Instantiate(Tiles[prefabIndex]);
 
             // 타일 타입에 따라 방향 업데이트 및 세트 생성 시작
             if (tile.TryGetComponent(out SpawnTiles tileComponent))
@@ -176,11 +191,17 @@ public class TileManager : MonoBehaviour
         tileSequence.Enqueue(SpawnTiles.TileType.up_Down); // 마지막 세트 타일
     }
 
+    public bool downStart = false;
     void DOWNEnqueueTileSequenceForSet()
     {
-        tileSequence.Enqueue(SpawnTiles.TileType.down_flat);  // 첫 번째 세트 타일
-        //tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 두 번째 세트 타일
-        tileSequence.Enqueue(SpawnTiles.TileType.down_Up); // 마지막 세트 타일
+        if (!downStart)
+        {
+            downStart = true;
+            tileSequence.Enqueue(SpawnTiles.TileType.down_flat);  // 첫 번째 세트 타일
+            //tileSequence.Enqueue(SpawnTiles.TileType.upY);  // 두 번째 세트 타일
+            tileSequence.Enqueue(SpawnTiles.TileType.down_Up); // 마지막 세트 타일
+        }
+
     }
 
     // 타일 타입에 맞는 프리팹 인덱스 찾기
@@ -260,6 +281,7 @@ public class TileManager : MonoBehaviour
     }
 
 
+    public bool downPass = false;
     // 겹침 여부 확인 (모든 이전 타일들과 비교)
     bool IsOverlappingWithPreviousTile()
     {
@@ -276,10 +298,27 @@ public class TileManager : MonoBehaviour
                 // 타일 간 거리가 너무 가까운 경우 겹친다고 판단
                 if (Vector3.Distance(nextTilePosition, lastTilePosition) <= 0.5f)
                 {
-                    return true;
+                    if (tile.gameObject.TryGetComponent(out SpawnTiles st))
+                    {
+                        //겹치는 타일이 down타입이면 그냥 지나감
+                        if (st.gameObject.name.Contains("down"))
+                        {
+                            downPass = true;
+                            //Debug.Log(st.tileType.ToString());
+                            //Debug.Log("여기는?");
+                            return false;
+                        }
+                        else
+                        {
+                            //Debug.Log("여기 안들어옴?");
+                            return true;
+                        }
+                    }
                 }
+
             }
         }
+        //Debug.Log("여기야?");
         return false;
     }
 }
