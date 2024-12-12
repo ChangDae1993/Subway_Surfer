@@ -3,7 +3,6 @@ using static AudioManager;
 
 public class AudioManager : MonoBehaviour
 {
-
     public static AudioManager AM;
     [Header("Ambience")]
     public AudioClip abcClip;
