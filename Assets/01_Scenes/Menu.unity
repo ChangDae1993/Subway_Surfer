@@ -1470,7 +1470,7 @@ MonoBehaviour:
   bgmClip: {fileID: 0}
   bgmVolume: 0.2
   sfxClips:
-  - {fileID: 8300000, guid: 8e8f609f4702e8c4bb175f8aba012f6a, type: 3}
+  - {fileID: 8300000, guid: 1b486fc38106e9842bef7e5741bfb301, type: 3}
   - {fileID: 8300000, guid: 2d7638dc94c847c4fadf6e29fa03305a, type: 3}
   - {fileID: 8300000, guid: 2da24575248139649bfe3e366fa0a5cb, type: 3}
   - {fileID: 8300000, guid: 24c54a8f79edc65479e5693bc89c1645, type: 3}
