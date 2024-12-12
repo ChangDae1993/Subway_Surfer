@@ -95,6 +95,7 @@ public class TileManager : MonoBehaviour
         {
             Destroy(activeTiles[0]);
             activeTiles.RemoveAt(0);
+            //없애면서 앞에 새로 생성
             SpawnTile();
         }
         else
@@ -134,8 +135,6 @@ public class TileManager : MonoBehaviour
 
                 prefabIndex = GetPrefabIndexForTileType(nextTileType);
                 tile = Instantiate(Tiles[prefabIndex]);
-
-
             }
             else
             {
@@ -152,8 +151,6 @@ public class TileManager : MonoBehaviour
                 }
 
             }
-
-            //tile = Instantiate(Tiles[prefabIndex]);
 
             // 타일 타입에 따라 방향 업데이트 및 세트 생성 시작
             if (tile.TryGetComponent(out SpawnTiles tileComponent))
@@ -214,8 +211,6 @@ public class TileManager : MonoBehaviour
                 return i;
             }
         }
-
-        Debug.LogWarning($"타일 타입에 맞는 프리팹을 찾을 수 없습니다: {tileType}");
         return -1;
     }
 
@@ -304,7 +299,6 @@ public class TileManager : MonoBehaviour
                         if (st.gameObject.name.Contains("down"))
                         {
                             downPass = true;
-                            //Debug.Log(st.tileType.ToString());
                             //Debug.Log("여기는?");
                             return false;
                         }

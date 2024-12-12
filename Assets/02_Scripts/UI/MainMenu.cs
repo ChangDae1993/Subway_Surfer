@@ -42,7 +42,8 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (titleText == null) return;
+        if (titleText == null) 
+            return;
 
         // 색상 보간
         t += Time.deltaTime * titleCHNGSpeed;
@@ -56,6 +57,7 @@ public class MainMenu : MonoBehaviour
             nextIndex = (nextIndex + 1) % colors.Length; // 순환 처리
         }
     }
+
     [Space(20f)]
     [Header("Game Start Direction")]
     public Canvas introCanvas;
@@ -126,7 +128,7 @@ public class MainMenu : MonoBehaviour
         {
             OptionMenuPanel.gameObject.SetActive(true);
         }
-        Debug.Log("OptionOn");
+        //Debug.Log("OptionOn");
     }
 
     public void ToRanking()

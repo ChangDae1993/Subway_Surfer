@@ -216,7 +216,7 @@ public class Player_Move : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration); // 부드러운 회전
             elapsedTime += Time.deltaTime * (speed);
-            yield return null;  // 한 프레임 대기
+            yield return null;
         }
 
         transform.rotation = endRotation;  // 정확한 90도 회전으로 마무리
@@ -227,12 +227,12 @@ public class Player_Move : MonoBehaviour
 
     public void SetSpeed(float modifier)
     {
-        speed = speed + modifier;
+        speed += modifier;
     }
 #endregion
 
 
-    #region die
+#region die
 
     public enum death
     {
@@ -281,7 +281,6 @@ public class Player_Move : MonoBehaviour
                 break;
             case death.fall:
                 animator.Play("fall");
-                //yield return new WaitForSeconds(0.5f);
                 break;
             default:
                 break;
@@ -301,10 +300,10 @@ public class Player_Move : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Obstacle_Crane"))
         {
-            //Debug.Log("impact Crane");
-            DeathType = death.crash_crane;
             //크레인에 닿아서 죽었을 때
+            DeathType = death.crash_crane;
             Death(DeathType);
+            Debug.Log("impact Crane");
         }
     }
 

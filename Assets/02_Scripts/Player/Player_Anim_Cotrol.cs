@@ -31,8 +31,6 @@ public class Player_Anim_Cotrol : MonoBehaviour
     public void FootStepSound()
     {
         //이건 skeleton animation에 event키로 사용함
-
-        //int footstepIdx = (Random.Range(4, 7));
         AudioManager.AM.PlaySfx(AudioManager.Sfx.footstep);
     }
 

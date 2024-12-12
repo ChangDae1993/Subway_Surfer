@@ -3875,7 +3875,7 @@ MonoBehaviour:
   turnInput: 0
   PauseMenuOn: 0
   pauseMenuPanel: {fileID: 1796596870}
-  rayLength: 0.5
+  rayLength: 0.7
   DeathType: 0
 --- !u!4 &5087794709238433640
 Transform:
