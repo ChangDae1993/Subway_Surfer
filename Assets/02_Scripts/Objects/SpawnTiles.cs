@@ -188,7 +188,10 @@ public class SpawnTiles : MonoBehaviour
 
     private void OnDestroy()
     {
-        player = null;
+        if(player != null)
+        {
+            player = null;
+        }
 
         if (objSpawnPoint != null)
         {
@@ -280,6 +283,7 @@ public class SpawnTiles : MonoBehaviour
 
     public void vehicleShow()
     {
+
         animShow = true;
 
         if(targetImage != null)
@@ -293,10 +297,12 @@ public class SpawnTiles : MonoBehaviour
             {
                 if(targetImage.gameObject.name.Equals("appear"))
                 {
+                    AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
                     anim.SetBool("appear",true);
                 }
                 else if(targetImage.gameObject.name.Equals("appear_move"))
                 {
+                    AudioManager.AM.PlaySfx(AudioManager.Sfx.vehicle_beep);
                     anim.SetBool("appear_move", true);
                 }
             }
@@ -312,6 +318,7 @@ public class SpawnTiles : MonoBehaviour
 
         if(targetImage != null)
         {
+            AudioManager.AM.PlaySfx(AudioManager.Sfx.water_spoil);
             imageScale = 0f;
             while (imageScale < 7.5f)
             {
@@ -328,12 +335,14 @@ public class SpawnTiles : MonoBehaviour
 
     public void ObstacleDown()
     {
+
         animShow = true;
 
         if (targetImage != null)
         {
             if (targetImage.gameObject.TryGetComponent(out Animator anim))
             {
+                AudioManager.AM.PlaySfx(AudioManager.Sfx.obstacleDown);
                 anim.SetBool("down", true);
                 anim.SetFloat("downSpeed", player.speed);
             }
