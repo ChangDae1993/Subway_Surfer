@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
         obstacleDown,
         vehicle_beep,
         water_spoil,
+        footstep,
 
     }
 
@@ -74,9 +75,16 @@ public class AudioManager : MonoBehaviour
 
             if (sfxPlayers[loopindex].isPlaying)
                 continue;
-            channelIndex = loopindex;
 
-            sfxPlayers[loopindex].clip = sfxClips[(int)sfx];
+            int randomIndex = 0;
+            if(sfx == Sfx.footstep)
+            {
+                randomIndex = Random.Range(0, 3);
+            }
+
+
+            channelIndex = loopindex;
+            sfxPlayers[loopindex].clip = sfxClips[(int)sfx + randomIndex];
             sfxPlayers[loopindex].Play();
             break;
         }

@@ -105,10 +105,9 @@ public class Player_Move : MonoBehaviour
             rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
             return;
         }
-
         rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
 
-        if(!turnInput)  //rigidbody rotate Y는 고정해서 이 외에 물리 값 받지 않도록
+        if (!turnInput)  //rigidbody rotate Y는 고정해서 이 외에 물리 값 받지 않도록
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
@@ -161,9 +160,11 @@ public class Player_Move : MonoBehaviour
         }
     }
 
+
     public float rayLength;
 
 #region run and turn
+
     public void Roll()
     {
         animator.Play("roll");

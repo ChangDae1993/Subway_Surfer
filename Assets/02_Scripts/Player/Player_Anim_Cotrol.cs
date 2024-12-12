@@ -27,4 +27,13 @@ public class Player_Anim_Cotrol : MonoBehaviour
         thisCol.center = new Vector3(0, 0.89f, 0);
         thisCol.height = 1.86f;
     }
+
+    public void FootStepSound()
+    {
+        //이건 skeleton animation에 event키로 사용함
+
+        //int footstepIdx = (Random.Range(4, 7));
+        AudioManager.AM.PlaySfx(AudioManager.Sfx.footstep);
+    }
+
 }
