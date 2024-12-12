@@ -139,6 +139,9 @@ public class Player_Move : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
+                //점프로 간다 이건
+                //rb.AddForce((Vector3.up * 150f),ForceMode.Impulse);
+
                 Debug.Log("추가 아이디어 구현 필요");
             }
         }
