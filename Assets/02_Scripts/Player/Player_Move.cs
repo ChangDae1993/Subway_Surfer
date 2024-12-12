@@ -243,7 +243,11 @@ public class Player_Move : MonoBehaviour
 
     void Death(death type)
     {
-        if(die != null)
+        AudioManager.AM.PlayBGM(false);
+        AudioManager.AM.PlayAmbience(false);
+
+
+        if (die != null)
         {
             StopCoroutine(die);
             die = StartCoroutine(deathCo(type));

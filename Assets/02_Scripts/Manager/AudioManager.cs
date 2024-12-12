@@ -5,11 +5,18 @@ public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager AM;
+    [Header("Ambience")]
+    public AudioClip abcClip;
+    public float abcVolume;
+    AudioSource abcPlayer;
+
 
     [Header("BGM")]
     public AudioClip bgmClip;
     public float bgmVolume;
     AudioSource bgmPlayer;
+    [HideInInspector] public AudioLowPassFilter bgmEffect = null;
+
 
     [Header("SFX")]
     public AudioClip[] sfxClips;
@@ -44,6 +51,16 @@ public class AudioManager : MonoBehaviour
 
     void Init()
     {
+        GameObject abcObject = new GameObject("AmbiencePlayer");
+        abcObject.transform.parent = this.transform;
+        abcPlayer = abcObject.AddComponent<AudioSource>();
+        abcPlayer.playOnAwake = false;
+        abcPlayer.loop = true;
+        abcPlayer.volume = abcVolume;
+        abcPlayer.clip = abcClip;
+
+        PlayAmbience(true);
+
         //배경음 플레이어 초기화
         GameObject bgmObject = new GameObject("BgmPlayer");
         bgmObject.transform.parent = this.transform;
@@ -63,6 +80,7 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[i] = sfxObject.AddComponent<AudioSource>();
             sfxPlayers[i].playOnAwake = false;
             sfxPlayers[i].volume = sfxVolume;
+            sfxPlayers[i].bypassListenerEffects = true;
         }
 
     }
@@ -89,4 +107,34 @@ public class AudioManager : MonoBehaviour
             break;
         }
     }
+
+    public void PlayAmbience(bool isPlay)
+    {
+        if (isPlay)
+        {
+            abcPlayer.Play();
+        }
+        else
+        {
+            abcPlayer.Stop();
+        }
+    }
+
+    public void PlayBGM(bool isPlay)
+    {
+        if(isPlay)
+        {
+            bgmPlayer.Play();
+        }
+        else
+        {
+            bgmPlayer.Stop();
+        }
+    }
+
+    public void EffectBGM(bool isPlay)
+    {
+        bgmEffect.enabled = isPlay;
+    }
+
 }

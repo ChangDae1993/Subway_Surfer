@@ -34,6 +34,7 @@ public class DeathMenu : MonoBehaviour
 
     public void ToggleEndMenu(float score)
     {
+
         isShowned = true;
         gameObject.SetActive(true);
         //if((int)score >= (int)PlayerPrefs.GetFloat("Highscore"))
@@ -46,11 +47,14 @@ public class DeathMenu : MonoBehaviour
 
     public void Restart()
     {
+        AudioManager.AM.PlayBGM(true);
+        AudioManager.AM.PlayAmbience(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ToMenu()
     {
+        AudioManager.AM.PlayAmbience(true);
         SceneManager.LoadScene("Menu");
     }
 }

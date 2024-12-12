@@ -34,6 +34,9 @@ public class MainMenu : MonoBehaviour
         }
         //PlayerPrefs.SetFloat("Highscore", 0f);
         highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
+
+
+        AudioManager.AM.PlayBGM(false);
     }
 
     // Update is called once per frame
@@ -87,6 +90,7 @@ public class MainMenu : MonoBehaviour
     float panelAlpha = 0f;
     IEnumerator startGameCo()
     {
+        AudioManager.AM.PlayBGM(true);
         if (!animationStart)
         {
             //Debug.Log("wait");

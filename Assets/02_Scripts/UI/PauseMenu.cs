@@ -17,6 +17,14 @@ public class PauseMenu : MonoBehaviour
     public Button exitBtn;
     public Text countDownTxt;
 
+    private void Awake()
+    {
+        if (AudioManager.AM.bgmEffect == null)
+        {
+            AudioManager.AM.bgmEffect = Camera.main.GetComponent<AudioLowPassFilter>();
+        }
+        this.gameObject.SetActive(false);
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,6 +39,11 @@ public class PauseMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        if(AudioManager.AM.bgmEffect != null)
+        {
+            AudioManager.AM.EffectBGM(true);
+        }
+
         Time.timeScale = 0f;
         StartCoroutine(BlinkText());
         score_bg.gameObject.SetActive(false);
@@ -45,6 +58,11 @@ public class PauseMenu : MonoBehaviour
 
     private void OnDisable()
     {
+        if(AudioManager.AM.bgmEffect != null)
+        {
+            AudioManager.AM.EffectBGM(false);
+        }
+
         StopAllCoroutines();
         if (player_move.PauseMenuOn)
             player_move.PauseMenuOn = false;

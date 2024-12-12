@@ -11,8 +11,18 @@ public class OptionPanelMenu : MonoBehaviour
     // Update is called once per frame
     //void Update()
     //{
-        
+
     //}
+
+
+    public void ClosePanel()
+    {
+        if (this.gameObject.activeSelf)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
 
     public void SetBGMVolume(float volume)
     {
