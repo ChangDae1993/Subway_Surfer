@@ -54,7 +54,7 @@ public class Player_Move : MonoBehaviour
 
 
     [Header("Pause Menu")]
-    [HideInInspector] public bool PauseMenuOn = false;
+    public bool PauseMenuOn = true;
     public Image pauseMenuPanel;
     // Update is called once per frame
 
@@ -74,12 +74,14 @@ public class Player_Move : MonoBehaviour
             if(!PauseMenuOn)
             {
                 PauseMenuOn = true;
-                pauseMenuPanel.gameObject.SetActive(PauseMenuOn);
+                pauseMenuPanel.gameObject.SetActive(true);
+                Debug.Log(PauseMenuOn);
             }
             else
             {
+                Debug.Log("Off");
                 PauseMenuOn = false;
-                pauseMenuPanel.gameObject.SetActive(PauseMenuOn);
+                pauseMenuPanel.gameObject.SetActive(false);
             }
         }
 
