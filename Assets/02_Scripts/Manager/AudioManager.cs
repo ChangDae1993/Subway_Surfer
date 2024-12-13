@@ -26,11 +26,16 @@ public class AudioManager : MonoBehaviour
 
     public enum Sfx
     {
-        bulldoze_appear,
-        obstacleDown,
-        vehicle_beep,
-        water_spoil,
+        bulldoze_appear = 0,
+        obstacleDown = 1,
+        vehicle_beep = 2,
+        water_spoil = 3,
         footstep,
+        impactCrane = 7,
+        enterWater = 8,
+        crash = 9,
+        falling = 10,
+        roll = 11,
 
     }
 

@@ -3637,8 +3637,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 3.5, z: 17}
-  m_Center: {x: 7, y: -2.3, z: 0}
+  m_Size: {x: 4.2, y: 3.5, z: 17}
+  m_Center: {x: 6.9, y: -2.3, z: 0}
 --- !u!65 &2129318622952622264
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3658,8 +3658,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 3.5, z: 17}
-  m_Center: {x: -7, y: -2.3, z: 0}
+  m_Size: {x: 4.2, y: 3.5, z: 17}
+  m_Center: {x: -6.9, y: -2.3, z: 0}
 --- !u!114 &6784560660638562835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3672,6 +3672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3bcc5bf5781264b88ae4d05a2cd9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileManager: {fileID: 0}
   objSpawnPoint: []
   obstacleList: []
   tileType: 6
@@ -3680,6 +3681,7 @@ MonoBehaviour:
   Llights: []
   LightRTr: {fileID: 475073136838761211}
   Rlights: []
+  LampControl: {fileID: 0}
   isAnimPattern: 0
   player: {fileID: 0}
   animShow: 0

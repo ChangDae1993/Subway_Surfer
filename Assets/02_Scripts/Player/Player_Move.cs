@@ -140,46 +140,50 @@ public class Player_Move : MonoBehaviour
                 Time.timeScale = 1f;
         }
 
-        rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
-
-        if (!turnInput)  //rigidbody rotate Y는 고정해서 이 외에 물리 값 받지 않도록
+        if(!PauseMenuOn)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
+
+            if (!turnInput)  //rigidbody rotate Y는 고정해서 이 외에 물리 값 받지 않도록
             {
-                if(turn != null)
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    StopCoroutine(turn);
-                    turn = StartCoroutine(turnleftCo());
-                }
-                else
-                {
-                    turn = StartCoroutine(turnleftCo());
-                }
+                    if (turn != null)
+                    {
+                        StopCoroutine(turn);
+                        turn = StartCoroutine(turnleftCo());
+                    }
+                    else
+                    {
+                        turn = StartCoroutine(turnleftCo());
+                    }
 
-            }
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                if (turn != null)
-                {
-                    StopCoroutine(turn);
-                    turn = StartCoroutine(turnrightCo());
-                }
-                else
-                {
-                    turn = StartCoroutine(turnrightCo());
                 }
 
-            }
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    if (turn != null)
+                    {
+                        StopCoroutine(turn);
+                        turn = StartCoroutine(turnrightCo());
+                    }
+                    else
+                    {
+                        turn = StartCoroutine(turnrightCo());
+                    }
 
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                //점프로 간다 이건
-                //rb.AddForce((Vector3.up * 150f),ForceMode.Impulse);
+                }
 
-                Debug.Log("추가 아이디어 구현 필요");
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    //점프로 간다 이건
+                    //rb.AddForce((Vector3.up * 150f),ForceMode.Impulse);
+
+                    Debug.Log("추가 아이디어 구현 필요");
+                }
             }
         }
+      
 
 
         LayerMask mask = LayerMask.GetMask("Obstacle") | LayerMask.GetMask("Wall");
@@ -205,6 +209,7 @@ public class Player_Move : MonoBehaviour
 
     public void Roll()
     {
+        AudioManager.AM.PlaySfx(AudioManager.Sfx.roll);
         animator.Play("roll");
         animator.SetFloat("rollSpeed", speed);
         //Debug.Log("Roll");
@@ -304,17 +309,21 @@ public class Player_Move : MonoBehaviour
         {
             case death.crash:
                 animator.Play("crash");
+                AudioManager.AM.PlaySfx(AudioManager.Sfx.crash);
                 yield return new WaitForSeconds(0.5f);
                 break;
             case death.crash_crane:
                 animator.Play("crash_crane");
+                AudioManager.AM.PlaySfx(AudioManager.Sfx.impactCrane);
                 yield return new WaitForSeconds(0.5f);
                 break;
             case death.water:
                 animator.Play("slip");
+                AudioManager.AM.PlaySfx(AudioManager.Sfx.enterWater);
                 yield return new WaitForSeconds(0.5f);
                 break;
             case death.fall:
+                AudioManager.AM.PlaySfx(AudioManager.Sfx.falling);
                 animator.Play("fall");
                 break;
             default:
@@ -331,6 +340,7 @@ public class Player_Move : MonoBehaviour
             //물에 닿아서 죽었을 때
             DeathType = death.water;
             Death(DeathType);
+
             Debug.Log("Enter water");
         }
         else if (collision.gameObject.CompareTag("Obstacle_Crane"))
@@ -338,6 +348,7 @@ public class Player_Move : MonoBehaviour
             //크레인에 닿아서 죽었을 때
             DeathType = death.crash_crane;
             Death(DeathType);
+
             Debug.Log("impact Crane");
         }
     }
