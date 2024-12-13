@@ -3616,7 +3616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1517167317}
   - component: {fileID: 1517167318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TileManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3652,16 +3652,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tiles:
   - {fileID: 6477747312648913503, guid: fd3cf06bd469e274bb175032a1d0ef20, type: 3}
-  - {fileID: 3033751035021147895, guid: eb771aa7bb5daf241ada08a0b5ce3637, type: 3}
-  - {fileID: 8781581269345187964, guid: 817a34f212da97248a3d22f127fd1606, type: 3}
-  - {fileID: 4702962470958010619, guid: 6b50fd5819b637944a9ee915934b017f, type: 3}
-  - {fileID: 6477747312648913503, guid: 87c35818274bb304b8f46d13a7beb593, type: 3}
-  - {fileID: 6477747312648913503, guid: 5466a9541d5a6e04b9fbea0499a34d9d, type: 3}
+  - {fileID: 6477747312648913503, guid: eeceedf3a7cd8654fabd87b0646b08a9, type: 3}
+  - {fileID: 6477747312648913503, guid: 063c5230f01037143abb20934f196d96, type: 3}
   - {fileID: 6477747312648913503, guid: 01e48d3a9b15b204c8edbf61e059be5c, type: 3}
-  - {fileID: 6477747312648913503, guid: 115dd965dac7bc84eafbb755dfd866f4, type: 3}
-  - {fileID: 6477747312648913503, guid: 79ca873ebdfd9874c812682d7688c8d5, type: 3}
-  - {fileID: 6477747312648913503, guid: fab3a53c373a04c46b3c4af03c91a7c5, type: 3}
-  - {fileID: 6477747312648913503, guid: ac1b67f2a807e4c429ab63fb1c30f2a0, type: 3}
+  - {fileID: 6477747312648913503, guid: 5466a9541d5a6e04b9fbea0499a34d9d, type: 3}
+  - {fileID: 6477747312648913503, guid: 87c35818274bb304b8f46d13a7beb593, type: 3}
+  - {fileID: 4702962470958010619, guid: 6b50fd5819b637944a9ee915934b017f, type: 3}
+  - {fileID: 8781581269345187964, guid: 817a34f212da97248a3d22f127fd1606, type: 3}
+  - {fileID: 3033751035021147895, guid: eb771aa7bb5daf241ada08a0b5ce3637, type: 3}
   - {fileID: 6477747312648913503, guid: 92e53d5be00a8264d9b0f723e63aa1d0, type: 3}
   - {fileID: 6477747312648913503, guid: d7c17f2d57c92cc43904f84d2a74c7a9, type: 3}
   - {fileID: 6477747312648913503, guid: 0714380096ef0084fa638ec3b33416a3, type: 3}
@@ -3669,8 +3667,6 @@ MonoBehaviour:
   - {fileID: 6477747312648913503, guid: 40d71c13eb0292b429c00204d5e94b92, type: 3}
   - {fileID: 6477747312648913503, guid: 8107e2c7e83836244bb7b3a38c4ae0e3, type: 3}
   - {fileID: 6477747312648913503, guid: 563fc70008595784ca8f2c1cba90287d, type: 3}
-  - {fileID: 6477747312648913503, guid: eeceedf3a7cd8654fabd87b0646b08a9, type: 3}
-  - {fileID: 6477747312648913503, guid: 063c5230f01037143abb20934f196d96, type: 3}
   activeTiles: []
   playerLevel: {fileID: 0}
   playermove: {fileID: 0}
@@ -3995,6 +3991,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629026698}
   m_CullTransparentMesh: 1
+--- !u!1 &1646853717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646853718}
+  - component: {fileID: 1646853719}
+  m_Layer: 0
+  m_Name: LeftRightChkr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646853718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646853717}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8469093291799012586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646853719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646853717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd983067d40e9c841a342d340dfe0265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 0.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  rayZLength: 0.5
 --- !u!1 &1649633885
 GameObject:
   m_ObjectHideFlags: 0
@@ -6651,8 +6696,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVec: {x: 0, y: 0, z: 0}
-  speed: 4
+  speed: 14
   startTime: 0
+  dirChKR: {fileID: 1646853719}
   CamS: {fileID: 5100987491996913851}
   scoreS: {fileID: 0}
   isDead: 0
@@ -6664,7 +6710,6 @@ MonoBehaviour:
   pauseMenuPanel: {fileID: 1796596870}
   tutorialOn: 0
   TutorialPanel: {fileID: 568435421}
-  rayLength: 0.7
   DeathType: 0
 --- !u!4 &5087794709238433640
 Transform:
@@ -7365,6 +7410,7 @@ Transform:
   - {fileID: 3706939147669484287}
   - {fileID: 4903284413316024154}
   - {fileID: 7101941068913727133}
+  - {fileID: 1646853718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8537034848745242935

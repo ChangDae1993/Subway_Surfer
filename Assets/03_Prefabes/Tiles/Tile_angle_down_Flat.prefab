@@ -1200,7 +1200,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7472583207198736160
 Transform:
@@ -3591,8 +3591,7 @@ GameObject:
   - component: {fileID: 7856170963282044122}
   - component: {fileID: 2129318622952622264}
   - component: {fileID: 6784560660638562835}
-  - component: {fileID: 9071606482359347140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile_angle_down_Flat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3691,27 +3690,6 @@ MonoBehaviour:
   targetImage: {fileID: 0}
   imageScale: 0
   particle: {fileID: 0}
---- !u!65 &9071606482359347140
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8781581269345187964}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 16, y: 5, z: 16}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8857983614884810065
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class Player_Move : MonoBehaviour
     public Vector3 moveVec;
     public float speed;
     public float startTime;
+    public Left_Right_CHKR dirChKR;
+
 
     [Header("Camera")]
     public Camera_Script CamS;
@@ -85,10 +87,32 @@ public class Player_Move : MonoBehaviour
             }
         }
 
-        //X = left and right
-        dir.x = Input.GetAxisRaw("Horizontal") * speed;
 
-        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        // Horizontal input을 받아서 좌우 이동
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        // 기본적으로 moveVec.x는 0으로 초기화 (위치 이동을 위해)
+        moveVec.x = 0;
+
+        if (horizontalInput != 0)
+        {
+            // 왼쪽으로 이동 시 Raycast 확인
+            if (horizontalInput < 0 && dirChKR.CanMoveLeft())
+            {
+                moveVec.x = -speed;
+            }
+            // 오른쪽으로 이동 시 Raycast 확인
+            else if (horizontalInput > 0 && dirChKR.CanMoveRight())
+            {
+                moveVec.x = speed;
+            }
+        }
+
+        // Z 방향 (전방) 이동
+        moveVec.z = speed;
+
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             Roll();
         }
@@ -109,7 +133,8 @@ public class Player_Move : MonoBehaviour
 
         if (Time.time - startTime < CamS.animationDur)
         {
-            rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
+            // 실제 이동
+            rb.MovePosition(rb.position + transform.TransformDirection(moveVec) * Time.deltaTime);
             return;
         }
 
@@ -142,7 +167,8 @@ public class Player_Move : MonoBehaviour
 
         if(!PauseMenuOn)
         {
-            rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
+            // 실제 이동
+            rb.MovePosition(rb.position + transform.TransformDirection(moveVec) * Time.deltaTime);
 
             if (!turnInput)  //rigidbody rotate Y는 고정해서 이 외에 물리 값 받지 않도록
             {
@@ -184,14 +210,12 @@ public class Player_Move : MonoBehaviour
             }
         }
       
-
-
         LayerMask mask = LayerMask.GetMask("Obstacle") | LayerMask.GetMask("Wall");
         Vector3 look = transform.TransformDirection(Vector3.forward); // Local -> World
-        Debug.DrawRay(transform.position + Vector3.up, look * rayLength, Color.red);
+        Debug.DrawRay(transform.position + Vector3.up, look * dirChKR.rayZLength, Color.red);
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.up, Vector3.forward, out hit, rayLength, mask))
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.forward, out hit, dirChKR.rayZLength, mask))
         {
             //기타 오브젝트에 닿아서 죽었을 때
             // Ray에 충돌이 감지되면 충돌된 오브젝트의 이름을 출력
@@ -203,7 +227,6 @@ public class Player_Move : MonoBehaviour
     }
 
 
-    public float rayLength;
 
 #region run and turn
 

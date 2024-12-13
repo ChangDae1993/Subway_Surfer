@@ -1793,7 +1793,7 @@ GameObject:
   - component: {fileID: 49902443557619748}
   - component: {fileID: 6672742247287260890}
   - component: {fileID: 7180404553951474607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile_Pattern_Left_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

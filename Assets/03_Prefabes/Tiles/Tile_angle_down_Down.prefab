@@ -1878,7 +1878,7 @@ GameObject:
   - component: {fileID: 8371859079695386126}
   - component: {fileID: 6461489671771480234}
   - component: {fileID: 4570242577066040765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile_angle_down_Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3836,7 +3836,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3965600179299232049
 Transform:
