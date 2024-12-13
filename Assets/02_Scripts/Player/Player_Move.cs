@@ -57,6 +57,11 @@ public class Player_Move : MonoBehaviour
     [HideInInspector] public bool PauseMenuOn = false;
     public Image pauseMenuPanel;
     // Update is called once per frame
+
+    [Header("Tutorial")]
+    public bool tutorialOn = false;
+    public Image TutorialPanel;
+
     void Update()
     {
         if (isDead)
@@ -105,6 +110,34 @@ public class Player_Move : MonoBehaviour
             rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
             return;
         }
+
+        if(!tutorialOn)
+        {
+            //Debug.Log("Stop");
+            if(!TutorialPanel.gameObject.activeSelf)
+            {
+                TutorialPanel.gameObject.SetActive(true);
+            }
+
+            if(Input.anyKey)
+            {
+                tutorialOn = true;
+            }
+
+            Time.timeScale = 0f;
+            return;
+        }
+        else
+        {
+            if (TutorialPanel.gameObject.activeSelf)
+            {
+                TutorialPanel.gameObject.SetActive(false);
+            }
+
+            if (!PauseMenuOn)
+                Time.timeScale = 1f;
+        }
+
         rb.MovePosition(rb.position + transform.TransformDirection(dir) * (speed * Time.deltaTime));
 
         if (!turnInput)  //rigidbody rotate Y는 고정해서 이 외에 물리 값 받지 않도록
