@@ -15,10 +15,46 @@ public class Left_Right_CHKR : MonoBehaviour
     // Update is called once per frame
     //void Update()
     //{
-        
+
     //}
 
+    public bool CanTurnMoveForword()
+    {
+        RaycastHit hit;
+        Vector3 rayOrigin = transform.position + Vector3.up;  // Ray 시작 지점
+        Vector3 rayDirection = -transform.forward;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
+        if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
+        {
+            Debug.Log("충돌");
+            // 충돌이 발생했을 때 Ray의 길이를 표시
+            Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
+            // Ray가 장애물과 충돌했을 때
+            return false;
+        }
 
+        // 충돌하지 않으면 Ray 길이를 녹색으로 표시
+        Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.green);
+        return true; // 충돌하지 않으면 이동 가능
+    }
+
+    public bool CanTurnMoveBackword()
+    {
+        RaycastHit hit;
+        Vector3 rayOrigin = transform.position + Vector3.up;  // Ray 시작 지점
+        Vector3 rayDirection = transform.forward;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
+        if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
+        {
+            Debug.Log("충돌");
+            // 충돌이 발생했을 때 Ray의 길이를 표시
+            Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
+            // Ray가 장애물과 충돌했을 때
+            return false;
+        }
+
+        // 충돌하지 않으면 Ray 길이를 녹색으로 표시
+        Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.green);
+        return true; // 충돌하지 않으면 이동 가능
+    }
 
     // 왼쪽으로 이동할 수 있는지 확인하는 함수
     public bool CanMoveLeft()

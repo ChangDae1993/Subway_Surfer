@@ -4039,7 +4039,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
-  rayZLength: 0.5
+  rayZLength: 0.6
 --- !u!1 &1649633885
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,7 +6696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVec: {x: 0, y: 0, z: 0}
-  speed: 14
+  speed: 4
   startTime: 0
   dirChKR: {fileID: 1646853719}
   CamS: {fileID: 5100987491996913851}

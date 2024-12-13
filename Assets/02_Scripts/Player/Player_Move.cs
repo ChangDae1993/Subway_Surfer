@@ -108,6 +108,15 @@ public class Player_Move : MonoBehaviour
             }
         }
 
+        if (dirChKR.CanTurnMoveForword())
+        {
+            moveVec.z = speed;
+        }
+        else if (dirChKR.CanTurnMoveBackword())
+        {
+            moveVec.z = speed;
+        }
+
         // Z 방향 (전방) 이동
         moveVec.z = speed;
 
