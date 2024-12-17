@@ -28,9 +28,6 @@ public class Player_Move : MonoBehaviour
 
     private void Awake()
     {
-        //if (controller == null)
-        //    controller = GetComponent<CharacterController>();
-
         if (scoreS == null)
             scoreS = GetComponent<Score_script>();
         
@@ -59,12 +56,12 @@ public class Player_Move : MonoBehaviour
     [Header("Pause Menu")]
     public bool PauseMenuOn = true;
     public Image pauseMenuPanel;
-    // Update is called once per frame
 
     [Header("Tutorial")]
     public bool tutorialOn = false;
     public Image TutorialPanel;
 
+    // Update is called once per frame
     void Update()
     {
         if (isDead)
@@ -109,7 +106,7 @@ public class Player_Move : MonoBehaviour
             }
         }
 
-        if (dirChKR.CanTurnMoveForword()/* || dirChKR.CanTurnMoveBackword()*/)
+        if (dirChKR.CanTurnMoveForword())
         {
             moveVec.z = speed;
         }
@@ -229,10 +226,6 @@ public class Player_Move : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, dirChKR.rayZLength, mask))
         {
-            //기타 오브젝트에 닿아서 죽었을 때
-            // Ray에 충돌이 감지되면 충돌된 오브젝트의 이름을 출력
-            //Debug.Log($"Raycast {hit.collider.gameObject.name}!");
-            //Debug.Log("impact death");
             DeathType = death.crash;
             Death(DeathType);
         }

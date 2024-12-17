@@ -37,11 +37,20 @@ public class Camera_Script : MonoBehaviour
     {
         moveVec = lookAt.position + camOffset;
 
+        // Y축 높이 제한 적용
+        //moveVec.y = Mathf.Clamp(moveVec.y, CamMinY, CamMaxY);
+
         if (transition <= 1.0f)
         {
             transform.position = Vector3.Lerp(moveVec + animationOffSet, moveVec, transition);
             transition += Time.deltaTime * 1 / animationDur;
             transform.LookAt(lookAt.position + Vector3.up);
         }
+        //else
+        //{
+        //    // 이동 후 카메라 위치 갱신
+        //    transform.position = moveVec;
+        //    transform.LookAt(lookAt.position + Vector3.up);
+        //}
     }
 }

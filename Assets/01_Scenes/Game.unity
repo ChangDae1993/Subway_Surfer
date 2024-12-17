@@ -7384,8 +7384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 8469093291799012586}
-  CamMinY: 3
-  CamMaxY: 5
+  CamMinY: -1
+  CamMaxY: 4
   transition: 0
   animationDur: 2
 --- !u!114 &5211817233854458204
