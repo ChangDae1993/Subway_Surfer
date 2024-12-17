@@ -8,9 +8,16 @@ public class PauseMenu : MonoBehaviour
 {
     public Text pauseTxt;
     [SerializeField] private bool isBlinking;
+    [Header("Score")]
     public Image score_bg;
     public Text score_txt;
     public Score_script score_Script;
+
+    [Header("Option")]
+    public Scrollbar bgmVolume;
+    public Scrollbar sfxVolume;
+
+    [Space(10f)]
     public Player_Move player_move;
 
     public Button resumeBtn;
@@ -32,13 +39,18 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-    //}
+    void Update()
+    {
+        SetBGMVolume(bgmVolume.value);
+        SetSFXVolume(sfxVolume.value);
+    }
 
     private void OnEnable()
     {
-        if(AudioManager.AM.bgmEffect != null)
+        bgmVolume.value = PlayerPrefs.GetFloat("BGMVolume");
+        sfxVolume.value = PlayerPrefs.GetFloat("SFXVolume");
+
+        if (AudioManager.AM.bgmEffect != null)
         {
             AudioManager.AM.EffectBGM(true);
         }
@@ -85,6 +97,12 @@ public class PauseMenu : MonoBehaviour
 
     public void OnResume()
     {
+        PlayerPrefs.SetFloat("ABCVolume", AudioManager.AM.abcVolume);
+        PlayerPrefs.SetFloat("BGMVolume", AudioManager.AM.bgmVolume);
+        PlayerPrefs.SetFloat("SFXVolume", AudioManager.AM.sfxVolume);
+        PlayerPrefs.Save();
+
+
         score_txt.gameObject.SetActive(false);
         resumeBtn.gameObject.SetActive(false);
         exitBtn.gameObject.SetActive(false);
@@ -110,9 +128,28 @@ public class PauseMenu : MonoBehaviour
     
     public void OnExit()
     {
+        PlayerPrefs.SetFloat("ABCVolume", AudioManager.AM.abcVolume);
+        PlayerPrefs.SetFloat("BGMVolume", AudioManager.AM.bgmVolume);
+        PlayerPrefs.SetFloat("SFXVolume", AudioManager.AM.sfxVolume);
+        PlayerPrefs.Save();
+
         //panel ²ô±â
         this.gameObject.SetActive(false);
         SceneManager.LoadScene("Menu");
     }
 
+
+    public void SetBGMVolume(float volume)
+    {
+        AudioManager.AM.bgmVolume = volume;
+        AudioManager.AM.abcVolume = volume;
+        PlayerPrefs.SetFloat("BGMVolume", volume);
+        PlayerPrefs.SetFloat("ABCVolume", volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        AudioManager.AM.sfxVolume = volume;
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+    }
 }

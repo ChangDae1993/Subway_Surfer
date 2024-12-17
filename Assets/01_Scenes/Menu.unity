@@ -8093,6 +8093,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae1a9f0b8628074bb44d0762dec8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmVolume: {fileID: 1806697044}
+  sfxVolume: {fileID: 451195729}
 --- !u!1 &702753678
 GameObject:
   m_ObjectHideFlags: 0
@@ -10152,7 +10154,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1399319147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 684175490}
+        m_TargetAssemblyTypeName: OptionPanelMenu, Assembly-CSharp
+        m_MethodName: SaveVolumeSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1399319147
 MonoBehaviour:
   m_ObjectHideFlags: 0

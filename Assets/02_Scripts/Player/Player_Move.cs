@@ -229,8 +229,8 @@ public class Player_Move : MonoBehaviour
         {
             //기타 오브젝트에 닿아서 죽었을 때
             // Ray에 충돌이 감지되면 충돌된 오브젝트의 이름을 출력
-            Debug.Log($"Raycast {hit.collider.gameObject.name}!");
-            Debug.Log("impact death");
+            //Debug.Log($"Raycast {hit.collider.gameObject.name}!");
+            //Debug.Log("impact death");
             DeathType = death.crash;
             Death(DeathType);
         }
@@ -244,7 +244,7 @@ public class Player_Move : MonoBehaviour
     {
         AudioManager.AM.PlaySfx(AudioManager.Sfx.roll);
         animator.Play("roll");
-        animator.SetFloat("rollSpeed", speed);
+        animator.SetFloat("rollSpeed", (speed * 0.4f));
         //Debug.Log("Roll");
     }
 

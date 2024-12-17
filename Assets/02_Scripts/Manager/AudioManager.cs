@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using UnityEngine;
 using static AudioManager;
 
@@ -87,6 +88,18 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[i].bypassListenerEffects = true;
         }
 
+    }
+
+    private void Update()
+    {
+        abcPlayer.volume = abcVolume;
+        bgmPlayer.volume = bgmVolume;
+
+        for (int i = 0; i < channels; i++)
+        {
+            sfxPlayers[i].volume = sfxVolume;
+            sfxPlayers[i].bypassListenerEffects = true;
+        }
     }
 
     public void PlaySfx(Sfx sfx)

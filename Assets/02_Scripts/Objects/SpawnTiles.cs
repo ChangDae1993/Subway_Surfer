@@ -233,9 +233,7 @@ public class SpawnTiles : MonoBehaviour
             {
                 LampControl.LampLightOnOff(tileManager.lightOn);
             }
-            //Debug.Log("LightOn");
         }
-
 
         if (isAnimPattern)
         {
@@ -248,7 +246,6 @@ public class SpawnTiles : MonoBehaviour
 
                     if (distanceSqr > 30f)
                         return;
-
 
                     if (!animShow)
                     {
@@ -283,7 +280,6 @@ public class SpawnTiles : MonoBehaviour
 
     public void vehicleShow()
     {
-
         animShow = true;
 
         if(targetImage != null)

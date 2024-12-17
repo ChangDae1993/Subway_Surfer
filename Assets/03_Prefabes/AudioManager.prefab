@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abcClip: {fileID: 8300000, guid: 6994f9ccda95c6342948a8e5a60fea82, type: 3}
-  abcVolume: 0.7
+  abcVolume: 1
   bgmClip: {fileID: 8300000, guid: b520d1933b9823d4785394bccc8bcd43, type: 3}
-  bgmVolume: 0.8
+  bgmVolume: 1
   bgmEffect: {fileID: 0}
   sfxClips:
   - {fileID: 8300000, guid: 1b486fc38106e9842bef7e5741bfb301, type: 3}
@@ -62,5 +62,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0f6833e2e1b55c48aae32a2997ed63a, type: 3}
   - {fileID: 8300000, guid: 918b4ea823f2cb04e89ad369731a9b31, type: 3}
   - {fileID: 8300000, guid: 5b9d155389a6d5b4d9be6e9b8c17d16f, type: 3}
-  sfxVolume: 0.6
+  sfxVolume: 1
   channels: 8

@@ -299,12 +299,12 @@ public class TileManager : MonoBehaviour
                         if (st.gameObject.name.Contains("down"))
                         {
                             downPass = true;
-                            //Debug.Log("여기는?");
+                            Debug.Log("여기는?");
                             return false;
                         }
                         else
                         {
-                            //Debug.Log("여기 안들어옴?");
+                            Debug.Log("여기 안들어옴?");
                             return true;
                         }
                     }

@@ -96,6 +96,7 @@ public class SoundManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("BGMVolume", bgmVolume);
         PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+        PlayerPrefs.SetFloat("ABCVolume", sfxVolume);
         PlayerPrefs.Save();
     }
 
