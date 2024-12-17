@@ -28,11 +28,11 @@ public class MainMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(!introCanvas.gameObject.activeSelf)
+        if (!introCanvas.gameObject.activeSelf)
         {
             introCanvas.gameObject.SetActive(true);
         }
-        //PlayerPrefs.SetFloat("Highscore", 0f);
+        PlayerPrefs.SetFloat("Highscore", 0f);
         highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
 
 

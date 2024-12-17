@@ -1965,6 +1965,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 593952601}
+  newhighScoreText: {fileID: 1252895482}
+  TextCHNGSpeed: 10
   backgroundImg: {fileID: 811607575}
   isShowned: 0
 --- !u!114 &811607578
@@ -3330,7 +3332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1252895481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3347,7 +3349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -7.2}
+  m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252895482
@@ -7338,7 +7340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVec: {x: 0, y: 0, z: 0}
-  speed: 14
+  speed: 18
   startTime: 0
   dirChKR: {fileID: 1646853719}
   CamS: {fileID: 5100987491996913851}

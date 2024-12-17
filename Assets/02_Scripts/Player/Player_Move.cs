@@ -1,6 +1,7 @@
 using System.Collections;
 //using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Player_Move : MonoBehaviour
@@ -220,12 +221,13 @@ public class Player_Move : MonoBehaviour
             }
         }
       
-        LayerMask mask = LayerMask.GetMask("Obstacle") | LayerMask.GetMask("Wall");
-        Vector3 look = transform.TransformDirection(Vector3.forward); // Local -> World
+        LayerMask mask = LayerMask.GetMask("Obstacle");
+        //Vector3 look = transform.TransformDirection(Vector3.forward); // Local -> World
+        Vector3 look = transform.forward; // 회전된 전방 방향
         Debug.DrawRay(transform.position + Vector3.up, look * dirChKR.rayZLength, Color.red);
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.up, Vector3.forward, out hit, dirChKR.rayZLength, mask))
+        if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, dirChKR.rayZLength, mask))
         {
             //기타 오브젝트에 닿아서 죽었을 때
             // Ray에 충돌이 감지되면 충돌된 오브젝트의 이름을 출력
@@ -237,8 +239,7 @@ public class Player_Move : MonoBehaviour
     }
 
 
-
-#region run and turn
+    #region run and turn
 
     public void Roll()
     {

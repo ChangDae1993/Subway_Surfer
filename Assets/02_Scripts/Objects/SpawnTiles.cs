@@ -217,8 +217,6 @@ public class SpawnTiles : MonoBehaviour
     [Header("Anim Play")]
     public bool animShow;
     public animType animationType;
-    [SerializeField] private float maxDis = 50f;         //암튼 계산을 시작할 최장 거리
-    //public float playerDis = 0f;        //플레이어와 이 타일 간의 거리
     [SerializeField] private Vector3 showTargetVec;
     public GameObject targetImage = null;    //타겟 image or somethig
     public float imageScale = 0f;       //타겟 image or something의 크기
@@ -244,7 +242,7 @@ public class SpawnTiles : MonoBehaviour
             {
                 case animType.waterSpoil:
 
-                    if (distanceSqr > 30f)
+                    if (distanceSqr > 25f)
                         return;
 
                     if (!animShow)
@@ -254,7 +252,7 @@ public class SpawnTiles : MonoBehaviour
                     break;
                 case animType.VehicleAppear:
 
-                    if (distanceSqr > 25f)
+                    if (distanceSqr > 20f)
                         return;
 
                     if (!animShow)
@@ -264,7 +262,7 @@ public class SpawnTiles : MonoBehaviour
                     break;
                 case animType.obstacleDown:
 
-                    if (distanceSqr > 35f)
+                    if (distanceSqr > 30f)
                         return;
 
                     if (!animShow)
@@ -294,11 +292,13 @@ public class SpawnTiles : MonoBehaviour
                 if(targetImage.gameObject.name.Equals("appear"))
                 {
                     AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
+                    anim.SetFloat("appear_speed", (player.speed * 0.1f));
                     anim.SetBool("appear",true);
                 }
                 else if(targetImage.gameObject.name.Equals("appear_move"))
                 {
                     AudioManager.AM.PlaySfx(AudioManager.Sfx.vehicle_beep);
+                    anim.SetFloat("appear_speed", (player.speed * 0.1f));
                     anim.SetBool("appear_move", true);
                 }
             }
@@ -319,7 +319,7 @@ public class SpawnTiles : MonoBehaviour
             while (imageScale < 7.5f)
             {
                 targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
-                imageScale += 0.05f * player.speed;
+                imageScale += 0.05f * (player.speed * 0.5f);
                 yield return new WaitForSeconds(0.05f);
             }
 
@@ -340,7 +340,7 @@ public class SpawnTiles : MonoBehaviour
             {
                 AudioManager.AM.PlaySfx(AudioManager.Sfx.obstacleDown);
                 anim.SetBool("down", true);
-                anim.SetFloat("downSpeed", player.speed);
+                anim.SetFloat("downSpeed", (player.speed * 0.5f));
             }
         }
     }
