@@ -32,7 +32,7 @@ mergeInto(LibraryManager.library, {
     }
 
     function initializeWebSocket() {
-      Module.socket = new WebSocket("ws://localhost:9009");
+      Module.socket = new WebSocket("ws://localhost:3000/ws");
 
       Module.socket.onopen = () => {
         console.log("WebSocket 연결 성공");
