@@ -108,17 +108,18 @@ public class Player_Move : MonoBehaviour
             }
         }
 
-        if (dirChKR.CanTurnMoveForword())
+        if (dirChKR.CanTurnMoveForword()/* || dirChKR.CanTurnMoveBackword()*/)
         {
             moveVec.z = speed;
         }
-        else if (dirChKR.CanTurnMoveBackword())
+        else
         {
-            moveVec.z = speed;
+            moveVec.z = 0f;
         }
 
+
         // Z 방향 (전방) 이동
-        moveVec.z = speed;
+        //moveVec.z = speed;
 
 
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
@@ -264,7 +265,7 @@ public class Player_Move : MonoBehaviour
         while (elapsedTime < duration)
         {
             transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration); // 부드러운 회전
-            elapsedTime += Time.deltaTime * (speed);
+            elapsedTime += Time.deltaTime * (0.5f *speed);
             yield return null;
         }
         transform.rotation = endRotation;  // 정확한 90도 회전으로 마무리
@@ -287,7 +288,7 @@ public class Player_Move : MonoBehaviour
         while (elapsedTime < duration)
         {
             transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration); // 부드러운 회전
-            elapsedTime += Time.deltaTime * (speed);
+            elapsedTime += Time.deltaTime * (0.5f * speed);
             yield return null;
         }
 

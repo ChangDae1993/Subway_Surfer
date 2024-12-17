@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4039,7 +4039,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
-  rayZLength: 0.6
+  rayZLength: 0.7
 --- !u!1 &1649633885
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,7 +6696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVec: {x: 0, y: 0, z: 0}
-  speed: 4
+  speed: 14
   startTime: 0
   dirChKR: {fileID: 1646853719}
   CamS: {fileID: 5100987491996913851}

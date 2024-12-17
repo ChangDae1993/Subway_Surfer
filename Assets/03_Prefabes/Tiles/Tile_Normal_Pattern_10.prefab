@@ -184,9 +184,9 @@ GameObject:
   - component: {fileID: 2677069148012170337}
   - component: {fileID: 2677069148013268641}
   - component: {fileID: 6677230812008893150}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Block_Barrier_1_YellowStripes
-  m_TagString: Obstacle
+  m_TagString: Obstacle_Crane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,9 +510,9 @@ GameObject:
   - component: {fileID: 4435831325905498833}
   - component: {fileID: 9114587550056176258}
   - component: {fileID: 3416030277530988918}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Block_Barrier_1_YellowStripes (2)
-  m_TagString: Obstacle
+  m_TagString: Obstacle_Crane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,9 +618,9 @@ GameObject:
   - component: {fileID: 4264014051339594975}
   - component: {fileID: 8240515279533240803}
   - component: {fileID: 5701852730045315574}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Block_Barrier_1_YellowStripes (1)
-  m_TagString: Obstacle
+  m_TagString: Obstacle_Crane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -823,6 +823,81 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1961118140047322573, guid: 61a9b141a178ea64096d9367b508386b, type: 3}
+--- !u!1 &5609346373146044588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5222433042664449559}
+  - component: {fileID: 5595166904401767479}
+  - component: {fileID: 3883516688635214639}
+  m_Layer: 6
+  m_Name: wallCol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5222433042664449559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609346373146044588}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8159481333766131270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5595166904401767479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609346373146044588}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4, y: 3.5, z: 17}
+  m_Center: {x: 8.3, y: 1.5, z: 0}
+--- !u!65 &3883516688635214639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609346373146044588}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.2, y: 3.5, z: 17}
+  m_Center: {x: -6.9, y: 1.5, z: 0}
 --- !u!1 &5796626439354424910
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,9 +910,9 @@ GameObject:
   - component: {fileID: 2475702364872062404}
   - component: {fileID: 2424640197125420349}
   - component: {fileID: 4672702475663294191}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Block_Barrier_1_YellowStripes (3)
-  m_TagString: Obstacle
+  m_TagString: Obstacle_Crane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1049,10 +1124,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8159481333766131270}
-  - component: {fileID: 49902443557619748}
-  - component: {fileID: 6672742247287260890}
   - component: {fileID: 337004155838533828}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tile_Normal_Pattern_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,50 +1163,9 @@ Transform:
   - {fileID: 2855714483610718127}
   - {fileID: 8209749324737401606}
   - {fileID: 7730035611309779343}
+  - {fileID: 5222433042664449559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &49902443557619748
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6477747312648913503}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.4, y: 3.5, z: 17}
-  m_Center: {x: 8.3, y: 1.5, z: 0}
---- !u!65 &6672742247287260890
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6477747312648913503}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.2, y: 3.5, z: 17}
-  m_Center: {x: -6.9, y: 1.5, z: 0}
 --- !u!114 &337004155838533828
 MonoBehaviour:
   m_ObjectHideFlags: 0

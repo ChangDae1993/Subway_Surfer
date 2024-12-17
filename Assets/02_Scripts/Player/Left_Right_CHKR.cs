@@ -22,12 +22,12 @@ public class Left_Right_CHKR : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 rayOrigin = transform.position + Vector3.up;  // Ray 시작 지점
-        Vector3 rayDirection = -transform.forward;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
+        Vector3 rayDirection = transform.forward;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
         if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
         {
-            Debug.Log("충돌");
+            Debug.Log("앞충돌");
             // 충돌이 발생했을 때 Ray의 길이를 표시
-            Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
+            Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.blue);
             // Ray가 장애물과 충돌했을 때
             return false;
         }
@@ -41,10 +41,10 @@ public class Left_Right_CHKR : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 rayOrigin = transform.position + Vector3.up;  // Ray 시작 지점
-        Vector3 rayDirection = transform.forward;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
+        Vector3 rayDirection = -transform.forward;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
         if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
         {
-            Debug.Log("충돌");
+            Debug.Log("뒤충돌");
             // 충돌이 발생했을 때 Ray의 길이를 표시
             Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
             // Ray가 장애물과 충돌했을 때
@@ -64,7 +64,7 @@ public class Left_Right_CHKR : MonoBehaviour
         Vector3 rayDirection = -transform.right;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
         if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
         {
-            Debug.Log("충돌");
+            Debug.Log("왼충돌");
             // 충돌이 발생했을 때 Ray의 길이를 표시
             Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
             // Ray가 장애물과 충돌했을 때
@@ -84,7 +84,7 @@ public class Left_Right_CHKR : MonoBehaviour
         Vector3 rayDirection = transform.right;  // 오른쪽 방향 (회전된 방향 기준으로 오른쪽)
         if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
         {
-            Debug.Log("충돌");
+            Debug.Log("오충돌");
             // Ray가 장애물과 충돌했을 때
             // 충돌이 발생했을 때 Ray의 길이를 표시
             Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
