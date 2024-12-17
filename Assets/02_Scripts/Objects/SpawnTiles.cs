@@ -252,7 +252,7 @@ public class SpawnTiles : MonoBehaviour
                     break;
                 case animType.VehicleAppear:
 
-                    if (distanceSqr > 20f)
+                    if (distanceSqr > 23f)
                         return;
 
                     if (!animShow)
@@ -262,7 +262,7 @@ public class SpawnTiles : MonoBehaviour
                     break;
                 case animType.obstacleDown:
 
-                    if (distanceSqr > 30f)
+                    if (distanceSqr > 33f)
                         return;
 
                     if (!animShow)
@@ -292,13 +292,11 @@ public class SpawnTiles : MonoBehaviour
                 if(targetImage.gameObject.name.Equals("appear"))
                 {
                     AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
-                    anim.SetFloat("appear_speed", (player.speed * 0.1f));
                     anim.SetBool("appear",true);
                 }
                 else if(targetImage.gameObject.name.Equals("appear_move"))
                 {
                     AudioManager.AM.PlaySfx(AudioManager.Sfx.vehicle_beep);
-                    anim.SetFloat("appear_speed", (player.speed * 0.1f));
                     anim.SetBool("appear_move", true);
                 }
             }
@@ -331,7 +329,6 @@ public class SpawnTiles : MonoBehaviour
 
     public void ObstacleDown()
     {
-
         animShow = true;
 
         if (targetImage != null)
@@ -340,7 +337,7 @@ public class SpawnTiles : MonoBehaviour
             {
                 AudioManager.AM.PlaySfx(AudioManager.Sfx.obstacleDown);
                 anim.SetBool("down", true);
-                anim.SetFloat("downSpeed", (player.speed * 0.5f));
+                anim.SetFloat("downSpeed", (player.speed * 0.3f));
             }
         }
     }
