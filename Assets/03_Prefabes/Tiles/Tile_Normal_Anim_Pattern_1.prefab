@@ -108,6 +108,92 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2259943715705982854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2378641073353697082}
+  - component: {fileID: 6427990742243970842}
+  - component: {fileID: 6831567223409453477}
+  m_Layer: 0
+  m_Name: Obastacle_Spawn_Point_1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2378641073353697082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259943715705982854}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.3, y: -0, z: -6}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 8159481333766131270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6427990742243970842
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259943715705982854}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6831567223409453477
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259943715705982854}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2824381812795925816
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +503,7 @@ Transform:
   - {fileID: 9206899375327235856}
   - {fileID: 4040949839419068690}
   - {fileID: 3070243103908016045}
+  - {fileID: 2378641073353697082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &337004155838533828
@@ -432,8 +519,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileManager: {fileID: 0}
-  objSpawnPoint: []
-  obstacleList: []
+  objSpawnPoint:
+  - {fileID: 2378641073353697082}
+  obstacleList:
+  - {fileID: 751791970984285538, guid: 0c33c4acc626dc44cb1c6a449e92c14c, type: 3}
+  - {fileID: 3235701009692666252, guid: 541bb72cddfcff14baaa531856d5e88f, type: 3}
+  - {fileID: 1214902665969913276, guid: a3073de2c8fc37645b82ecc5020ef7d1, type: 3}
+  - {fileID: 5753959529743462294, guid: 4384cc343ebf8eb4da0330e81856411a, type: 3}
+  - {fileID: 5753959529743462294, guid: 5aef38280eb177f4facb03f874c5ebdf, type: 3}
+  - {fileID: 5753959529743462294, guid: 481003122b1bb6b47a966bc4ad5f6a4b, type: 3}
+  - {fileID: 5753959529743462294, guid: 748dd497841afdb4b99ef245c33dd2e6, type: 3}
   tileType: 8
   generateVec: {x: 0, y: 0, z: 0}
   LightLTr: {fileID: 297659692650660831}
@@ -445,7 +540,6 @@ MonoBehaviour:
   player: {fileID: 0}
   animShow: 0
   animationType: 0
-  maxDis: 100
   showTargetVec: {x: 0, y: 0, z: 0}
   targetImage: {fileID: 2207414704159206547}
   imageScale: 0

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 558263658102954495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -6}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 8159481333766131270}
   - component: {fileID: 337004155838533828}
   m_Layer: 0
-  m_Name: Tile_Normal_Pattern_10
+  m_Name: Tile_Normal_Pattern_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1181,6 +1181,7 @@ MonoBehaviour:
   tileManager: {fileID: 0}
   objSpawnPoint:
   - {fileID: 2850733188838358443}
+  - {fileID: 7958379229173458454}
   obstacleList:
   - {fileID: 751791970984285538, guid: 0c33c4acc626dc44cb1c6a449e92c14c, type: 3}
   - {fileID: 3235701009692666252, guid: 541bb72cddfcff14baaa531856d5e88f, type: 3}
@@ -1330,7 +1331,7 @@ GameObject:
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7958379229173458454
 Transform:
   m_ObjectHideFlags: 0
