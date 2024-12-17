@@ -18,6 +18,12 @@ public class OptionPanelMenu : MonoBehaviour
         SetSFXVolume(sfxVolume.value);
     }
 
+    private void OnEnable()
+    {
+        bgmVolume.value = PlayerPrefs.GetFloat("BGMVolume");
+        sfxVolume.value = PlayerPrefs.GetFloat("SFXVolume");
+    }
+
 
     public void ClosePanel()
     {
