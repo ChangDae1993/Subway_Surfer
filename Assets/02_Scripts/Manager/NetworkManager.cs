@@ -7,6 +7,10 @@ using System.Collections.Generic;
 
 public class NetworkManager : MonoBehaviour
 {
+
+    public static NetworkManager NM;
+
+
     public Text test;
     public int score;
     public Text RankingText;
@@ -30,6 +34,21 @@ public class NetworkManager : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void ShowRanking();
+
+
+    private void Awake()
+    {
+        if (NM == null)
+        {
+            NM = this;
+            DontDestroyOnLoad(gameObject); // 씬 전환 시에도 유지
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     private void Start()
     {
