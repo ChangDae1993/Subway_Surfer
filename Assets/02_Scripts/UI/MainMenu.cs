@@ -25,6 +25,10 @@ public class MainMenu : MonoBehaviour
     private int nextIndex = 1;      // 다음 색상 인덱스
     private float t = 0f;           // 보간 진행도
 
+
+    private Material skyboxMaterial;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,6 +43,11 @@ public class MainMenu : MonoBehaviour
         NetworkManager.NM.ConnectStart();
 
         AudioManager.AM.PlayBGM(false);
+
+
+        // 현재 활성화된 Skybox를 찾아서 해당 Material을 가져옵니다.
+        skyboxMaterial = RenderSettings.skybox;
+        skyboxMaterial.SetFloat("_AtmosphereThickness", 0.66f);
     }
 
     // Update is called once per frame
@@ -71,6 +80,7 @@ public class MainMenu : MonoBehaviour
     public intro_Camera_Script camSc;
     public Image sceneChangePanel;
     public Animator introPlayer;
+
     public void ToGame()
     {
         if (introCanvas.gameObject.activeSelf)
