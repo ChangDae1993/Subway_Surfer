@@ -63,8 +63,8 @@ SendScore: function(username, score)
     if (Module.socket && Module.socket.readyState === WebSocket.OPEN)
     {
         Module.socket.send("score:" + UTF8ToString(username) + ":" + score);
-        console.log("[SendScore] Final Username:", username); // 변환 후 값 확인
-        console.log("[SendScore] Received Username:", username); // 디버깅용 로그
+        console.log("[SendScore] Final Username:", UTF8ToString(username)); // 변환 후 값 확인
+        console.log("[SendScore] Received Username:", UTF8ToString(username)); // 디버깅용 로그
         console.log("[SendScore] Received Score:", score);       // 점수도 확인
     }
     else
@@ -90,13 +90,17 @@ SendScore: function(username, score)
       const data = await response.json();
 
       if (response.ok) {
-        const names = data.map((row) => row.user_id).join(","); // 배열을 문자열로 결합
-        const scores = data.map((row) => row.score).join(","); // 배열을 문자열로 결합
+        // const names = data.map((row) => row.user_id).join(","); // 배열을 문자열로 결합
+        // const scores = data.map((row) => row.score).join(","); // 배열을 문자열로 결합
+
+        const names = data.map((row) => row.user_id).join(",");
+        const scores = data.map((row) => row.max_score).join(",");  // 'max_score'로 변경
 
         // 두 문자열을 하나로 결합해서 보내기
         const combined = names + "|" + scores; // 이름과 점수를 '|'로 구분해서 결합
 
         console.log("ShowRanking 호출됨!"); // 디버그 로그 추가
+        console.log("Data to Unity:", combined);  // 전송되는 데이터 확인
         // Unity로 데이터 전송
         globalUnityInstance.SendMessage(
           "RankingArea", // Unity 오브젝트 이름
