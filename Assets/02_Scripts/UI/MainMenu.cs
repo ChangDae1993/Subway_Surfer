@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [Header("Score")]
-    public Text highScore;
+    //[Header("Score")]
+    //public Text highScore;
 
     [Header("Title Text")]
     public Text titleText;
@@ -36,8 +36,8 @@ public class MainMenu : MonoBehaviour
         {
             introCanvas.gameObject.SetActive(true);
         }
-        PlayerPrefs.SetFloat("Highscore", 0f);
-        highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
+        //PlayerPrefs.SetFloat("Highscore", 0f);
+        //highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
 
 
         NetworkManager.NM.ConnectStart();
