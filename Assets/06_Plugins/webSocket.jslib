@@ -85,6 +85,7 @@ mergeInto(LibraryManager.library, {
         // 두 문자열을 하나로 결합해서 보내기
         const combined = names + "|" + scores; // 이름과 점수를 '|'로 구분해서 결합
 
+        console.log("ShowRanking 호출됨!"); // 디버그 로그 추가
         // Unity로 데이터 전송
         globalUnityInstance.SendMessage(
           "RankingArea", // Unity 오브젝트 이름

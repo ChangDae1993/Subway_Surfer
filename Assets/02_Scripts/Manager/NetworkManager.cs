@@ -70,6 +70,7 @@ public class NetworkManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
+            Debug.Log("ShowRanking »£√‚!");
             ShowRanking();
         }
     }

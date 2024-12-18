@@ -36,6 +36,8 @@ public class MainMenu : MonoBehaviour
         highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
 
 
+        NetworkManager.NM.ConnectStart();
+
         AudioManager.AM.PlayBGM(false);
     }
 
