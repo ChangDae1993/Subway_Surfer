@@ -1,12 +1,19 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class LightSpinControl : MonoBehaviour
 {
+    [Header("Directional Light Setting")]
     public Transform directinoalLight;
     public TileManager tileManager;
+
     Coroutine spin;
+
+    [Header("SkyBox Setting")]
+    public float targetThickness;  // 목표로 할 두께
+    public float changeSpeed;  // 변화 속도
+    private Material skyboxMaterial;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +26,10 @@ public class LightSpinControl : MonoBehaviour
             StopCoroutine(spin);
             spin = StartCoroutine(lightSpin());
         }
+
+        // 현재 활성화된 Skybox를 찾아서 해당 Material을 가져옵니다.
+        skyboxMaterial = RenderSettings.skybox;
+        skyboxMaterial.SetFloat("_AtmosphereThickness", 0.66f);
     }
 
     IEnumerator lightSpin()
@@ -37,14 +48,24 @@ public class LightSpinControl : MonoBehaviour
             {
                 tileManager.lightOn = true;
             }
-
             yield return new WaitForSeconds(0.1f);
         }
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
+    void Update()
+    {
+        if (skyboxMaterial != null)
+        {
+            // 현재 값 가져오기
+            float currentThickness = skyboxMaterial.GetFloat("_AtmosphereThickness");
 
-    //}
+            // 값 점차 증가시키기
+            if (currentThickness < targetThickness)
+            {
+                currentThickness += changeSpeed * Time.deltaTime; // 일정 시간에 따라 증가
+                skyboxMaterial.SetFloat("_AtmosphereThickness", currentThickness);
+            }
+        }
+    }
 }
