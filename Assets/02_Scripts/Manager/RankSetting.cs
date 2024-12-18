@@ -22,4 +22,12 @@ public class RankSetting : MonoBehaviour
             Debug.Log(names[i].text + " :: " + scores[i].text);
         }
     }
+
+    public void ClosePanel()
+    {
+        if (this.gameObject.activeSelf)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 }

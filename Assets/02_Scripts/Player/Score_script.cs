@@ -66,10 +66,10 @@ public class Score_script : MonoBehaviour
     public void OnDeath()
     {
         //점수 저장하기
-        if(PlayerPrefs.GetFloat("Highscore") < score)
-        {
-            PlayerPrefs.SetFloat("Highscore", score);
-        }
+        //if(PlayerPrefs.GetFloat("Highscore") < score)
+        //{
+        //    PlayerPrefs.SetFloat("Highscore", score);
+        //}
         deathMenu.ToggleEndMenu(score);
     }
 }

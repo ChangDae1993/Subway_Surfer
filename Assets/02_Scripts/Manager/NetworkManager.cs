@@ -3,6 +3,10 @@ using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Net.WebSockets;
+using System.Reflection;
+using System;
+using UnityEngine.SocialPlatforms.Impl;
 //using UnityEngine.Networking;
 
 public class NetworkManager : MonoBehaviour
@@ -15,12 +19,14 @@ public class NetworkManager : MonoBehaviour
     public int score;
     public Text RankingText;
 
+    public GameObject ranking_Panel;
+
     [DllImport("__Internal")]
     private static extern void WebSocketSetting();
 
 
     [DllImport("__Internal")]
-    private static extern void SendScore(int score);
+    private static extern void SendScore(string name, int score);
 
     public Text textval;
     [DllImport("__Internal")]
@@ -56,28 +62,33 @@ public class NetworkManager : MonoBehaviour
     }
 
 
-    private void Update()
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        score++;
+    //        test.text += score.ToString();
+    //        SendScore(score);
+
+    //        textval.text = "Hello WebSocket!";
+    //        PrintNumber(textval.text);
+    //    }
+    //}
+
+    public void scoreToServer(string name, int score)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            score++;
-            test.text += score.ToString();
-            SendScore(score);
+        Debug.Log($"[scoreToServer] Before SendScore - Name: {name}, Score: {score}");
+        SendScore(name, score);
+    }
 
-            textval.text = "Hello WebSocket!";
-            PrintNumber(textval.text);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            Debug.Log("ShowRanking 호출!");
-            ShowRanking();
-        }
+    public void ShowRank()
+    {
+        Debug.Log("ShowRanking 호출!");
+        ShowRanking();
     }
 
     public void ConnectStart()
     {
         WebSocketSetting();
     }
-
 }

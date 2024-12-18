@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Name_Input : MonoBehaviour
@@ -111,16 +113,31 @@ public class Name_Input : MonoBehaviour
         playerName = string.Join("", System.Array.ConvertAll(nameFields, field => field.text));
         Debug.Log($"Final Player Name: {playerName}");
 
+        if (string.IsNullOrEmpty(playerName) || playerName.All(char.IsDigit))
+        {
+            playerName = "AAA";
+            Debug.Log("유효하지 않은 이름이 감지되어 기본값으로 설정합니다.");
+        }
+
+        Debug.Log($"Sending playerName: {playerName}");  // playerName 값 확인
+        Debug.Log($"최종 이름: {playerName}");
+        Debug.Log($"SaveScore 호출됨: 이름 - {playerName}, 점수 - {scoreScript.score}");
+
+
         //다른 버튼 켜기
         PlayBtn.gameObject.SetActive(true);
         MenuBtn.gameObject.SetActive(true);
-        // 점수 저장 로직 추가
-        SaveScore(playerName, scoreScript.score);
+
+        //SaveScore(playerName, scoreScript.score);
+        NetworkManager.NM.scoreToServer(playerName, (int)scoreScript.score);
     }
 
-    void SaveScore(string name, float score)
-    {
-        Debug.Log($"Name: {name}, Score: {score}");
-        // 실제 DB 저장
-    }
+    // 점수 저장 로직 추가
+    //public void SaveScore(string name, float score)
+    //{
+    //    // 실제 DB 저장
+    //    Debug.Log($"[SaveScore] Name: {name}, Score: {score}");
+    //    NetworkManager.NM.scoreToServer(name,(int)score);
+    //    //Debug.Log($"Name: {name}, Score: {score}");
+    //}
 }

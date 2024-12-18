@@ -62,13 +62,12 @@ public class DeathMenu : MonoBehaviour
 
     public void ToggleEndMenu(float score)
     {
-
         isShowned = true;
         gameObject.SetActive(true);
-        if ((int)score >= (int)PlayerPrefs.GetFloat("Highscore"))
-        {
-            newhighScoreText.gameObject.SetActive(true);
-        }
+        //if ((int)score >= (int)PlayerPrefs.GetFloat("Highscore"))
+        //{
+        //    newhighScoreText.gameObject.SetActive(true);
+        //}
         scoreText.text = ((int)score).ToString();
     }
 

@@ -36,6 +36,7 @@ mergeInto(LibraryManager.library, {
 
       Module.socket.onopen = () => {
         console.log("WebSocket 연결 성공");
+        console.log("WebSocket 상태:", Module.socket.readyState);  // 클라이언트에서 상태 확인
       };
 
       Module.socket.onclose = () => {
@@ -54,13 +55,23 @@ mergeInto(LibraryManager.library, {
     initializeWebSocket(); // WebSocket 연결 시도
   },
 
-  SendScore: function (score) {
-    if (Module.socket && Module.socket.readyState === WebSocket.OPEN) {
-      Module.socket.send(score);
-    } else {
-      console.error("WebSocket 연결이 닫혀 있습니다.");
+SendScore: function(username, score)
+{
+    // username = username.toString(); // 강제로 문자열 변환
+    // username = UTF8ToString(username);
+
+    if (Module.socket && Module.socket.readyState === WebSocket.OPEN)
+    {
+        Module.socket.send("score:" + UTF8ToString(username) + ":" + score);
+        console.log("[SendScore] Final Username:", username); // 변환 후 값 확인
+        console.log("[SendScore] Received Username:", username); // 디버깅용 로그
+        console.log("[SendScore] Received Score:", score);       // 점수도 확인
     }
-  },
+    else
+    {
+        console.error("WebSocket 연결이 닫혀 있습니다.");
+    }
+},
 
   PrintNumber: function (number) {
     if (Module.socket && Module.socket.readyState === WebSocket.OPEN) {

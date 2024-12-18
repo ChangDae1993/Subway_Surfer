@@ -135,7 +135,11 @@ public class MainMenu : MonoBehaviour
 
     public void ToRanking()
     {
-        SceneManager.LoadScene("Ranking");
+        if(!NetworkManager.NM.ranking_Panel.activeSelf)
+        {
+            NetworkManager.NM.ranking_Panel.gameObject.SetActive(true);
+            NetworkManager.NM.ShowRank();
+        }
     }
 
     public void ToExit()
