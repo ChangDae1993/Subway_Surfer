@@ -40,7 +40,9 @@ public class MainMenu : MonoBehaviour
         //highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
 
 
+#if !UNITY_EDITOR
         NetworkManager.NM.ConnectStart();
+#endif
 
         AudioManager.AM.PlayBGM(false);
 
@@ -102,6 +104,17 @@ public class MainMenu : MonoBehaviour
 
 
     float panelAlpha = 0f;
+
+    public void ButtonOn(Button thisBtn)
+    {
+        thisBtn.GetComponent<Image>().color = Color.red;
+    }
+
+    public void ButtonOff(Button thisBtn)
+    {
+        thisBtn.GetComponent<Image>().color = Color.white;
+    }
+
     IEnumerator startGameCo()
     {
         AudioManager.AM.PlayBGM(true);

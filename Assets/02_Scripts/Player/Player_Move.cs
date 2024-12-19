@@ -238,7 +238,7 @@ public class Player_Move : MonoBehaviour
     {
         AudioManager.AM.PlaySfx(AudioManager.Sfx.roll);
         animator.Play("roll");
-        animator.SetFloat("rollSpeed", (speed * 0.4f));
+        animator.SetFloat("rollSpeed", (speed * 0.2f));
         //Debug.Log("Roll");
     }
 
