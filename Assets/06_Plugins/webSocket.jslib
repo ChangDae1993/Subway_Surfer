@@ -94,12 +94,12 @@ SendScore: function(username, score)
 
         const names = data.map((row) => row.user_id).join(",");
         const scores = data.map((row) => row.max_score).join(",");  // 'max_score'로 변경
+        const times = data.map((row) => row.latest_time).join(",");
 
         // 두 문자열을 하나로 결합해서 보내기
-        const combined = names + "|" + scores; // 이름과 점수를 '|'로 구분해서 결합
-
+        const combined = names + "|" + scores + "|" + times; // 이름과 점수를 '|'로 구분해서 결합
+        console.log("Combined Data Sent to Unity:", combined);  // 전송되는 데이터 확인
         console.log("ShowRanking 호출됨!"); // 디버그 로그 추가
-        console.log("Data to Unity:", combined);  // 전송되는 데이터 확인
         // Unity로 데이터 전송
         globalUnityInstance.SendMessage(
           "RankingArea", // Unity 오브젝트 이름
