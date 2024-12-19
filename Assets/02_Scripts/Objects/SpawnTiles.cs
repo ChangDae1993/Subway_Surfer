@@ -1,4 +1,5 @@
 using NUnit.Framework.Constraints;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,6 +74,13 @@ public class SpawnTiles : MonoBehaviour
         {
             tileManager = gameObject.GetComponentInParent<TileManager>();
         }
+
+        if (this.animationType == animType.leftRight)
+        {
+            leftRightIndex = UnityEngine.Random.Range(0, 2);
+            leftRightbool = Convert.ToBoolean(leftRightIndex);
+            //Debug.Log(leftRightIndex);
+        }
     }
 
 
@@ -105,7 +113,7 @@ public class SpawnTiles : MonoBehaviour
         {
             for (int i = 0; i < objSpawnPoint.Length; i++)
             {
-                obstacle = Instantiate(obstacleList[Random.Range(0, obstacleList.Length)]) as GameObject;
+                obstacle = Instantiate(obstacleList[UnityEngine.Random.Range(0, obstacleList.Length)]) as GameObject;
                 obstacle.transform.SetParent(objSpawnPoint[i]);
                 obstacle.transform.localPosition = new Vector3(0f, 0.3f, 0f);
             }
@@ -137,6 +145,7 @@ public class SpawnTiles : MonoBehaviour
                 lightRBlink = StartCoroutine(lightRBlinkCo());
             }
         }
+
     }
 
     IEnumerator lightLBlinkCo()
@@ -212,6 +221,7 @@ public class SpawnTiles : MonoBehaviour
         waterSpoil,
         VehicleAppear,
         obstacleDown,
+        leftRight,
     }
 
     [Header("Anim Play")]
@@ -221,6 +231,8 @@ public class SpawnTiles : MonoBehaviour
     public GameObject targetImage = null;    //Å¸°Ù image or somethig
     public float imageScale = 0f;       //Å¸°Ù image or somethingÀÇ Å©±â
     public ParticleSystem particle = null;
+    [SerializeField] private bool leftRightbool;
+    [SerializeField] private int leftRightIndex = 0;
 
     // Update is called once per frame
     void Update()
@@ -268,6 +280,12 @@ public class SpawnTiles : MonoBehaviour
                     if (!animShow)
                     {
                         ObstacleDown();
+                    }
+                    break;
+                case animType.leftRight:
+                    if (!animShow)
+                    {
+                        RandomLR();
                     }
                     break;
                 default:
@@ -338,6 +356,21 @@ public class SpawnTiles : MonoBehaviour
                 AudioManager.AM.PlaySfx(AudioManager.Sfx.obstacleDown);
                 anim.SetBool("down", true);
                 anim.SetFloat("downSpeed", (player.speed * 0.3f));
+            }
+        }
+    }
+
+    public void RandomLR()
+    {
+        animShow = true;
+
+        if(targetImage != null)
+        {
+            if (targetImage.gameObject.TryGetComponent(out Animator anim))
+            {
+                Debug.Log(leftRightbool);
+                AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
+                anim.SetBool("isLeft", true);
             }
         }
     }
