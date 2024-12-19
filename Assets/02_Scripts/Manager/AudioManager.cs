@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
         crash = 9,
         falling = 10,
         roll = 11,
+        crane_leftright =12,
 
     }
 

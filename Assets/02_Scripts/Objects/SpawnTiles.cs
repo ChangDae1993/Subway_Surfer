@@ -373,8 +373,8 @@ public class SpawnTiles : MonoBehaviour
 
                 if (targetImage.gameObject.TryGetComponent(out Animator anim))
                 {
-                    Debug.Log(leftRightbool);
-                    AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
+                    //Debug.Log(leftRightbool);
+                    AudioManager.AM.PlaySfx(AudioManager.Sfx.crane_leftright);
                     anim.SetBool("isLeft", leftRightbool);
                 }
             }
