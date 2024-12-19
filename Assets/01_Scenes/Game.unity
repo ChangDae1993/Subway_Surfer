@@ -3132,7 +3132,7 @@ GameObject:
   m_Layer: 0
   m_Name: LightControl
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 8a974d92976601b46b787e110d9c7476, type: 3}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

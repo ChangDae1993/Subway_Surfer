@@ -57,10 +57,10 @@ public class Score_script : MonoBehaviour
 
         //exp = 0f;
 
-        scoreToNextLevel *= 1.5f;
+        scoreToNextLevel *= 1.3f;
         Level++;
 
-        playerM.SetSpeed(0.3f);
+        playerM.SetSpeed(0.4f);
     }
 
     public void OnDeath()
