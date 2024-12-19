@@ -60,13 +60,11 @@ public class SpawnTiles : MonoBehaviour
 
         if (LightLTr != null)
         {
-            //Debug.Log("LightL On");
             Llights = LightLTr.GetComponentsInChildren<Light>();
         }
 
         if (LightRTr != null)
         {
-            //Debug.Log("LightR On");
             Rlights = LightRTr.GetComponentsInChildren<Light>();
         }
 
@@ -80,11 +78,6 @@ public class SpawnTiles : MonoBehaviour
     //생성 될때, 혹은 ObjPool에서 나올 때
     private void OnEnable()
     {
-        //if(tileManager == null)
-        //{
-        //    tileManager = gameObject.GetComponentInParent<TileManager>();
-        //}
-
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Player_Move>();
@@ -168,25 +161,6 @@ public class SpawnTiles : MonoBehaviour
             yield return null;
         }
     }
-
-    //Destroy 될 때, 혹은 ObjPool로 돌아갈 때
-    //private void OnDisable()
-    //{
-    //    player = null;
-
-    //    if (objSpawnPoint != null)
-    //    {
-    //        if (lightLBlink != null)
-    //        {
-    //            StopCoroutine(lightLBlink);
-    //        }
-
-    //        if (lightRBlink != null)
-    //        {
-    //            StopCoroutine(lightRBlink);
-    //        }
-    //    }
-    //}
 
     private void OnDestroy()
     {
@@ -280,7 +254,6 @@ public class SpawnTiles : MonoBehaviour
                     if (distanceSqr > 55f)
                         return;
 
-
                     if (!animShow)
                     {
                         RandomLR();
@@ -339,7 +312,6 @@ public class SpawnTiles : MonoBehaviour
 
             targetImage.transform.localScale = new Vector3(imageScale, targetImage.transform.localScale.y, imageScale);
         }
-
     }
 
 
@@ -373,7 +345,6 @@ public class SpawnTiles : MonoBehaviour
 
                 if (targetImage.gameObject.TryGetComponent(out Animator anim))
                 {
-                    //Debug.Log(leftRightbool);
                     AudioManager.AM.PlaySfx(AudioManager.Sfx.crane_leftright);
                     anim.SetBool("isLeft", leftRightbool);
                 }

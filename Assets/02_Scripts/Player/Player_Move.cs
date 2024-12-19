@@ -1,5 +1,4 @@
 using System.Collections;
-//using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -116,10 +115,6 @@ public class Player_Move : MonoBehaviour
         }
 
 
-        // Z 방향 (전방) 이동
-        //moveVec.z = speed;
-
-
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             Roll();
@@ -141,7 +136,6 @@ public class Player_Move : MonoBehaviour
 
         if (Time.time - startTime < CamS.animationDur)
         {
-            // 실제 이동
             rb.MovePosition(rb.position + transform.TransformDirection(moveVec) * Time.deltaTime);
             return;
         }
@@ -219,7 +213,6 @@ public class Player_Move : MonoBehaviour
         }
       
         LayerMask mask = LayerMask.GetMask("Obstacle");
-        //Vector3 look = transform.TransformDirection(Vector3.forward); // Local -> World
         Vector3 look = transform.forward; // 회전된 전방 방향
         Debug.DrawRay(transform.position + Vector3.up, look * dirChKR.rayZLength, Color.red);
 
@@ -239,7 +232,6 @@ public class Player_Move : MonoBehaviour
         AudioManager.AM.PlaySfx(AudioManager.Sfx.roll);
         animator.Play("roll");
         animator.SetFloat("rollSpeed", (speed * 0.2f));
-        //Debug.Log("Roll");
     }
 
 

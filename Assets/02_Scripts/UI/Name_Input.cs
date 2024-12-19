@@ -129,7 +129,9 @@ public class Name_Input : MonoBehaviour
         MenuBtn.gameObject.SetActive(true);
 
         //SaveScore(playerName, scoreScript.score);
+#if !UNITY_EDITOR
         NetworkManager.NM.scoreToServer(playerName, (int)scoreScript.score);
+#endif
     }
 
     // 점수 저장 로직 추가

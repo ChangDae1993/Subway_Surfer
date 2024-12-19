@@ -15,7 +15,7 @@ public class Camera_Script : MonoBehaviour
 
 
     [SerializeField] private float transition = 0f;
-    //how long does animation show
+
     [HideInInspector] public float animationDur = 3.0f;
 
     private Vector3 animationOffSet = new Vector3(0f, 6.5f, 5f);
@@ -46,11 +46,5 @@ public class Camera_Script : MonoBehaviour
             transition += Time.deltaTime * 1 / animationDur;
             transform.LookAt(lookAt.position + Vector3.up);
         }
-        //else
-        //{
-        //    // 이동 후 카메라 위치 갱신
-        //    transform.position = moveVec;
-        //    transform.LookAt(lookAt.position + Vector3.up);
-        //}
     }
 }

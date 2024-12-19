@@ -312,7 +312,6 @@ public class TileManager : MonoBehaviour
 
             }
         }
-        //Debug.Log("¿©±â¾ß?");
         return false;
     }
 }

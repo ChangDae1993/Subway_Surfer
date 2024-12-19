@@ -118,7 +118,6 @@ public class AudioManager : MonoBehaviour
                 randomIndex = Random.Range(0, 3);
             }
 
-
             channelIndex = loopindex;
             sfxPlayers[loopindex].clip = sfxClips[(int)sfx + randomIndex];
             sfxPlayers[loopindex].Play();

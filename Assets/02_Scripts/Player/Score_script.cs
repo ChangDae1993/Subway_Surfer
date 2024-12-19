@@ -53,10 +53,6 @@ public class Score_script : MonoBehaviour
 
     void LevelUp()
     {
-        //Debug.Log("Level Up");
-
-        //exp = 0f;
-
         scoreToNextLevel *= 1.2f;
         Level++;
 
