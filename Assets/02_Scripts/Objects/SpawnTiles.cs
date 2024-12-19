@@ -74,13 +74,6 @@ public class SpawnTiles : MonoBehaviour
         {
             tileManager = gameObject.GetComponentInParent<TileManager>();
         }
-
-        if (this.animationType == animType.leftRight)
-        {
-            leftRightIndex = UnityEngine.Random.Range(0, 2);
-            leftRightbool = Convert.ToBoolean(leftRightIndex);
-            //Debug.Log(leftRightIndex);
-        }
     }
 
 
@@ -283,6 +276,11 @@ public class SpawnTiles : MonoBehaviour
                     }
                     break;
                 case animType.leftRight:
+
+                    if (distanceSqr > 55f)
+                        return;
+
+
                     if (!animShow)
                     {
                         RandomLR();
@@ -364,14 +362,23 @@ public class SpawnTiles : MonoBehaviour
     {
         animShow = true;
 
+        leftRightIndex = UnityEngine.Random.Range(0, 2);
+        leftRightbool = Convert.ToBoolean(leftRightIndex);
+
         if(targetImage != null)
         {
-            if (targetImage.gameObject.TryGetComponent(out Animator anim))
+            if(!targetImage.gameObject.activeSelf)
             {
-                Debug.Log(leftRightbool);
-                AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
-                anim.SetBool("isLeft", true);
+                targetImage.gameObject.SetActive(true);
+
+                if (targetImage.gameObject.TryGetComponent(out Animator anim))
+                {
+                    Debug.Log(leftRightbool);
+                    AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
+                    anim.SetBool("isLeft", leftRightbool);
+                }
             }
+
         }
     }
 }
