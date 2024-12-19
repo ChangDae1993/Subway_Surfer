@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
         crash = 9,
         falling = 10,
         roll = 11,
-        crane_leftright =12,
+        crane_leftright = 12,
 
     }
 
@@ -152,6 +152,7 @@ public class AudioManager : MonoBehaviour
 
     public void EffectBGM(bool isPlay)
     {
+        Debug.Log("filter ON!!!");
         bgmEffect.enabled = isPlay;
     }
 
