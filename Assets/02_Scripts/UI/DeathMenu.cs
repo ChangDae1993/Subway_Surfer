@@ -6,7 +6,7 @@ public class DeathMenu : MonoBehaviour
 {
 
     public Text scoreText;
-    public Text newhighScoreText;
+    //public Text newhighScoreText;
     public float TextCHNGSpeed = 1f;
 
     private Color[] colors = {
@@ -30,7 +30,7 @@ public class DeathMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        newhighScoreText.gameObject.SetActive(false);
+        //scoreText.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -44,11 +44,11 @@ public class DeathMenu : MonoBehaviour
         transition += Time.deltaTime;
         backgroundImg.color = Color.Lerp(new Color(0,0,0,0), Color.black, transition);
 
-        if(newhighScoreText.gameObject.activeSelf)
+        if(scoreText.gameObject.activeSelf)
         {
             // 색상 보간
             t += Time.deltaTime * TextCHNGSpeed;
-            newhighScoreText.color = Color.Lerp(colors[currentIndex], colors[nextIndex], t);
+            scoreText.color = Color.Lerp(colors[currentIndex], colors[nextIndex], t);
 
             // 보간이 끝나면 다음 색상으로 넘어감
             if (t >= 1f)
