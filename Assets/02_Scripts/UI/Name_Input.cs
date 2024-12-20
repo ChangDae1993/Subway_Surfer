@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Name_Input : MonoBehaviour

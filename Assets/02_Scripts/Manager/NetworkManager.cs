@@ -1,12 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using System.Net.WebSockets;
-using System.Reflection;
-using System;
-using UnityEngine.SocialPlatforms.Impl;
+
 //using UnityEngine.Networking;
 
 public class NetworkManager : MonoBehaviour

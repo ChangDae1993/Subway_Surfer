@@ -1,6 +1,4 @@
-using System.Xml.Linq;
 using UnityEngine;
-using static AudioManager;
 
 public class AudioManager : MonoBehaviour
 {

@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 public class TileManager : MonoBehaviour
 {
@@ -112,7 +111,6 @@ public class TileManager : MonoBehaviour
     void SpawnTile(int prefabIndex = -1)
     {
         GameObject tile;
-
 
         if (prefabIndex != -1)
         {
