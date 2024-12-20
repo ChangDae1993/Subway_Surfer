@@ -183,12 +183,14 @@ public class SpawnTiles : MonoBehaviour
         }
     }
 
+
     public enum animType
     {
         waterSpoil,
         VehicleAppear,
         obstacleDown,
         leftRight,
+        VehicleTweenAppear,
     }
 
     [Header("Anim Play")]
@@ -200,6 +202,7 @@ public class SpawnTiles : MonoBehaviour
     public ParticleSystem particle = null;
     [SerializeField] private bool leftRightbool;
     [SerializeField] private int leftRightIndex = 0;
+    public bool reverseAnim = false;
 
     // Update is called once per frame
     void Update()
@@ -259,6 +262,17 @@ public class SpawnTiles : MonoBehaviour
                         RandomLR();
                     }
                     break;
+
+                case animType.VehicleTweenAppear:
+
+                    if (distanceSqr > 23f)
+                        return;
+
+                    if (!animShow)
+                    {
+                        TweenVehicle();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -278,12 +292,58 @@ public class SpawnTiles : MonoBehaviour
 
             if(targetImage.gameObject.TryGetComponent(out Animator anim))
             {
-                if(targetImage.gameObject.name.Equals("appear"))
+                if(!reverseAnim)
+                {
+                    if (targetImage.gameObject.name.Equals("appear"))
+                    {
+                        AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
+                        anim.SetBool("appear", true);
+                    }
+                    else if (targetImage.gameObject.name.Equals("appear_move"))
+                    {
+                        AudioManager.AM.PlaySfx(AudioManager.Sfx.vehicle_beep);
+                        anim.SetBool("appear_move", true);
+                        anim.SetFloat("appear_speed", (player.speed * 0.1f));
+                    }
+                }
+                else
+                {
+                    if (targetImage.gameObject.name.Equals("appear"))
+                    {
+                        AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
+                        anim.SetBool("appear_reverse", true);
+                    }
+                    else if (targetImage.gameObject.name.Equals("appear_move"))
+                    {
+                        AudioManager.AM.PlaySfx(AudioManager.Sfx.vehicle_beep);
+                        anim.SetBool("appear_move_reverse", true);
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void TweenVehicle()
+    {
+        animShow = true;
+
+        if (targetImage != null)
+        {
+            if (!targetImage.gameObject.activeSelf)
+            {
+                targetImage.gameObject.SetActive(true);
+            }
+
+            if (targetImage.gameObject.TryGetComponent(out Animator anim))
+            {
+                if (targetImage.gameObject.name.Equals("tween_move"))
                 {
                     AudioManager.AM.PlaySfx(AudioManager.Sfx.bulldoze_appear);
-                    anim.SetBool("appear",true);
+                    anim.SetBool("tween_move", true);
+                    anim.SetFloat("appear_speed", (player.speed * 0.1f));
                 }
-                else if(targetImage.gameObject.name.Equals("appear_move"))
+                else if (targetImage.gameObject.name.Equals("appear_tween"))
                 {
                     AudioManager.AM.PlaySfx(AudioManager.Sfx.vehicle_beep);
                     anim.SetBool("appear_move", true);
