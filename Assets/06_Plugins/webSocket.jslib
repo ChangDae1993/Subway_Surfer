@@ -32,7 +32,7 @@ mergeInto(LibraryManager.library, {
     }
 
     function initializeWebSocket() {
-      Module.socket = new WebSocket("ws://localhost:9009/ws");
+      Module.socket = new WebSocket("ws://10.47.0.8:9009/ws");
       Module.socket.onopen = () => {
         console.log("WebSocket 연결 성공");
         console.log("WebSocket 상태:", Module.socket.readyState);  // 클라이언트에서 상태 확인
