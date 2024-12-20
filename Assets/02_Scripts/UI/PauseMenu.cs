@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    public Camera mainCam;
     public Text pauseTxt;
     [SerializeField] private bool isBlinking;
     [Header("Score")]
@@ -25,10 +26,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
-        if (AudioManager.AM.bgmEffect == null)
-        {
-            AudioManager.AM.bgmEffect = Camera.main.GetComponent<AudioLowPassFilter>();
-        }
+        AudioManager.AM.bgmEffect = mainCam.GetComponent<AudioLowPassFilter>();
+
         this.gameObject.SetActive(false);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -86,7 +85,6 @@ public class PauseMenu : MonoBehaviour
         isBlinking = true;
         while (isBlinking)
         {
-            //Debug.Log("Blink in");
             pauseTxt.gameObject.SetActive(true);
             yield return new WaitForSecondsRealtime(0.5f); // ±ôºýÀÓ °£°Ý
             pauseTxt.gameObject.SetActive(false);

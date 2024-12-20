@@ -112,8 +112,8 @@ Material:
     m_Ints: []
     m_Floats:
     - Boolean_66e68ac241154fb4bcbc4f35dc1cf8fe: 0
-    - Vector1_a91668318df8458a9c8d2dd03839d360: 0
-    - Vector1_c2ac7cfd55bc483ca46a4772e70bcfe8: 0.03
+    - Vector1_a91668318df8458a9c8d2dd03839d360: 0.559
+    - Vector1_c2ac7cfd55bc483ca46a4772e70bcfe8: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

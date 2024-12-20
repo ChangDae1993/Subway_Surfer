@@ -4,9 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
-
     public Text scoreText;
-    //public Text newhighScoreText;
     public float TextCHNGSpeed = 1f;
 
     private Color[] colors = {
@@ -27,10 +25,10 @@ public class DeathMenu : MonoBehaviour
     public bool isShowned = false;
 
     private float transition = 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //scoreText.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -64,10 +62,6 @@ public class DeathMenu : MonoBehaviour
     {
         isShowned = true;
         gameObject.SetActive(true);
-        //if ((int)score >= (int)PlayerPrefs.GetFloat("Highscore"))
-        //{
-        //    newhighScoreText.gameObject.SetActive(true);
-        //}
         scoreText.text = ((int)score).ToString();
     }
 

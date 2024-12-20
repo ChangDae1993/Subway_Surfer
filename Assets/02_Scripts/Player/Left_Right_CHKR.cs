@@ -12,12 +12,6 @@ public class Left_Right_CHKR : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-
-    //}
-
     public bool CanTurnMoveForword()
     {
         RaycastHit hit;

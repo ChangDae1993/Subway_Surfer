@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class TileLampControl : MonoBehaviour
 {
-    //public Light[] lights;
-
     public Light leftLampLight = null;
     public Light rightLampLight = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -5054,6 +5054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd5470be86e041448fdaaacf03dfc42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 9054636924782426151}
   pauseTxt: {fileID: 339684989}
   isBlinking: 0
   score_bg: {fileID: 1629026700}

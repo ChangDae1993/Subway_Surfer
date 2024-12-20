@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    //[Header("Score")]
-    //public Text highScore;
-
     [Header("Title Text")]
     public Text titleText;
     public float titleCHNGSpeed = 1f;
@@ -35,16 +32,11 @@ public class MainMenu : MonoBehaviour
         {
             introCanvas.gameObject.SetActive(true);
         }
-        //PlayerPrefs.SetFloat("Highscore", 0f);
-        //highScore.text = "HighScore : " + (int)PlayerPrefs.GetFloat("Highscore");
-
-
 #if !UNITY_EDITOR
         NetworkManager.NM.ConnectStart();
 #endif
 
         AudioManager.AM.PlayBGM(false);
-
 
         // 현재 활성화된 Skybox를 찾아서 해당 Material을 가져옵니다.
         skyboxMaterial = RenderSettings.skybox;
@@ -89,7 +81,6 @@ public class MainMenu : MonoBehaviour
             introCanvas.gameObject.SetActive(false);
         }
 
-        //Debug.Log("start");
         if (gameStart != null)
         {
             StopCoroutine(gameStart);
@@ -119,7 +110,6 @@ public class MainMenu : MonoBehaviour
         AudioManager.AM.PlayBGM(true);
         if (!animationStart)
         {
-            //Debug.Log("wait");
             animationStart = true;
             introEnemyAnim.Play("react");
             introBGAnim.SetBool("animOut", true);
@@ -152,7 +142,6 @@ public class MainMenu : MonoBehaviour
         {
             OptionMenuPanel.gameObject.SetActive(true);
         }
-        //Debug.Log("OptionOn");
     }
 
     public void ToRanking()
