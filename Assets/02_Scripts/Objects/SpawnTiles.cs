@@ -50,7 +50,6 @@ public class SpawnTiles : MonoBehaviour
     public bool isAnimPattern;
 
 
-
     [SerializeField] private Player_Move player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -118,7 +117,6 @@ public class SpawnTiles : MonoBehaviour
             }
         }
 
-
         if (LightRTr != null)
         {
             if (lightRBlink != null)
@@ -131,7 +129,6 @@ public class SpawnTiles : MonoBehaviour
                 lightRBlink = StartCoroutine(lightRBlinkCo());
             }
         }
-
     }
 
     IEnumerator lightLBlinkCo()
@@ -262,7 +259,6 @@ public class SpawnTiles : MonoBehaviour
                         RandomLR();
                     }
                     break;
-
                 case animType.VehicleTweenAppear:
 
                     if (distanceSqr > 23f)
@@ -303,7 +299,7 @@ public class SpawnTiles : MonoBehaviour
                     {
                         AudioManager.AM.PlaySfx(AudioManager.Sfx.vehicle_beep);
                         anim.SetBool("appear_move", true);
-                        anim.SetFloat("appear_speed", (player.speed * 0.1f));
+                        anim.SetFloat("appear_speed", (player.speed * 0.05f));
                     }
                 }
                 else
@@ -319,7 +315,6 @@ public class SpawnTiles : MonoBehaviour
                         anim.SetBool("appear_move_reverse", true);
                     }
                 }
-
             }
         }
     }
@@ -374,7 +369,6 @@ public class SpawnTiles : MonoBehaviour
         }
     }
 
-
     public void ObstacleDown()
     {
         animShow = true;
@@ -409,7 +403,6 @@ public class SpawnTiles : MonoBehaviour
                     anim.SetBool("isLeft", leftRightbool);
                 }
             }
-
         }
     }
 }
