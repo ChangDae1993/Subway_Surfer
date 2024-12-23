@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 452791221065694802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.261, y: -0.658, z: -0.377}
+  m_LocalPosition: {x: -0.6170001, y: -0.658, z: -0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -230,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 1898965432064327814}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12627542, y: -0.658, z: -0.377}
+  m_LocalPosition: {x: 0.77027535, y: -0.658, z: -0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -438,7 +438,7 @@ Transform:
   m_GameObject: {fileID: 2806948638782786513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.048, y: -0.041, z: 0.32}
+  m_LocalPosition: {x: -0.40400004, y: -0.041, z: 0.04699999}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -579,8 +579,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6781371, y: 0.8506333, z: 1.6668543}
-  m_Center: {x: -0.6317329, y: -0.20586888, z: 0.40866598}
+  m_Size: {x: 1.6781372, y: 1.0976446, z: 1.6668543}
+  m_Center: {x: 0, y: -0.08649455, z: 0}
 --- !u!1 &4114154680632266378
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ Transform:
   m_GameObject: {fileID: 4114154680632266378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: -0.665, z: 0.639}
+  m_LocalPosition: {x: 0.41399992, y: -0.665, z: 0.366}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -695,7 +695,7 @@ Transform:
   m_GameObject: {fileID: 5944785819308851794}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.022, y: -0.666, z: 0.326}
+  m_LocalPosition: {x: -0.37800002, y: -0.666, z: 0.053000003}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -804,7 +804,7 @@ Transform:
   m_GameObject: {fileID: 5949477606559933626}
   serializedVersion: 2
   m_LocalRotation: {x: 0.22255155, y: -0, z: -0, w: 0.9749209}
-  m_LocalPosition: {x: -0.5626668, y: -0.45027202, z: -0.34999976}
+  m_LocalPosition: {x: 0.08133316, y: -0.45027202, z: -0.6229998}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -912,7 +912,7 @@ Transform:
   m_GameObject: {fileID: 6433205106176090842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.045, y: -0.619, z: -0.096}
+  m_LocalPosition: {x: -0.401, y: -0.619, z: -0.369}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -998,7 +998,7 @@ Transform:
   m_GameObject: {fileID: 7734758121460132933}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.881, y: -0.657, z: 0.841}
+  m_LocalPosition: {x: -0.23700005, y: -0.657, z: 0.568}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1084,7 +1084,7 @@ Transform:
   m_GameObject: {fileID: 7850442118500592046}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.527, y: -0.659, z: 0}
+  m_LocalPosition: {x: 0.116999924, y: -0.659, z: -0.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1171,7 +1171,7 @@ Transform:
   m_GameObject: {fileID: 9073994249955680506}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.025333405, y: -0.65943563, z: -0.041}
+  m_LocalPosition: {x: 0.6186665, y: -0.65943563, z: -0.314}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1208,7 +1208,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 59b4ef62aff2d6e40ba11a89ab527f3a, type: 2}
+  - {fileID: 2100000, guid: 37e49d9b9e666a34da5149df0d66814e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

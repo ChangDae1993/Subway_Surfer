@@ -37,6 +37,7 @@ public class Left_Right_CHKR : MonoBehaviour
         Vector3 rayDirection = -transform.right;  // 왼쪽 방향 (회전된 방향 기준으로 왼쪽)
         if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
         {
+            Debug.Log("left");
             Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
             // Ray가 장애물과 충돌했을 때
             return false;
@@ -55,6 +56,7 @@ public class Left_Right_CHKR : MonoBehaviour
         Vector3 rayDirection = transform.right;  // 오른쪽 방향 (회전된 방향 기준으로 오른쪽)
         if (Physics.Raycast(transform.position + Vector3.up, rayDirection, out hit, rayLength, obstacleLayer))
         {
+            Debug.Log("right");
             Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
             return false;
         }

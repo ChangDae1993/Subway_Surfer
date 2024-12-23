@@ -89,12 +89,10 @@ SendScore: function(username, score)
       const data = await response.json();
 
       if (response.ok) {
-        // const names = data.map((row) => row.user_id).join(","); // 배열을 문자열로 결합
-        // const scores = data.map((row) => row.score).join(","); // 배열을 문자열로 결합
-
-        const names = data.map((row) => row.user_id).join(",");
-        const scores = data.map((row) => row.max_score).join(",");  // 'max_score'로 변경
-        const times = data.map((row) => row.latest_time).join(",");
+      // 'max_score'와 'latest_time'이 포함된 데이터를 처리
+      const names = data.map((row) => row.user_id).join(",");
+      const scores = data.map((row) => row.score).join(",");
+      const times = data.map((row) => row.timestamp).join(",");
 
         // 두 문자열을 하나로 결합해서 보내기
         const combined = names + "|" + scores + "|" + times; // 이름과 점수를 '|'로 구분해서 결합
