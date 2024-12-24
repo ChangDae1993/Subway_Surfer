@@ -95,15 +95,15 @@ public class MainMenu : MonoBehaviour
 
     float panelAlpha = 0f;
 
-    public void ButtonOn(Button thisBtn)
-    {
-        thisBtn.GetComponent<Image>().color = Color.red;
-    }
+    //public void ButtonOn(Button thisBtn)
+    //{
+    //    thisBtn.GetComponent<Image>().color = Color.red;
+    //}
 
-    public void ButtonOff(Button thisBtn)
-    {
-        thisBtn.GetComponent<Image>().color = Color.white;
-    }
+    //public void ButtonOff(Button thisBtn)
+    //{
+    //    thisBtn.GetComponent<Image>().color = Color.white;
+    //}
 
     IEnumerator startGameCo()
     {

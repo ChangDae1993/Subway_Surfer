@@ -147,11 +147,6 @@ public class Player_Move : MonoBehaviour
                 TutorialPanel.gameObject.SetActive(true);
             }
 
-            if(Input.anyKey)
-            {
-                tutorialOn = true;
-            }
-
             Time.timeScale = 0f;
             return;
         }
@@ -223,7 +218,10 @@ public class Player_Move : MonoBehaviour
         }
     }
 
-
+    public void TutorialBtn()
+    {
+        tutorialOn = true;
+    }
     #region run and turn
 
     public void Roll()
